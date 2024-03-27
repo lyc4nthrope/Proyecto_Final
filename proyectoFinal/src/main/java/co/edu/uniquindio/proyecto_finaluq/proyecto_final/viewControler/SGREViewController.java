@@ -7,5 +7,5 @@ public class SGREViewController {
     SGREControllerService sgreControllerService;
 
     @FXML
-    void initialize() {sgreControllerService = new SGREController}
+    void initialize() {sgreControllerService = new SGREController();}
 }
