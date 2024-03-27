@@ -169,13 +169,13 @@ public class EmpleadoViewController {
     private void actualizarEmpleado() {
         boolean clienteActualizado = false;
         //1. Capturar los datos
-        String cedulaActual = empleadoSeleccionado.id();
+        String idActual = empleadoSeleccionado.id();
         EmpleadoDto empleadoDto = construirEmpleadoDto();
         //2. verificar el empleado seleccionado
         if(empleadoSeleccionado != null){
             //3. Validar la información
             if(datosValidos(empleadoSeleccionado)){
-                clienteActualizado = empleadoControllerService.actualizarEmpleado(cedulaActual,empleadoDto);
+                clienteActualizado = empleadoControllerService.actualizarEmpleado(idActual,empleadoDto);
                 if(clienteActualizado){
                     listaEmpleadosDto.remove(empleadoSeleccionado);
                     listaEmpleadosDto.add(empleadoDto);
