@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class EmpleadoViewControler {
+public class EmpleadoViewController {
 
     EmpleadoController empleadoControllerService;
     ObservableList<EmpleadoDto> listaEmpleadosDto = FXCollections.observableArrayList();
