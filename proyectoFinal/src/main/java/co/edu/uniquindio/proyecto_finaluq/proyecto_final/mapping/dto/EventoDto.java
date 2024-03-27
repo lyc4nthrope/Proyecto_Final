@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public record EventoDto(
-String id,String nombre,String descripcion,
+String id,String nombreEvento,String descripcion,
 LocalDateTime fecha,
 int capacidadMax,
 EmpleadoDto empleadoEncargado,

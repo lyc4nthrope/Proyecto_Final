@@ -7,7 +7,6 @@ public class Reserva {
     private Usuario usuario;
     private Evento evento;
     private LocalDateTime fechaSolicitud;
-
     private String estado;
 
     public Reserva(String id, Usuario usuario, Evento evento, LocalDateTime fechaSolicitud, String estado) {
