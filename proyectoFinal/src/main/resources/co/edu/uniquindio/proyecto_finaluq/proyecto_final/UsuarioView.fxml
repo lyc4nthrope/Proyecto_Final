@@ -33,9 +33,9 @@
                   <TableView fx:id="tableUsuarios" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="711.0">
                      <columns>
                         <TableColumn fx:id="tcId" prefWidth="75.0" text="Id" />
-                        <TableColumn fx:id="tcNombre" prefWidth="122.0" text="Nombre" />
-                        <TableColumn fx:id="tcCorreo" prefWidth="126.0" text="Correo" />
-                        <TableColumn fx:id="tcReservas" prefWidth="384.0" text="Reservas" />
+                        <TableColumn fx:id="tcNombre" prefWidth="169.0" text="Nombre" />
+                        <TableColumn fx:id="tcCorreo" prefWidth="130.0" text="Correo" />
+                        <TableColumn fx:id="tcReservas" prefWidth="348.0" text="Reservas" />
 
                      </columns>
                   </TableView>
