@@ -12,11 +12,11 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class EventoViewController {
+public class ReservaViewController {
 
-    EventoController eventoControllerService;
-    ObservableList<EventoDto> listaEventosDto = FXCollections.observableArrayList();
-    EventoDto eventoSeleccionado;
+    ReservaController reservaControllerService;
+    ObservableList<ReservaDto> listaReservasDto = FXCollections.observableArrayList();
+    ReservaDto reservaSeleccionado;
 
     @FXML
     private ResourceBundle resources;
@@ -25,25 +25,19 @@ public class EventoViewController {
     private URL location;
 
     @FXML
-    private TextField txtNombre;
+    private TextField txtUsuario;
 
     @FXML
     private TextField txtId;
 
     @FXML
-    private TextField txtDescripcion;
+    private TextField txtEvento;
 
     @FXML
-    private TextField txtFecha;
+    private TextField txtFechaSolicitud;
 
     @FXML
-    private TextField txtCapacidad;
-
-    @FXML
-    private TextField txtEmpleado;
-
-    @FXML
-    private TextField txtReservas;
+    private TextField txtEstado;
 
     @FXML
     private Button btnActualizar;
@@ -64,79 +58,67 @@ public class EventoViewController {
     private TableColumn<EmpleadoDto, String> tcId;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcNombre;
+    private TableColumn<EmpleadoDto, String> tcUsuario;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcDescripcion;
+    private TableColumn<EmpleadoDto, String> tcEvento;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcFecha;
+    private TableColumn<EmpleadoDto, String> tcFechaSolicitud;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcCapacidad;
-
-    @FXML
-    private TableColumn<EmpleadoDto, String> tcEmpleado;
-
-    @FXML
-    private TableColumn<EmpleadoDto, String> tcReservas;
+    private TableColumn<EmpleadoDto, String> tcEstado;
 
     @FXML
     void initialize() {
-        eventoControllerService = new EventoController();
+        reservaControllerService = new ReservaController();
         intiView();
     }
 
     private void intiView() {
         initDataBinding();
         obtenerEventos();
-        tableEventos.getItems().clear();
-        tableEventos.setItems(listaEventosDto);
+        tableReservas.getItems().clear();
+        tableReservas.setItems(listaReservasDto);
         listenerSelection();
     }
 
     private void initDataBinding() {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
-        tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
-        tcDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
-        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha()));
-        tcCapacidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().capacidad()));
-        tcEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().empleado()));
-        tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservas()));
+        tcUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
+        tcEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
+        tcFechaSolicitud.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha()));
+        tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().capacidad()));
     }
 
     private void obtenerEventos() {
-        listaEventosDto.addAll(eventoControllerService.obtenerEventos());
+        listaReservasDto.addAll(reservaControllerService.obtenerReservas());
     }
 
     private void listenerSelection() {
-        tableEventos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            eventoSeleccionado = newSelection;
-            mostrarInformacionEvento(eventoSeleccionado);
+        tableReservas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            reservaSeleccionado = newSelection;
+            mostrarInformacionEvento(reservaSeleccionado);
         });
     }
 
-    private void mostrarInformacionEvento(EventoDto eventoSeleccionado) {
-        if(eventoSeleccionado != null){
-            txtId.setText(eventoSeleccionado.id());
-            txtNombre.setText(eventoSeleccionado.nombre());
-            txtDescripcion.setText(eventoSeleccionado.descripcion());
-            txtFecha.setText(eventoSeleccionado.fecha());
-            txtCapacidad.setText(eventoSeleccionado.capacidad());
-            txtEmpleado.setText(eventoSeleccionado.empleado());
-            txtReservas.setText(eventoSeleccionado.reservas());
+    private void mostrarInformacionReserva(ReservaDto reservaSeleccionado) {
+        if(reservaSeleccionado != null){
+            txtId.setText(reservaSeleccionado.id());
+            txtUsuario.setText(reservaSeleccionado.usuario());
+            txtEvento.setText(reservaSeleccionado.evento());
+            txtFechaSolicitud.setText(reservaSeleccionado.fecheSolicitud());
+            txtEstado.setText(reservaSeleccionado.estado());
         }
     }
 
     @FXML
     void nuevoEventoAction(ActionEvent event) {
         txtId.setText("Ingrese el ID");
-        txtNombre.setText("Ingrese el nombre");
-        txtDescripcion.setText("Ingrese la descripcion del evento");
-        txtFecha.setText("Ingrese la fecha del evento");
-        txtCapacidad.setText("Ingrese la capacidad maxima");
-        txtEmpleado.setText("Ingrese el empleado asignado");
-        txtReservas.setText("Ingrese las reservas");
+        txtUsuario.setText("Ingrese el usuario");
+        txtEvento.setText("Ingrese el nombre del evento");
+        txtFechaSolicitud.setText("Ingrese la fecha de la solicitud");
+        txtEstado.setText("Ingrese el estado");
     }
 
     @FXML
