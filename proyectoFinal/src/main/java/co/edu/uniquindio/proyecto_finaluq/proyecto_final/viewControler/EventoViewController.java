@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,28 +59,28 @@ public class EventoViewController {
     private Button btnEliminar;
 
     @FXML
-    private TableView<EmpleadoDto> tableEmpleados;
+    private TableView<EventoDto> tableEvento;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcId;
+    private TableColumn<EventoDto, String> tcId;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcNombre;
+    private TableColumn<EventoDto, String> tcNombre;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcDescripcion;
+    private TableColumn<EventoDto, String> tcDescripcion;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcFecha;
+    private TableColumn<EventoDto, String> tcFecha;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcCapacidad;
+    private TableColumn<EventoDto, String> tcCapacidad;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcEmpleado;
+    private TableColumn<EventoDto, String> tcEmpleado;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcReservas;
+    private TableColumn<EventoDto, String> tcReservas;
 
     @FXML
     void initialize() {
@@ -90,18 +91,18 @@ public class EventoViewController {
     private void intiView() {
         initDataBinding();
         obtenerEventos();
-        tableEventos.getItems().clear();
-        tableEventos.setItems(listaEventosDto);
+        tableEvento.getItems().clear();
+        tableEvento.setItems(listaEventosDto);
         listenerSelection();
     }
 
     private void initDataBinding() {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
-        tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
+        tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreEvento()));
         tcDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
         tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha()));
-        tcCapacidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().capacidad()));
-        tcEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().empleado()));
+        tcCapacidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().capacidadMax()));
+        tcEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().empleadoEncargado()));
         tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservas()));
     }
 
@@ -110,7 +111,7 @@ public class EventoViewController {
     }
 
     private void listenerSelection() {
-        tableEventos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        tableEvento.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             eventoSeleccionado = newSelection;
             mostrarInformacionEvento(eventoSeleccionado);
         });
@@ -119,12 +120,12 @@ public class EventoViewController {
     private void mostrarInformacionEvento(EventoDto eventoSeleccionado) {
         if(eventoSeleccionado != null){
             txtId.setText(eventoSeleccionado.id());
-            txtNombre.setText(eventoSeleccionado.nombre());
+            txtNombre.setText(eventoSeleccionado.nombreEvento());
             txtDescripcion.setText(eventoSeleccionado.descripcion());
-            txtFecha.setText(eventoSeleccionado.fecha());
-            txtCapacidad.setText(eventoSeleccionado.capacidad());
-            txtEmpleado.setText(eventoSeleccionado.empleado());
-            txtReservas.setText(eventoSeleccionado.reservas());
+            txtFecha.setText(String.valueOf(eventoSeleccionado.fecha()));
+            txtCapacidad.setText(String.valueOf(eventoSeleccionado.capacidadMax()));
+            txtEmpleado.setText(String.valueOf(eventoSeleccionado.empleadoEncargado()));
+            txtReservas.setText(String.valueOf(eventoSeleccionado.reservas()));
         }
     }
 
@@ -206,7 +207,7 @@ public class EventoViewController {
                 if(clienteActualizado){
                     listaEventosDto.remove(eventoSeleccionado);
                     listaEventosDto.add(eventoDto);
-                    tableEmpleados.refresh();
+                    tableEvento.refresh();
                     mostrarMensaje("Notificación evento", "Evento actualizado", "El evento se ha actualizado con éxito", Alert.AlertType.INFORMATION);
                     limpiarCamposEvento();
                 }else{
@@ -242,17 +243,18 @@ public class EventoViewController {
         txtReservas.setText("");
     }
 
-    private boolean datosValidos(EventoDto empleadoDto) {
+    private boolean datosValidos(EventoDto EventoDto) {
         String mensaje = "";
-        if(empleadoDto.nombre() == null || empleadoDto.nombre().equals(""))
+        if(EventoDto.nombreEvento() == null || EventoDto.nombreEvento().equals(""))
             mensaje += "El nombre es invalido \n" ;
-        if(empleadoDto.id() == null || empleadoDto.id() .equals(""))
+        if(EventoDto.id() == null || EventoDto.id() .equals(""))
             mensaje += "El ID es invalido \n" ;
-        if(empleadoDto.fecha() == null || empleadoDto.fecha().equals(""))
+        if(EventoDto.fecha() == null || EventoDto.fecha().equals(""))
             mensaje += "El correo es invalido \n" ;
-        if(empleadoDto.capacidad() == null || empleadoDto.capacidad() .equals(""))
+        if(EventoDto.capacidadMax() = null || EventoDto.capacidadMax() == ("")) {
             mensaje += "Necesita ingresar una capacidad maxima \n" ;
-        if(empleadoDto.empleado() == null || empleadoDto.empleado() .equals(""))
+        }
+        if(EventoDto.empleadoEncargado() == null || EventoDto.empleadoEncargado() .equals(""))
             mensaje += "Debe tener un empleado encargado \n" ;
         if(mensaje.equals("")){
             return true;

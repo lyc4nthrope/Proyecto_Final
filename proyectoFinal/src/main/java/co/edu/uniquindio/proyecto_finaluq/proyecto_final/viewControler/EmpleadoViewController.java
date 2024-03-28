@@ -100,7 +100,7 @@ public class EmpleadoViewController {
             txtId.setText(empleadoSeleccionado.id());
             txtNombre.setText(empleadoSeleccionado.nombre());
             txtCorreo.setText(empleadoSeleccionado.correo());
-            txtEventosAsignados.setText(empleadoSeleccionado.EventosAsignados());
+            txtEventosAsignados.setText(String.valueOf(empleadoSeleccionado.eventosAsignados()));
         }
     }
 
