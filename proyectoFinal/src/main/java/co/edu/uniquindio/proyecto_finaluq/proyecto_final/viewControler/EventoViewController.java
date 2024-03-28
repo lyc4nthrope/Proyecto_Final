@@ -163,7 +163,7 @@ public class EventoViewController {
             if(eventoControllerService.agregarEvento(eventoDto)){
                 listaEventosDto.add(eventoDto);
                 mostrarMensaje("Notificación evento", "Evento creado", "El evento se ha creado con éxito", Alert.AlertType.INFORMATION);
-                limpiarCamposEmpleado();
+                limpiarCamposEvento();
             }else{
                 mostrarMensaje("Notificación evento", "Evento no creado", "El evento no se ha creado con éxito", Alert.AlertType.ERROR);
             }
@@ -182,7 +182,7 @@ public class EventoViewController {
                     listaEventosDto.remove(eventoSeleccionado);
                     empleadoSeleccionado = null;
                     tableEventos.getSelectionModel().clearSelection();
-                    limpiarCamposEmpleado();
+                    limpiarCamposEvento();
                     mostrarMensaje("Notificación evento", "Evento eliminado", "El evento se ha eliminado con éxito", Alert.AlertType.INFORMATION);
                 }else{
                     mostrarMensaje("Notificación evento", "Evento no eliminado", "El evento no se puede eliminar", Alert.AlertType.ERROR);
@@ -208,7 +208,7 @@ public class EventoViewController {
                     listaEventosDto.add(eventoDto);
                     tableEmpleados.refresh();
                     mostrarMensaje("Notificación evento", "Evento actualizado", "El evento se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-                    limpiarCamposEmpleado();
+                    limpiarCamposEvento();
                 }else{
                     mostrarMensaje("Notificación evento", "Evento no actualizado", "El evento no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
                 }

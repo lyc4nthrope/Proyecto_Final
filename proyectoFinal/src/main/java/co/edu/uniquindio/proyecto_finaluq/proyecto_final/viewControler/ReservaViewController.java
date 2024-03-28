@@ -113,7 +113,7 @@ public class ReservaViewController {
     }
 
     @FXML
-    void nuevoEventoAction(ActionEvent event) {
+    void nuevoReservaAction(ActionEvent event) {
         txtId.setText("Ingrese el ID");
         txtUsuario.setText("Ingrese el usuario");
         txtEvento.setText("Ingrese el nombre del evento");
@@ -122,120 +122,114 @@ public class ReservaViewController {
     }
 
     @FXML
-    void agregarEventoAction(ActionEvent event) {
-        crearEvento();
+    void agregarReservaAction(ActionEvent event) {
+        crearReserva();
     }
 
     @FXML
-    void eliminarEventoAction(ActionEvent event) {
-        eliminarEvento();
+    void eliminarReservaAction(ActionEvent event) {
+        eliminarReserva();
     }
 
 
     @FXML
-    void actualizarEventoAction(ActionEvent event) {
-        actualizarEvento();
+    void actualizarReservaAction(ActionEvent event) {
+        actualizarReserva();
     }
 
     private void crearEvento() {
         //1. Capturar los datos
-        EventoDto eventoDto = construirEventoDto();
+        ReservaDto reservaDto = construirEventoDto();
         //2. Validar la información
-        if(datosValidos(eventoDto)){
-            if(eventoControllerService.agregarEvento(eventoDto)){
-                listaEventosDto.add(eventoDto);
-                mostrarMensaje("Notificación evento", "Evento creado", "El evento se ha creado con éxito", Alert.AlertType.INFORMATION);
-                limpiarCamposEmpleado();
+        if(datosValidos(reservaDto)){
+            if(reservaControllerService.agregarEvento(reservaDto)){
+                listaReservaDto.add(reservaDto);
+                mostrarMensaje("Notificación reserva", "Reserva creada", "El reserva se ha creado con éxito", Alert.AlertType.INFORMATION);
+                limpiarCamposReserva();
             }else{
-                mostrarMensaje("Notificación evento", "Evento no creado", "El evento no se ha creado con éxito", Alert.AlertType.ERROR);
+                mostrarMensaje("Notificación reserva", "Reserva no creado", "El reserva no se ha creado con éxito", Alert.AlertType.ERROR);
             }
         }else{
-            mostrarMensaje("Notificación evento", "Evento no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+            mostrarMensaje("Notificación reserva", "Reserva no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
         }
 
     }
 
-    private void eliminarEvento() {
-        boolean eventoEliminado = false;
-        if(eventoSeleccionado != null){
-            if(mostrarMensajeConfirmacion("¿Estas seguro de elmininar al evento?")){
-                eventoEliminado = eventoControllerService.eliminarEvento(eventoSeleccionado.id());
-                if(eventoEliminado == true){
-                    listaEventosDto.remove(eventoSeleccionado);
-                    empleadoSeleccionado = null;
+    private void eliminarReserva() {
+        boolean eventoReserva = false;
+        if(reservaSeleccionado != null){
+            if(mostrarMensajeConfirmacion("¿Estas seguro de elmininar la reserva?")){
+                reservaEliminado = reservaControllerService.eliminarReserva(reservaSeleccionado.id());
+                if(reservaEliminado == true){
+                    listaEventosDto.remove(reservaSeleccionado);
+                    reservaSeleccionado = null;
                     tableEventos.getSelectionModel().clearSelection();
-                    limpiarCamposEmpleado();
-                    mostrarMensaje("Notificación evento", "Evento eliminado", "El evento se ha eliminado con éxito", Alert.AlertType.INFORMATION);
+                    limpiarCamposReserva();
+                    mostrarMensaje("Notificación reserva", "Reserva eliminado", "El reserva se ha eliminado con éxito", Alert.AlertType.INFORMATION);
                 }else{
-                    mostrarMensaje("Notificación evento", "Evento no eliminado", "El evento no se puede eliminar", Alert.AlertType.ERROR);
+                    mostrarMensaje("Notificación reserva", "Reserva no eliminado", "El reserva no se puede eliminar", Alert.AlertType.ERROR);
                 }
             }
         }else{
-            mostrarMensaje("Notificación evento", "Evento no seleccionado", "Seleccionado un evento de la lista", Alert.AlertType.WARNING);
+            mostrarMensaje("Notificación reserva", "Reserva no seleccionado", "Seleccionado un reserva de la lista", Alert.AlertType.WARNING);
         }
     }
 
-    private void actualizarEvento() {
+    private void actualizarReserva() {
         boolean clienteActualizado = false;
         //1. Capturar los datos
-        String idActual = eventoSeleccionado.id();
-        EventoDto eventoDto = construirEventoDto();
+        String idActual = reservaSeleccionado.id();
+        ReservaDto reservaDto = construirReservaDto();
         //2. verificar el empleado seleccionado
-        if(eventoSeleccionado != null){
+        if(reservaSeleccionado != null){
             //3. Validar la información
-            if(datosValidos(eventoSeleccionado)){
-                clienteActualizado = eventoControllerService.actualizarEvento(idActual,eventoDto);
+            if(datosValidos(reservaSeleccionado)){
+                clienteActualizado = reservaControllerService.actualizarReserva(idActual,reservaDto);
                 if(clienteActualizado){
-                    listaEventosDto.remove(eventoSeleccionado);
-                    listaEventosDto.add(eventoDto);
-                    tableEmpleados.refresh();
-                    mostrarMensaje("Notificación evento", "Evento actualizado", "El evento se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-                    limpiarCamposEmpleado();
+                    listaReservasDto.remove(reservaSeleccionado);
+                    listaReservasDto.add(reservaDto);
+                    tableReservas.refresh();
+                    mostrarMensaje("Notificación reserva", "Reserva actualizado", "El reserva se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+                    limpiarCamposReserva();
                 }else{
-                    mostrarMensaje("Notificación evento", "Evento no actualizado", "El evento no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+                    mostrarMensaje("Notificación reserva", "Reserva no actualizado", "El reserva no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
                 }
             }else{
-                mostrarMensaje("Notificación evento", "Evento no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+                mostrarMensaje("Notificación reserva", "Reserva no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
             }
 
         }
     }
 
-    private EventoDto construirEventoDto() {
-        return new EventoDto(
+    private ReservaDto construirReservaDto() {
+        return new ReservaDto(
                 txtId.getText(),
-                txtNombre.getText(),
+                txtUsuario.getText(),
                 "",
-                txtDescripcion.getText(),
-                txtFecha.getText(),
-                txtCapacidad.getText(),
-                txtEmpleado.getText(),
-                txtReservas.getText(),
+                txtEvento.getText(),
+                txtFechaSolicitud.getText(),
+                txtEstado.getText(),
                 );
     }
 
-    private void limpiarCamposEvento() {
+    private void limpiarCamposReserva() {
         txtId.setText("");
-        txtNombre.setText("");
-        txtDescripcion.setText("");
-        txtFecha.setText("");
-        txtCapacidad.setText("");
-        txtEmpleado.setText("");
-        txtReservas.setText("");
+        txtUsuario.setText("");
+        txtEvento.setText("");
+        txtFechaSolicitud.setText("");
+        txtEstado.setText("");
     }
 
-    private boolean datosValidos(EventoDto empleadoDto) {
+    private boolean datosValidos(ReservaDto reservaDto) {
         String mensaje = "";
-        if(empleadoDto.nombre() == null || empleadoDto.nombre().equals(""))
+        if(reservaDto.usuario() == null || reservaDto.usuario().equals(""))
             mensaje += "El nombre es invalido \n" ;
-        if(empleadoDto.id() == null || empleadoDto.id() .equals(""))
+        if(reservaDto.id() == null || reservaDto.id() .equals(""))
             mensaje += "El ID es invalido \n" ;
-        if(empleadoDto.fecha() == null || empleadoDto.fecha().equals(""))
+        if(reservaDto.fechaSolicitud() == null || reservaDto.fechaSolicitud().equals(""))
             mensaje += "El correo es invalido \n" ;
-        if(empleadoDto.capacidad() == null || empleadoDto.capacidad() .equals(""))
+        if(reservaDto.estado() == null || reservaDto.estado() .equals(""))
             mensaje += "Necesita ingresar una capacidad maxima \n" ;
-        if(empleadoDto.empleado() == null || empleadoDto.empleado() .equals(""))
-            mensaje += "Debe tener un empleado encargado \n" ;
         if(mensaje.equals("")){
             return true;
         }else{

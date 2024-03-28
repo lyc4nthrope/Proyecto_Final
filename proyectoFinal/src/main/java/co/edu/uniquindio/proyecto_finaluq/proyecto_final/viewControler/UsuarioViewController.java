@@ -138,7 +138,7 @@ public class UsuarioViewController {
             if(usuarioControllerService.agregarUsuario(usuarioDto)){
                 listaUsuariosDto.add(usuarioDto);
                 mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
-                limpiarCamposEmpleado();
+                limpiarCamposUsuario();
             }else{
                 mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
             }
@@ -157,7 +157,7 @@ public class UsuarioViewController {
                     listaUsuariosDto.remove(usuarioSeleccionado);
                     usuarioSeleccionado = null;
                     tableUsuarios.getSelectionModel().clearSelection();
-                    limpiarCamposEmpleado();
+                    limpiarCamposUsuario();
                     mostrarMensaje("Notificación usuario", "Usuario eliminado", "El usuario se ha eliminado con éxito", Alert.AlertType.INFORMATION);
                 }else{
                     mostrarMensaje("Notificación usuario", "Usuario no eliminado", "El usuario no se puede eliminar", Alert.AlertType.ERROR);
@@ -183,7 +183,7 @@ public class UsuarioViewController {
                     listaUsuariosDto.add(usuarioDto);
                     tableUsuarios.refresh();
                     mostrarMensaje("Notificación usuario", "Usuario actualizado", "El usuario se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-                    limpiarCamposEmpleado();
+                    limpiarCamposUsuario();
                 }else{
                     mostrarMensaje("Notificación usuario", "Usuario no actualizado", "El usuario no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
                 }
