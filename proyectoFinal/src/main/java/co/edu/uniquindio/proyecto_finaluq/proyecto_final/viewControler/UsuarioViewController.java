@@ -51,19 +51,19 @@ public class UsuarioViewController {
     private Button btnEliminar;
 
     @FXML
-    private TableView<EmpleadoDto> tableUsuarios;
+    private TableView<UsuarioDto> tableUsuarios;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcId;
+    private TableColumn<UsuarioDto, String> tcId;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcNombre;
+    private TableColumn<UsuarioDto, String> tcNombre;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcCorreo;
+    private TableColumn<UsuarioDto, String> tcCorreo;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcReservas;
+    private TableColumn<UsuarioDto, String> tcReservas;
 
     @FXML
     void initialize() {
@@ -83,7 +83,7 @@ public class UsuarioViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().correo()));
-        tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservas()));
+        tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservasAsignados()));
     }
 
     private void obtenerUsuarios() {
@@ -102,7 +102,7 @@ public class UsuarioViewController {
             txtId.setText(usuarioSeleccionado.id());
             txtNombre.setText(usuarioSeleccionado.nombre());
             txtCorreo.setText(usuarioSeleccionado.correo());
-            txtReservas.setText(usuarioSeleccionado.Reservas());
+            txtReservas.setText(String.valueOf(usuarioSeleccionado.reservasAsignados()));
         }
     }
 
