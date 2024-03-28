@@ -15,10 +15,10 @@
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="133.0" prefWidth="736.0">
                <children>
-                  <Label layoutX="14.0" layoutY="27.0" text="Id:" />
+                  <Label layoutX="40.0" layoutY="27.0" text="ID:" />
                   <Label layoutX="404.0" layoutY="27.0" text="Nombre:" />
                   <Label layoutX="27.0" layoutY="78.0" text="Correo:" />
-                  <Label layoutX="403.0" layoutY="78.0" text="Reservas:" />
+                  <Label layoutX="403.0" layoutY="78.0" text="Reserva:" />
                   <TextField fx:id="txtId" layoutX="82.0" layoutY="23.0" prefHeight="25.0" prefWidth="251.0" />
                   <TextField fx:id="txtNombre" layoutX="465.0" layoutY="23.0" prefHeight="25.0" prefWidth="251.0" />
                   <TextField fx:id="txtCorreo" layoutX="83.0" layoutY="74.0" prefHeight="25.0" prefWidth="251.0" />
