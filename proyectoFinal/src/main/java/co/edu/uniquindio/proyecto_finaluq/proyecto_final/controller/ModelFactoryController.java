@@ -32,7 +32,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     }
 
     @Override
-    public boolean agregarEmpleado(EmpleadoDto empleadoDto) {
+    public boolean agregarEmpleado(ReservaDto empleadoDto) {
         try {
             if (!sgre.verficarExisteEmpleado(empleadoDto.id())){
                 Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
@@ -56,7 +56,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         return eliminado;
     }
     @Override
-    public boolean modificarEmpleado(String idActual, EmpleadoDto empleadoDto) {
+    public boolean modificarEmpleado(String idActual, ReservaDto empleadoDto) {
         try{
             Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
             getSGRE().modificarEmpleado(idActual,empleado);

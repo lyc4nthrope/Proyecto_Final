@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EmpleadoController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -196,7 +197,6 @@ public class EmpleadoViewController {
         return new EmpleadoDto(
                 txtId.getText(),
                 txtNombre.getText(),
-                "",
                 txtCorreo.getText(),
                 txtEventosAsignados.getText(),
         );

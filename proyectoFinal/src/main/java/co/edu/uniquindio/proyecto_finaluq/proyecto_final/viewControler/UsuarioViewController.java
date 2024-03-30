@@ -1,8 +1,8 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
 
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
+
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Usuario;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,7 +87,7 @@ public class UsuarioViewController {
     }
 
     private void obtenerUsuarios() {
-        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuarios());
+        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuario());
     }
 
     private void listenerSelection() {

@@ -1,6 +1,6 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
 
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EventoController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;

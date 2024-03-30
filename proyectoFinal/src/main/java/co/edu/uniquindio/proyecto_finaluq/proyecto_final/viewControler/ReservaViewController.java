@@ -1,8 +1,8 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
 
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
+
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Reserva;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ReservaController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
