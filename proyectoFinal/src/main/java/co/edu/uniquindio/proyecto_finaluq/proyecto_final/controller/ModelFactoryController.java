@@ -5,6 +5,7 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.exceptions.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMapper;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.*;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 
 import java.util.List;
 
@@ -22,6 +23,15 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         return SingletonHolder.eINSTANCE;
     }
 
+    public ModelFactoryController() {
+        System.out.println("invocación clase singleton");
+        cargarDatosBase();
+    }
+
+    private void cargarDatosBase() {
+        sgre = SGREUtils.inicializarDatos();
+    }
+
     public SGRE getSGRE(){return sgre;}
     public void setSgre(SGRE sgreAux){this.sgre=sgreAux;}
 
@@ -32,7 +42,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     }
 
     @Override
-    public boolean agregarEmpleado(ReservaDto empleadoDto) {
+    public boolean agregarEmpleado(EmpleadoDto empleadoDto) {
         try {
             if (!sgre.verficarExisteEmpleado(empleadoDto.id())){
                 Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
@@ -56,7 +66,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         return eliminado;
     }
     @Override
-    public boolean modificarEmpleado(String idActual, ReservaDto empleadoDto) {
+    public boolean modificarEmpleado(String idActual, EmpleadoDto empleadoDto) {
         try{
             Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
             getSGRE().modificarEmpleado(idActual,empleado);

@@ -11,7 +11,7 @@ public interface IModelFactoryController {
     List<EmpleadoDto> obtenerEmpleados();
 boolean agregarEmpleado(ReservaDto empleadoDto);
 boolean eliminarEmpleado(String id);
-boolean modificarEmpleado(String idActual, ReservaDto empleadoDto);
+boolean modificarEmpleado(String idActual, EmpleadoDto empleadoDto);
 
 List<UsuarioDto> obtenerUsuarios();
 boolean agregarUsuario(UsuarioDto usuarioDto);
