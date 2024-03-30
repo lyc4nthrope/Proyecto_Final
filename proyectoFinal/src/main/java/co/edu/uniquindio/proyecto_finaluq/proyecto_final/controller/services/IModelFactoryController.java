@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface IModelFactoryController {
     List<EmpleadoDto> obtenerEmpleados();
-boolean agregarEmpleado(ReservaDto empleadoDto);
+boolean agregarEmpleado(EmpleadoDto empleadoDto);
 boolean eliminarEmpleado(String id);
 boolean modificarEmpleado(String idActual, EmpleadoDto empleadoDto);
 

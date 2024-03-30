@@ -35,7 +35,7 @@ public class EventoController implements IEventoControllerService {
 
     @Override
     public boolean actualizarEvento(String idActual, EventoDto eventoDto) {
-        return modelFactoryController.modificarEmpleado(idActual, eventoDto);
+        return modelFactoryController.modificarEvento(idActual, eventoDto);
     }
 
 

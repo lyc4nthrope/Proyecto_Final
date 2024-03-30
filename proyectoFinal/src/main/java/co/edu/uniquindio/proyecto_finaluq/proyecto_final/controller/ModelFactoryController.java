@@ -55,6 +55,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         }
     }
 
+
     @Override
     public boolean eliminarEmpleado(String id) {
         boolean eliminado =false;
@@ -139,7 +140,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     }
 
     @Override
-    public boolean elimiarReserva(String id) {
+    public boolean eliminarReserva(String id) {
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarReserva(id);

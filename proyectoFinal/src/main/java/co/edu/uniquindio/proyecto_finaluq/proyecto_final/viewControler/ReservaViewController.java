@@ -161,7 +161,7 @@ public class ReservaViewController {
         boolean eventoReserva = false;
         if(reservaSeleccionado != null){
             if(mostrarMensajeConfirmacion("¿Estas seguro de elmininar la reserva?")){
-                reservaEliminado = reservaControllerService.eliminarReserva(reservaSeleccionado.id());
+                boolean reservaEliminado = reservaControllerService.eliminarReserva(reservaSeleccionado.id());
                 if(reservaEliminado == true){
                     listaReservasDto.remove(reservaSeleccionado);
                     reservaSeleccionado = null;

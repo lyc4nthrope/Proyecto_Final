@@ -1,10 +1,11 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller;
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.services.IReservaControllerService;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 
 import java.util.List;
 
-public class ReservaController {
+public class ReservaController implements IReservaControllerService {
     ModelFactoryController modelFactoryController;
 
     public ReservaController(){
@@ -16,7 +17,7 @@ public class ReservaController {
     }
 
     public boolean agregarReserva(ReservaDto reservaDto) {
-        return modelFactoryController.agregarEmpleado(reservaDto);
+        return modelFactoryController.agregarReserva(reservaDto);
     }
 
     @Override
@@ -26,6 +27,6 @@ public class ReservaController {
 
     @Override
     public boolean actualizarReserva(String idActual, ReservaDto reservaDto) {
-        return modelFactoryController.modificarEmpleado(idActual, reservaDto);
+        return modelFactoryController.modificarReserva(idActual, reservaDto);
     }
 }

@@ -19,7 +19,7 @@ public class UsuarioController implements IUsuarioControllerService {
 
     @Override
     public boolean agregarUsuario(UsuarioDto usuarioDto) {
-        return modelFactoryController.agregarEmpleado(usuarioDto);
+        return modelFactoryController.agregarUsuario(usuarioDto);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class UsuarioController implements IUsuarioControllerService {
 
     @Override
     public boolean actualizarUsuario(String idActual, UsuarioDto usuarioDto) {
-        return modelFactoryController.modificarEmpleado(idActual, usuarioDto);
+        return modelFactoryController.modificarUsuario(idActual, usuarioDto);
     }
 
 
