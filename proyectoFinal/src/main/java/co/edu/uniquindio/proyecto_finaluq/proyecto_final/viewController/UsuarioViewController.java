@@ -1,7 +1,6 @@
-package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
+package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
 
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
 import javafx.beans.property.SimpleStringProperty;

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
+package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EventoController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;

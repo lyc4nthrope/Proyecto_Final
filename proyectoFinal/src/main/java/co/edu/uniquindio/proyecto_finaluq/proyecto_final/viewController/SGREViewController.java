@@ -1,6 +1,5 @@
-package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
+package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import java.net.URL;
