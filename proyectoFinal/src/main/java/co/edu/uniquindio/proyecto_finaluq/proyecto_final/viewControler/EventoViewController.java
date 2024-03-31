@@ -182,7 +182,7 @@ public class EventoViewController {
                 if(eventoEliminado == true){
                     listaEventosDto.remove(eventoSeleccionado);
                     empleadoSeleccionado = null;
-                    tableEventos.getSelectionModel().clearSelection();
+                    tableEvento.getSelectionModel().clearSelection();
                     limpiarCamposEvento();
                     mostrarMensaje("Notificación evento", "Evento eliminado", "El evento se ha eliminado con éxito", Alert.AlertType.INFORMATION);
                 }else{
@@ -229,8 +229,8 @@ public class EventoViewController {
                 txtFecha.getText(),
                 txtCapacidad.getText(),
                 txtEmpleado.getText(),
-                txtReservas.getText(),
-                );
+                txtReservas.getText()
+        );
     }
 
     private void limpiarCamposEvento() {

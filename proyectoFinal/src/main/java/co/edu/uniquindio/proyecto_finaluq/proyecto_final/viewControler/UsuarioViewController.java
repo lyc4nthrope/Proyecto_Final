@@ -200,8 +200,8 @@ public class UsuarioViewController {
                 txtNombre.getText(),
                 "",
                 txtCorreo.getText(),
-                txtReservas.getText(),
-                );
+                txtReservas.getText()
+        );
     }
 
     private void limpiarCamposUsuario() {

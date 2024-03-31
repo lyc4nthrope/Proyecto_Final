@@ -16,7 +16,7 @@ public class SGREUtils {
         usuario.setReservasAsignados();
         sgre.getListaUsuarios().add(usuario);
 
-        System.out.println("Información del banco creada");
+        System.out.println("Información del sgre creada");
         return sgre;
     }
 }

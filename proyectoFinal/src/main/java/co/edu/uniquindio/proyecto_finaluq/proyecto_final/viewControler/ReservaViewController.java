@@ -210,8 +210,8 @@ public class ReservaViewController {
                 "",
                 txtEvento.getText(),
                 txtFechaSolicitud.getText(),
-                txtEstado.getText(),
-                );
+                txtEstado.getText()
+        );
     }
 
     private void limpiarCamposReserva() {
