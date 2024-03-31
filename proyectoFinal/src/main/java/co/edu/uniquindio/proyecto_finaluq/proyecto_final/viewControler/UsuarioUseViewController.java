@@ -43,10 +43,19 @@ public class UsuarioUseViewController {
     private Button btnNuevo;
 
     @FXML
-    private Button btnAgregar;
+    private Button btnAgregarReserva;
 
     @FXML
-    private Button btnEliminar;
+    private Button btnCancelarReserva;
+
+    @FXML
+    private Button btnModificarEspacios;
+
+    @FXML
+    private Button btnModificarDatos;
+
+    @FXML
+    private Button btnSalir;
 
     @FXML
     private TableView<UsuarioUseDto> tableUsuariosUse;
