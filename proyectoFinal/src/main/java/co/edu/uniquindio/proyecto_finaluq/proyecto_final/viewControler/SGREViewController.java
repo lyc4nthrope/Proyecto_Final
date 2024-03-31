@@ -8,13 +8,10 @@ import java.util.ResourceBundle;
 
 public class SGREViewController implements Initializable {
 
-    SGREControllerService sgreControllerService;
-
-    @FXML
-    void initialize() {sgreControllerService = new SGREController();}
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+
 }

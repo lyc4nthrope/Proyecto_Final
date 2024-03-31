@@ -94,7 +94,7 @@ public class ReservaViewController {
     }
 
     private void obtenerEventos() {
-        listaReservasDto.addAll(reservaControllerService.obtenerReservas());
+        listaReservasDto.addAll(reservaControllerService.obtenerReserva());
     }
 
     private void listenerSelection() {

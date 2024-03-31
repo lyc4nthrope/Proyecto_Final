@@ -16,6 +16,7 @@ public class ReservaController implements IReservaControllerService {
         return modelFactoryController.obtenerReservas();
     }
 
+    @Override
     public boolean agregarReserva(ReservaDto reservaDto) {
         return modelFactoryController.agregarReserva(reservaDto);
     }

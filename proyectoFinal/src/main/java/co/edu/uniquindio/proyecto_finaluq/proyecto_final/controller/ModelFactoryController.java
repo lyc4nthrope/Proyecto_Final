@@ -203,4 +203,32 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             return false;
         }
     }
+
+    public boolean inicioSesion(String correo, String contrasenia){
+        try{
+            getSGRE().registroCorrecto(correo,contrasenia);
+            return true;
+        }catch (InicioException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public  UsuarioDto obtenerSesionUsuarioDto(String correo, String contrasenia){
+        Usuario usuarioTry=getSGRE().registroUsuario(correo,contrasenia);
+        if (usuarioTry!=null){
+            return mapper.usuarioToUsuarioDto(usuarioTry);
+        }
+        return null;
+    }
+
+    public EmpleadoDto obtenerSesionEmpleadoDto(String correo, String contrasenia){
+        Empleado empleadoTry=getSGRE().registroEmpleado(correo,contrasenia);
+        if(empleadoTry!=null){
+            return mapper.empleadoToEmpleadoDto(empleadoTry);
+        }
+        return null;
+    }
+
+
 }

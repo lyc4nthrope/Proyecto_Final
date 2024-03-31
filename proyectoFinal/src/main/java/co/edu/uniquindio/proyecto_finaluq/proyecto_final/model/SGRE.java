@@ -68,7 +68,7 @@ public class SGRE {
     }
 
     public boolean existeEmpleado(String id, boolean existe, int i){
-        if (existe || i==listaEmpleados.size()){
+        if (existe || i>=listaEmpleados.size()){
             return existe;
         }else {
             if(listaEmpleados.get(i).getId().equals(id)){
@@ -76,6 +76,17 @@ public class SGRE {
             }
         }
         return existeEmpleado(id,existe,i+1);
+    }
+
+    public boolean existeEmpleadoCorreo(String correo, boolean existe, int i){
+        if (existe || i>=listaEmpleados.size()){
+            return existe;
+        }else {
+            if(listaEmpleados.get(i).getCorreo().equals(correo)){
+                existe=true;
+            }
+        }
+        return existeEmpleadoCorreo(correo,existe,i+1);
     }
 
     public boolean verficarExisteEmpleado(String id) throws EmpleadoException{
@@ -87,7 +98,7 @@ public class SGRE {
     }
 
     public Empleado obtenerEmpleadoId(String id,Empleado empleado, int i, boolean encontrado){
-        if (encontrado || i==listaEmpleados.size()){
+        if (encontrado || i>=listaEmpleados.size()){
             return empleado;
         }else{
             if (listaEmpleados.get(i).getId().equals(id)){
@@ -101,7 +112,7 @@ public class SGRE {
 
 //Para usuarios
     public boolean existeUsuario(String id, boolean existe, int i){
-        if (existe || i== listaUsuarios.size()){
+        if (existe || i>= listaUsuarios.size()){
             return existe;
         }else {
             if(listaUsuarios.get(i).getId().equals(id)){
@@ -109,6 +120,17 @@ public class SGRE {
             }
         }
         return existeUsuario(id,existe,i+1);
+    }
+
+    public boolean existeUsuarioCorreo(String correo, boolean existe, int i){
+        if (existe || i>= listaUsuarios.size()){
+            return existe;
+        }else {
+            if(listaUsuarios.get(i).getCorreo().equals(correo)){
+                existe=true;
+            }
+        }
+        return existeUsuarioCorreo(correo,existe,i+1);
     }
     public boolean verficarExisteUsuario(String id) throws UsuarioException{
         if (existeEmpleado(id,false,0)){
@@ -156,7 +178,7 @@ public class SGRE {
 
     //Para eventos
     public boolean existeEvento(String id, boolean existe, int i){
-        if (existe || i== listaEventos.size()){
+        if (existe || i>= listaEventos.size()){
             return existe;
         }else {
             if(listaEventos.get(i).getId().equals(id)){
@@ -213,7 +235,7 @@ public class SGRE {
 
     //Para Reservas
     public boolean existeReserva(String id, boolean existe, int i){
-        if (existe || i== listaReservas.size()){
+        if (existe || i>= listaReservas.size()){
             return existe;
         }else {
             if(listaReservas.get(i).getId().equals(id)){
@@ -265,6 +287,61 @@ public class SGRE {
             return true;
         }
     }
+
+    public boolean registroCorrecto(String correo, String contrasenia) throws InicioException{
+        if(registroEmpleado(correo,contrasenia)==null && registroUsuario(correo,contrasenia)==null){
+            throw new InicioException("Correo o contrasenia incorrecto, intente de nuevo");
+        }else {
+            return true;
+        }
+    }
+
+    public Usuario registroUsuario(String correo, String contrasenia){
+        Usuario usuarioTry=obtenerUsuarioCorreo(correo,null,0);
+        if (usuarioTry!=null){
+            if (usuarioTry.getContrasenia().equals(contrasenia)){
+                return usuarioTry;
+            }
+        }
+        return null;
+    }
+
+    public Empleado registroEmpleado(String correo, String contrasenia){
+        Empleado empleadoTry=obtenerEmpleadoCorreo(correo,null,0);
+        if (empleadoTry!=null){
+            if (empleadoTry.getContrasenia().equals(contrasenia)){
+                return empleadoTry;
+            }
+        }
+        return null;
+    }
+
+    public Usuario obtenerUsuarioCorreo(String correo, Usuario usuario, int i){
+        if (usuario!=null || i>=listaUsuarios.size()){
+            return usuario;
+        }else {
+            if (correo.equals(listaUsuarios.get(i).getCorreo())){
+                usuario=listaUsuarios.get(i);
+            }
+        }
+        return obtenerUsuarioCorreo(correo,usuario,i+1);
+    }
+
+    public Empleado obtenerEmpleadoCorreo(String correo, Empleado empleado, int i){
+        if (empleado!=null || i>=listaEmpleados.size()){
+            return empleado;
+        }else {
+            if (correo.equals(listaEmpleados.get(i).getCorreo())){
+                empleado=listaEmpleados.get(i);
+            }
+        }
+        return obtenerEmpleadoCorreo(correo,empleado,i+1);
+    }
+
+
+
+
+
 
 
 }
