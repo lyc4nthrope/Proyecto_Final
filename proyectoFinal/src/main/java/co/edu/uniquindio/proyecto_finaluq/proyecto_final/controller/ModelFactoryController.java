@@ -27,7 +27,6 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         System.out.println("invocación clase singleton");
         cargarDatosBase();
     }
-
     private void cargarDatosBase() {
         sgre = SGREUtils.inicializarDatos();
     }

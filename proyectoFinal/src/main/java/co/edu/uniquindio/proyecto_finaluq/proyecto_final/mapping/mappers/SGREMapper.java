@@ -21,6 +21,7 @@ public interface SGREMapper {
 
     @Named("usuarioToUsuarioDto")
     UsuarioDto usuarioToUsuarioDto(Usuario usuario);
+    @Named("usuarioDtoToUsuario")
     Usuario usuarioDtoToUsuario(UsuarioDto usuarioDto);
 
 @IterableMapping(qualifiedByName = "usuarioToUsuarioDto")
@@ -28,19 +29,22 @@ public interface SGREMapper {
 
     @Named("empleadoToEmpleadoDto")
     EmpleadoDto empleadoToEmpleadoDto(Empleado empleado);
+    @Named("empleadoDtoToEmpleado")
     Empleado empleadoDtoToEmpleado(EmpleadoDto empleadoDto);
 
     @IterableMapping(qualifiedByName = "empleadoToEmpleadoDto")
     List<EmpleadoDto> getEmpleadosDto(List<Empleado> listaEmpleados);
 
-    @Named("reservaToResevaDto")
+    @Named("reservaToReservaDto")
     ReservaDto reservaToReservaDto(Reserva reserva);
+    @Named("reservaDtoToReserva")
     Reserva reservaDtoToReserva(ReservaDto reservaDto);
     @IterableMapping(qualifiedByName = "reservaToReservaDto")
     List<ReservaDto> getListaReservasDto(List<Reserva> listaReservas);
 
     @Named("eventoToEventoDto")
     EventoDto eventoToEventoDto (Evento evento);
+    @Named("eventoDtoToEvento")
     Evento eventoDtoToEvento (EventoDto eventoDto);
     @IterableMapping(qualifiedByName = "eventoToEventoDto")
     List<EventoDto> getListaEventosDto (List<Evento> listaEventos);

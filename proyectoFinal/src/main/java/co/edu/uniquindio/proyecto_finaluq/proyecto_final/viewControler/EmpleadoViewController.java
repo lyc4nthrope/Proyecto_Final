@@ -84,7 +84,7 @@ public class EmpleadoViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().correo()));
-        tcEventosAsignados.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().eventosAsignados()));
+        tcEventosAsignados.setCellValueFactory(cellData -> new SimpleStringProperty());
     }
 
     private void obtenerEmpleados() {
@@ -200,7 +200,8 @@ public class EmpleadoViewController {
                 txtId.getText(),
                 txtNombre.getText(),
                 txtCorreo.getText(),
-                txtEventosAsignados = new ArrayList<>()
+                "",
+                new ArrayList<>()
         );
     }
 

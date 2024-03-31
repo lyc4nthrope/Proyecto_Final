@@ -72,37 +72,37 @@ public class ReservaViewController {
     private TableColumn<ReservaDto, String> tcEstado;
 
     @FXML
-    void initialize() {
-        reservaControllerService = new ReservaController();
-        intiView();
-    }
+//    void initialize() {
+//        reservaControllerService = new ReservaController();
+//        intiView();
+//    }
 
-    private void intiView() {
-        initDataBinding();
-        obtenerEventos();
-        tableReservas.getItems().clear();
-        tableReservas.setItems(listaReservasDto);
-        listenerSelection();
-    }
+//    private void intiView() {
+//        initDataBinding();
+//        obtenerEventos();
+//        tableReservas.getItems().clear();
+//        tableReservas.setItems(listaReservasDto);
+//        listenerSelection();
+//    }
 
-    private void initDataBinding() {
-        tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
-        tcUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
-        tcReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().usuario()));
-        tcFechaSolicitud.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fechaSolicitud()));
-        tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
-    }
+//    private void initDataBinding() {
+//        tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
+//        tcUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
+//        tcReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().usuario()));
+//        tcFechaSolicitud.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fechaSolicitud()));
+//        tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
+//    }
 
     private void obtenerEventos() {
         listaReservasDto.addAll(reservaControllerService.obtenerReserva());
     }
 
-    private void listenerSelection() {
-        tableReservas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            reservaSeleccionado = newSelection;
-            mostrarInformacionEvento(reservaSeleccionado);
-        });
-    }
+//    private void listenerSelection() {
+//        tableReservas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+//            reservaSeleccionado = newSelection;
+//            mostrarInformacionEvento(reservaSeleccionado);
+//        });
+//    }
 
     private void mostrarInformacionReserva(ReservaDto reservaSeleccionado) {
         if(reservaSeleccionado != null){
@@ -124,38 +124,38 @@ public class ReservaViewController {
     }
 
     @FXML
-    void agregarReservaAction(ActionEvent event) {
-        crearReserva();
-    }
-
-    @FXML
-    void eliminarReservaAction(ActionEvent event) {
-        eliminarReserva();
-    }
-
-
-    @FXML
-    void actualizarReservaAction(ActionEvent event) {
-        actualizarReserva();
-    }
-
-    private void crearEvento() {
-        //1. Capturar los datos
-        ReservaDto reservaDto = construirEventoDto();
-        //2. Validar la información
-        if(datosValidos(reservaDto)){
-            if(reservaControllerService.agregarEvento(reservaDto)){
-                listaReservaDto.add(reservaDto);
-                mostrarMensaje("Notificación reserva", "Reserva creada", "El reserva se ha creado con éxito", Alert.AlertType.INFORMATION);
-                limpiarCamposReserva();
-            }else{
-                mostrarMensaje("Notificación reserva", "Reserva no creado", "El reserva no se ha creado con éxito", Alert.AlertType.ERROR);
-            }
-        }else{
-            mostrarMensaje("Notificación reserva", "Reserva no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
-        }
-
-    }
+//    void agregarReservaAction(ActionEvent event) {
+//        crearReserva();
+//    }
+//
+//    @FXML
+//    void eliminarReservaAction(ActionEvent event) {
+//        eliminarReserva();
+//    }
+//
+//
+//    @FXML
+//    void actualizarReservaAction(ActionEvent event) {
+//        actualizarReserva();
+//    }
+//
+//    private void crearEvento() {
+//        //1. Capturar los datos
+//        ReservaDto reservaDto = construirEventoDto();
+//        //2. Validar la información
+//        if(datosValidos(reservaDto)){
+//            if(reservaControllerService.agregarEvento(reservaDto)){
+//                listaReservaDto.add(reservaDto);
+//                mostrarMensaje("Notificación reserva", "Reserva creada", "El reserva se ha creado con éxito", Alert.AlertType.INFORMATION);
+//                limpiarCamposReserva();
+//            }else{
+//                mostrarMensaje("Notificación reserva", "Reserva no creado", "El reserva no se ha creado con éxito", Alert.AlertType.ERROR);
+//            }
+//        }else{
+//            mostrarMensaje("Notificación reserva", "Reserva no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+//        }
+//
+//    }
 
     private void eliminarReserva() {
         boolean eventoReserva = false;
@@ -177,42 +177,42 @@ public class ReservaViewController {
         }
     }
 
-    private void actualizarReserva() {
-        boolean clienteActualizado = false;
-        //1. Capturar los datos
-        String idActual = reservaSeleccionado.id();
-        ReservaDto reservaDto = construirReservaDto();
-        //2. verificar el empleado seleccionado
-        if(reservaSeleccionado != null){
-            //3. Validar la información
-            if(datosValidos(reservaSeleccionado)){
-                clienteActualizado = reservaControllerService.actualizarReserva(idActual,reservaDto);
-                if(clienteActualizado){
-                    listaReservasDto.remove(reservaSeleccionado);
-                    listaReservasDto.add(reservaDto);
-                    tableReservas.refresh();
-                    mostrarMensaje("Notificación reserva", "Reserva actualizado", "El reserva se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-                    limpiarCamposReserva();
-                }else{
-                    mostrarMensaje("Notificación reserva", "Reserva no actualizado", "El reserva no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-                }
-            }else{
-                mostrarMensaje("Notificación reserva", "Reserva no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
-            }
+//    private void actualizarReserva() {
+//        boolean clienteActualizado = false;
+//        //1. Capturar los datos
+//        String idActual = reservaSeleccionado.id();
+//        ReservaDto reservaDto = construirReservaDto();
+//        //2. verificar el empleado seleccionado
+//        if(reservaSeleccionado != null){
+//            //3. Validar la información
+//            if(datosValidos(reservaSeleccionado)){
+//                clienteActualizado = reservaControllerService.actualizarReserva(idActual,reservaDto);
+//                if(clienteActualizado){
+//                    listaReservasDto.remove(reservaSeleccionado);
+//                    listaReservasDto.add(reservaDto);
+//                    tableReservas.refresh();
+//                    mostrarMensaje("Notificación reserva", "Reserva actualizado", "El reserva se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+//                    limpiarCamposReserva();
+//                }else{
+//                    mostrarMensaje("Notificación reserva", "Reserva no actualizado", "El reserva no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+//                }
+//            }else{
+//                mostrarMensaje("Notificación reserva", "Reserva no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+//            }
+//
+//        }
+//    }
 
-        }
-    }
-
-    private ReservaDto construirReservaDto() {
-        return new ReservaDto(
-                txtId.getText(),
-                txtUsuario.getText(),
-                "",
-                txtEvento.getText(),
-                txtFechaSolicitud.getText(),
-                txtEstado.getText()
-        );
-    }
+//    private ReservaDto construirReservaDto() {
+//        return new ReservaDto(
+//                txtId.getText(),
+//                txtUsuario.getText(),
+//                "",
+//                txtEvento.getText(),
+//                txtFechaSolicitud.getText(),
+//                txtEstado.getText()
+//        );
+//    }
 
     private void limpiarCamposReserva() {
         txtId.setText("");

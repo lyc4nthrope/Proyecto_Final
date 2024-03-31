@@ -20,8 +20,8 @@ public class UsuarioViewController {
 
     UsuarioController usuarioControllerService;
     ObservableList<UsuarioDto> listaUsuariosDto = FXCollections.observableArrayList();
-    UsuarioDto usuarioSeleccionado;
 
+    UsuarioDto usuarioSeleccionado;
     @FXML
     private ResourceBundle resources;
 
@@ -201,6 +201,7 @@ public class UsuarioViewController {
                 txtId.getText(),
                 txtNombre.getText(),
                 txtCorreo.getText(),
+                "",
                 new ArrayList<>()
                 );
     }
