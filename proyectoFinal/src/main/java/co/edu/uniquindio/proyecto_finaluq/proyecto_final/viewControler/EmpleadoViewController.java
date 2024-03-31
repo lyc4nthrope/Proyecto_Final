@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EmpleadoController;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -198,7 +200,7 @@ public class EmpleadoViewController {
                 txtId.getText(),
                 txtNombre.getText(),
                 txtCorreo.getText(),
-                txtEventosAsignados.getText(),
+                txtEventosAsignados = new ArrayList<>()
         );
     }
 

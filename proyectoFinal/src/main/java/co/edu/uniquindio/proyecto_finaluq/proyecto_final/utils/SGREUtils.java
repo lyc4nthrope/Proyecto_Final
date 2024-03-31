@@ -79,7 +79,7 @@ public class SGREUtils {
         sgre.getListaEventos().add(evento3);
         sgre.getListaEmpleados().add(empleado2);
 
-        System.out.println("Información del banco creada");
+        System.out.println("Información del sgre creada");
         return sgre;
     }
 }
