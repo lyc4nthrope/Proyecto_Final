@@ -199,7 +199,7 @@ public class EmpleadoViewController {
                 txtId.getText(),
                 txtNombre.getText(),
                 txtCorreo.getText(),
-                txtEventosAsignados = new ArrayList<>()
+                new ArrayList<>()
         );
     }
 

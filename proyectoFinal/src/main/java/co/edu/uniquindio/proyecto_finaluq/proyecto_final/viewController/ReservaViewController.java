@@ -207,7 +207,6 @@ public class ReservaViewController {
         return new ReservaDto(
                 txtId.getText(),
                 txtUsuario.getText(),
-                "",
                 txtEvento.getText(),
                 txtFechaSolicitud.getText(),
                 txtEstado.getText()

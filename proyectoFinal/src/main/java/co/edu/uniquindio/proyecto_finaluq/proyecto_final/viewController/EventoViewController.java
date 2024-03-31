@@ -100,7 +100,7 @@ public class EventoViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreEvento()));
         tcDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
-        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(LocacellData.getValue().fecha()));
+        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(LocalcellData.getValue().fecha()));
         tcCapacidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().capacidadMax()));
         tcEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().empleadoEncargado()));
         tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservas()));
@@ -224,7 +224,6 @@ public class EventoViewController {
         return new EventoDto(
                 txtId.getText(),
                 txtNombre.getText(),
-                "",
                 txtDescripcion.getText(),
                 txtFecha.getText(),
                 txtCapacidad.getText(),
