@@ -201,7 +201,7 @@ public class UsuarioViewController {
                 txtId.getText(),
                 txtNombre.getText(),
                 txtCorreo.getText(),
-                null
+                new ArrayList<>()
                 );
     }
 
