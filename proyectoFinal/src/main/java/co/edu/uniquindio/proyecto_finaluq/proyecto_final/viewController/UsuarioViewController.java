@@ -1,8 +1,6 @@
-package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
+package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Usuario;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
