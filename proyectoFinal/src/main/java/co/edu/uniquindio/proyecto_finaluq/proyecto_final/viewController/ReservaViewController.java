@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
+
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ReservaController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,22 +54,22 @@ public class ReservaViewController {
     private Button btnEliminar;
 
     @FXML
-    private TableView<EmpleadoDto> tableEmpleados;
+    private TableView<ReservaDto> tableReservas;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcId;
+    private TableColumn<ReservaDto, String> tcId;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcUsuario;
+    private TableColumn<ReservaDto, String> tcUsuario;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcEvento;
+    private TableColumn<ReservaDto, String> tcReserva;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcFechaSolicitud;
+    private TableColumn<ReservaDto, String> tcFechaSolicitud;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcEstado;
+    private TableColumn<ReservaDto, String> tcEstado;
 
     @FXML
     void initialize() {
@@ -85,14 +87,14 @@ public class ReservaViewController {
 
     private void initDataBinding() {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
-        tcUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
-        tcEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
-        tcFechaSolicitud.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha()));
-        tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().capacidad()));
+        tcUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
+        tcReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().usuario()));
+        tcFechaSolicitud.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fechaSolicitud()));
+        tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
     }
 
     private void obtenerEventos() {
-        listaReservasDto.addAll(reservaControllerService.obtenerReservas());
+        listaReservasDto.addAll(reservaControllerService.obtenerReserva());
     }
 
     private void listenerSelection() {
@@ -105,9 +107,9 @@ public class ReservaViewController {
     private void mostrarInformacionReserva(ReservaDto reservaSeleccionado) {
         if(reservaSeleccionado != null){
             txtId.setText(reservaSeleccionado.id());
-            txtUsuario.setText(reservaSeleccionado.usuario());
-            txtEvento.setText(reservaSeleccionado.evento());
-            txtFechaSolicitud.setText(reservaSeleccionado.fecheSolicitud());
+            txtUsuario.setText(String.valueOf(reservaSeleccionado.usuario()));
+            txtEvento.setText(String.valueOf(reservaSeleccionado.evento()));
+            txtFechaSolicitud.setText(String.valueOf(reservaSeleccionado.fechaSolicitud()));
             txtEstado.setText(reservaSeleccionado.estado());
         }
     }
@@ -159,11 +161,11 @@ public class ReservaViewController {
         boolean eventoReserva = false;
         if(reservaSeleccionado != null){
             if(mostrarMensajeConfirmacion("¿Estas seguro de elmininar la reserva?")){
-                reservaEliminado = reservaControllerService.eliminarReserva(reservaSeleccionado.id());
+                boolean reservaEliminado = reservaControllerService.eliminarReserva(reservaSeleccionado.id());
                 if(reservaEliminado == true){
-                    listaEventosDto.remove(reservaSeleccionado);
+                    listaReservasDto.remove(reservaSeleccionado);
                     reservaSeleccionado = null;
-                    tableEventos.getSelectionModel().clearSelection();
+                    tableReservas.getSelectionModel().clearSelection();
                     limpiarCamposReserva();
                     mostrarMensaje("Notificación reserva", "Reserva eliminado", "El reserva se ha eliminado con éxito", Alert.AlertType.INFORMATION);
                 }else{
@@ -205,11 +207,10 @@ public class ReservaViewController {
         return new ReservaDto(
                 txtId.getText(),
                 txtUsuario.getText(),
-                "",
                 txtEvento.getText(),
                 txtFechaSolicitud.getText(),
-                txtEstado.getText(),
-                );
+                txtEstado.getText()
+        );
     }
 
     private void limpiarCamposReserva() {

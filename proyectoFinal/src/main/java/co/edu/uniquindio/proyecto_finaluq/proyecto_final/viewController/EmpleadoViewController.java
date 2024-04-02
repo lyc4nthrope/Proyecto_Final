@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EmpleadoController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -100,7 +102,7 @@ public class EmpleadoViewController {
             txtId.setText(empleadoSeleccionado.id());
             txtNombre.setText(empleadoSeleccionado.nombre());
             txtCorreo.setText(empleadoSeleccionado.correo());
-            txtEventosAsignados.setText(empleadoSeleccionado.EventosAsignados());
+            txtEventosAsignados.setText(String.valueOf(empleadoSeleccionado.eventosAsignados()));
         }
     }
 
@@ -196,9 +198,8 @@ public class EmpleadoViewController {
         return new EmpleadoDto(
                 txtId.getText(),
                 txtNombre.getText(),
-                "",
                 txtCorreo.getText(),
-                txtEventosAsignados.getText(),
+                new ArrayList<>()
         );
     }
 
