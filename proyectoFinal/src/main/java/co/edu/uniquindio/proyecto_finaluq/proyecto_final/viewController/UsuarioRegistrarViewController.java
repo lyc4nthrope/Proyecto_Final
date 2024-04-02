@@ -30,14 +30,18 @@ public class UsuarioRegistrarViewController {
     private TextField txtNombre;
 
     @FXML
-    void initialize() {
-        usuarioRegistrarControllerService = new UsuarioRegistrarController();
-        intiView();
+    void onAceptarButtonClick(ActionEvent event) {
+        crearUsuario();
     }
 
-    private void intiView() {
-        obtenerUsuarios();
-        listenerSelection();
+    @FXML
+    void onCancelarButtonClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void initialize() {
+        usuarioRegistrarControllerService = new UsuarioRegistrarController();
     }
 
     private void obtenerUsuarios() {
@@ -52,11 +56,6 @@ public class UsuarioRegistrarViewController {
         txtContraseña.setText("Ingrese la contraseña");
         txtConfimarContraseña.setText("Ingrese la contraseña de nuevo");
 
-    }
-
-    @FXML
-    void agregarUsuarioAction(ActionEvent event) {
-        crearUsuario();
     }
 
     private void crearUsuario() {
