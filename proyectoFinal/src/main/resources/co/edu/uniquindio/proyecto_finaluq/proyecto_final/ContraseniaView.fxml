@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="167.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.Inicio">
+<AnchorPane prefHeight="167.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.ContraseniaViewController">
    <children>
       <Label layoutX="155.0" layoutY="28.0" text="Confirmar Contraseña">
          <font>
@@ -14,8 +14,8 @@
          </font>
       </Label>
       <Label layoutX="14.0" layoutY="90.0" text="Contraseña:" />
-      <TextField layoutX="141.0" layoutY="86.0" prefHeight="25.0" prefWidth="290.0" />
-      <Button layoutX="115.0" layoutY="135.0" mnemonicParsing="false" text="Ingresar" />
-      <Button layoutX="223.0" layoutY="135.0" mnemonicParsing="false" text="Regresar" />
+      <TextField fx:id="txtContraseña" layoutX="141.0" layoutY="86.0" prefHeight="25.0" prefWidth="290.0" />
+      <Button fx:id="btnIngresar" layoutX="115.0" layoutY="135.0" mnemonicParsing="false" text="Ingresar" />
+      <Button fx:id="btnRegresar" layoutX="223.0" layoutY="135.0" mnemonicParsing="false" text="Regresar" />
    </children>
 </AnchorPane>

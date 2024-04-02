@@ -1,8 +1,6 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
-
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -64,7 +61,7 @@ public class UsuarioViewController {
     private TableColumn<UsuarioDto, String> tcCorreo;
 
     @FXML
-    private TableColumn<UsuarioDto, Integer> tcReservas;
+    private TableColumn<UsuarioDto, String> tcReservas;
 
     @FXML
     void initialize() {
@@ -84,11 +81,11 @@ public class UsuarioViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().correo()));
-       // tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservasAsignados().size());
+        tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservasAsignados()));
     }
 
     private void obtenerUsuarios() {
-        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuario());
+        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuarios());
     }
 
     private void listenerSelection() {
@@ -199,8 +196,9 @@ public class UsuarioViewController {
         return new UsuarioDto(
                 txtId.getText(),
                 txtNombre.getText(),
+                "",
                 txtCorreo.getText(),
-                new ArrayList<>()
+                txtReservas.getText(),
                 );
     }
 

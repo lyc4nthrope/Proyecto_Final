@@ -1,16 +1,11 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+public class SGREViewController {
 
-public class SGREViewController implements Initializable {
+    SGREControllerService sgreControllerService;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
-
+    @FXML
+    void initialize() {sgreControllerService = new SGREController();}
 }
