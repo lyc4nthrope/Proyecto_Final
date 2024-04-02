@@ -81,7 +81,7 @@ public class UsuarioViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().correo()));
-        tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservasAsignados()));
+        //tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservasAsignados()));
     }
 
     private void obtenerUsuarios() {

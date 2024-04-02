@@ -31,7 +31,7 @@ public class UsuarioRegistrarViewController {
 
     @FXML
     void initialize() {
-        usuarioRegistrarControllerService = new UsuarioRegistrarController();
+        usuarioRegistrarViewController = new UsuarioRegistrarViewController();
         intiView();
     }
 
