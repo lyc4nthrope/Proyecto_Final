@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -46,14 +47,16 @@ public class InicioViewController {
     public void iniciarSesion(ActionEvent event) throws IOException {
         String correoAux= txtCorreo.getText();
         String contraseniaAux = txtContrasenia.getText();
-        if (inicioController.inicioSesion(correoAux, contraseniaAux)){
-            UsuarioDto usuarioDtoAux = inicioController.sesionUsuario(correoAux,contraseniaAux);
-            EmpleadoDto empleadoDtoAux = inicioController.sesionEmpleado(correoAux,contraseniaAux);
-            if (usuarioDtoAux!=null){
-                switchUsuarioUse(event,usuarioDtoAux);
-            }
-            if (empleadoDtoAux!=null){
-                switchEmpleadoUse(event, empleadoDtoAux);
+        if (datosUsuarioValidos(correoAux,contraseniaAux) || datosEmpleadoValidos(correoAux,contraseniaAux)) {
+            if (inicioController.inicioSesion(correoAux, contraseniaAux)) {
+                UsuarioDto usuarioDtoAux = inicioController.sesionUsuario(correoAux, contraseniaAux);
+                EmpleadoDto empleadoDtoAux = inicioController.sesionEmpleado(correoAux, contraseniaAux);
+                if (usuarioDtoAux != null) {
+                    switchUsuarioUse(event, usuarioDtoAux);
+                }
+                if (empleadoDtoAux != null) {
+                    switchEmpleadoUse(event, empleadoDtoAux);
+                }
             }
         }
     }
@@ -66,6 +69,42 @@ public class InicioViewController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private boolean datosUsuarioValidos(String correo, String contraseña) {
+        String mensaje = "";
+        if(correo == null || correo.equals(""))
+            mensaje += "El nombre es invalido \n" ;
+        if(contraseña == null || contraseña.equals(""))
+            mensaje += "El ID es invalido \n" ;
+        if(mensaje.equals("")){
+            return true;
+        }else{
+            mostrarMensaje("Notificación cliente","Datos invalidos",mensaje, Alert.AlertType.WARNING);
+            return false;
+        }
+    }
+
+    private boolean datosEmpleadoValidos(String correo, String contraseña) {
+        String mensaje = "";
+        if(correo == null || correo.equals(""))
+            mensaje += "El nombre es invalido \n" ;
+        if(contraseña == null || contraseña.equals(""))
+            mensaje += "El ID es invalido \n" ;
+        if(mensaje.equals("")){
+            return true;
+        }else{
+            mostrarMensaje("Notificación cliente","Datos invalidos",mensaje, Alert.AlertType.WARNING);
+            return false;
+        }
+    }
+
+    private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
+        Alert aler = new Alert(alertType);
+        aler.setTitle(titulo);
+        aler.setHeaderText(header);
+        aler.setContentText(contenido);
+        aler.showAndWait();
     }
 
     public void salir(){
