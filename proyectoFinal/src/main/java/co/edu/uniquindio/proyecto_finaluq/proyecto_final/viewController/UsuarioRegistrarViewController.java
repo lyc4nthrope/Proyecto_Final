@@ -3,12 +3,13 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 
 import java.util.Optional;
 
 public class UsuarioRegistrarViewController {
-    
+
     @FXML
     private Button btnAceptar;
 
@@ -93,6 +94,6 @@ public class UsuarioRegistrarViewController {
     }
 
     void showInicio(){
-
+        FXMLLoader loader = FXMLLoader(getClass().getResource())
     }
 }
