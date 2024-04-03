@@ -14,6 +14,6 @@
       <TextField fx:id="txtContraseña" layoutX="141.0" layoutY="121.0" prefHeight="25.0" prefWidth="290.0" />
       <Button fx:id="btnIngresar" layoutX="115.0" layoutY="168.0" mnemonicParsing="false" text="Ingresar" />
       <Button fx:id="btnSalir" layoutX="223.0" layoutY="168.0" mnemonicParsing="false" text="Salir" />
-      <Button fx:id="btnRegistrarse" layoutX="318.0" layoutY="168.0" mnemonicParsing="false" text="Registrarse" />
+      <Button fx:id="btnRegistrarse" layoutX="318.0" layoutY="168.0" mnemonicParsing="false" onAction="#onRegistrarseButtonAction" text="Registrarse" />
    </children>
 </AnchorPane>

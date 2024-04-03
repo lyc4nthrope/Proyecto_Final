@@ -30,70 +30,28 @@ public class UsuarioRegistrarViewController {
     private TextField txtNombre;
 
     @FXML
-    void initialize() {
-        usuarioRegistrarControllerService = new UsuarioRegistrarController();
-        intiView();
-    }
-
-    private void intiView() {
-        obtenerUsuarios();
-        listenerSelection();
-    }
-
-    private void obtenerUsuarios() {
-        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuarios());
-    }
-
-    @FXML
-    void nuevoUsuarioAction(ActionEvent event) {
-        txtId.setText("Ingrese el ID");
-        txtNombre.setText("Ingrese el nombre");
-        txtCorreo.setText("Ingrese el correo electronico");
-        txtContraseña.setText("Ingrese la contraseña");
-        txtConfimarContraseña.setText("Ingrese la contraseña de nuevo");
-
-    }
-
-    @FXML
-    void agregarUsuarioAction(ActionEvent event) {
+    void onAceptarButtonClick(ActionEvent event) {
         crearUsuario();
     }
 
-    private void crearUsuario() {
-        //1. Capturar los datos
+    @FXML
+    void onCancelarButtonClick(ActionEvent event) {
+
+    }
+
+    private void crearUsuario(){
         UsuarioDto usuarioDto = construirUsuarioDto();
-        //2. Validar la información
         if(datosValidos(usuarioDto)){
             if(usuarioControllerService.agregarUsuario(usuarioDto)){
                 listaUsuariosDto.add(usuarioDto);
-                mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
+                mostrarMensaje("Notificación usuario", "Usuario creado", "El usuario se ha creado con éxito", Alert.AlertType.INFORMATION);
                 limpiarCamposUsuario();
             }else{
-                mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
+                mostrarMensaje("Notificación usuario", "Usuario no creado", "El usuario no se ha creado con éxito", Alert.AlertType.ERROR);
             }
         }else{
-            mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+            mostrarMensaje("Notificación usuario", "Usuario no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
         }
-
-    }
-
-    private UsuarioDto construirUsuarioDto() {
-        return new UsuarioDto(
-                txtId.getText(),
-                txtNombre.getText(),
-                "",
-                txtCorreo.getText(),
-                txtContraseña.getText(),
-                txtConfimarContraseña.getText(),
-                );
-    }
-
-    private void limpiarCamposUsuario() {
-        txtId.setText("");
-        txtNombre.setText("");
-        txtCorreo.setText("");
-        txtContraseña.setText("");
-        txtConfimarContraseña.setText("");
     }
 
     private boolean datosValidos(UsuarioDto usuarioDto) {
@@ -106,6 +64,8 @@ public class UsuarioRegistrarViewController {
             mensaje += "El correo es invalido \n" ;
         if(usuarioDto.contraseña() == null || usuarioDto.contraseña().equals(""))
             mensaje += "El correo es invalido \n" ;
+        if(usuarioDto.confirmarContraseña() == null || usuarioDto.confirmarContraseña().equals(""))
+            mensaje += "El correo es invalido \n" ;
         if(mensaje.equals("")){
             return true;
         }else{
@@ -114,24 +74,19 @@ public class UsuarioRegistrarViewController {
         }
     }
 
+    private void limpiarCamposUsuario() {
+        txtNombre.setText("");
+        txtId.setText("");
+        txtCorreo.setText("");
+        txtContraseña.setText("");
+        txtConfimarContraseña.setText("");
+    }
+
     private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
         Alert aler = new Alert(alertType);
         aler.setTitle(titulo);
         aler.setHeaderText(header);
         aler.setContentText(contenido);
         aler.showAndWait();
-    }
-
-    private boolean mostrarMensajeConfirmacion(String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText(null);
-        alert.setTitle("Confirmación");
-        alert.setContentText(mensaje);
-        Optional<ButtonType> action = alert.showAndWait();
-        if (action.get() == ButtonType.OK) {
-            return true;
-        } else {
-            return false;
-        }
     }
 }
