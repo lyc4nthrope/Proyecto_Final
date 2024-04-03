@@ -9,13 +9,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="563.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler.EmpleadoViewController">
+<AnchorPane prefHeight="563.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.EmpleadoViewController">
    <children>
       <SplitPane dividerPositions="0.5078347578347577" layoutX="4.0" layoutY="8.0" orientation="VERTICAL" prefHeight="563.0" prefWidth="738.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="133.0" prefWidth="736.0">
                <children>
-                  <Label layoutX="14.0" layoutY="27.0" text="Id:" />
+                  <Label layoutX="40.0" layoutY="27.0" text="ID:" />
                   <Label layoutX="404.0" layoutY="27.0" text="Nombre:" />
                   <Label layoutX="27.0" layoutY="78.0" text="Correo:" />
                   <Label layoutX="408.0" layoutY="78.0" text="Evento:" />
