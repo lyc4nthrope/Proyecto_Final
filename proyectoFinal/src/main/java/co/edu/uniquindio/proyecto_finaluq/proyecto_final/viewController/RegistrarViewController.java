@@ -27,7 +27,7 @@ public class RegistrarViewController {
     @FXML
     private TextField txtNombre;
 
-    
+
 
 
 }

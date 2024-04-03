@@ -21,6 +21,6 @@
          <font>
             <Font size="11.0" />
          </font></Button>
-      <Button fx:id="btnRegistrarse" layoutX="223.0" layoutY="168.0" mnemonicParsing="false" text="Registrarse" />
+      <Button fx:id="btnRegistrarse" layoutX="223.0" layoutY="168.0" mnemonicParsing="false" onAction="#onRegistrarseButtonAction" text="Registrarse" />
    </children>
 </AnchorPane>
