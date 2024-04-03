@@ -1,7 +1,8 @@
-package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
+package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EmpleadoController;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -83,7 +84,7 @@ public class EmpleadoViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().correo()));
-        tcEventosAsignados.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().eventosAsignados()));
+        tcEventosAsignados.setCellValueFactory(cellData -> new SimpleStringProperty());
     }
 
     private void obtenerEmpleados() {
@@ -199,6 +200,7 @@ public class EmpleadoViewController {
                 txtId.getText(),
                 txtNombre.getText(),
                 txtCorreo.getText(),
+                "",
                 new ArrayList<>()
         );
     }

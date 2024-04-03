@@ -1,6 +1,9 @@
-package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
+package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewControler;
 
+
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -16,8 +20,8 @@ public class UsuarioViewController {
 
     UsuarioController usuarioControllerService;
     ObservableList<UsuarioDto> listaUsuariosDto = FXCollections.observableArrayList();
-    UsuarioDto usuarioSeleccionado;
 
+    UsuarioDto usuarioSeleccionado;
     @FXML
     private ResourceBundle resources;
 
@@ -61,7 +65,7 @@ public class UsuarioViewController {
     private TableColumn<UsuarioDto, String> tcCorreo;
 
     @FXML
-    private TableColumn<UsuarioDto, String> tcReservas;
+    private TableColumn<UsuarioDto, Integer> tcReservas;
 
     @FXML
     void initialize() {
@@ -81,11 +85,11 @@ public class UsuarioViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().correo()));
-        //tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservasAsignados()));
+       // tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservasAsignados().size());
     }
 
     private void obtenerUsuarios() {
-        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuarios());
+        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuario());
     }
 
     private void listenerSelection() {
@@ -196,9 +200,9 @@ public class UsuarioViewController {
         return new UsuarioDto(
                 txtId.getText(),
                 txtNombre.getText(),
-                "",
                 txtCorreo.getText(),
-                txtReservas.getText(),
+                "",
+                new ArrayList<>()
                 );
     }
 
