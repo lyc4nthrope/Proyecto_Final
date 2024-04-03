@@ -4,8 +4,10 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class UsuarioRegistrarViewController {
@@ -93,7 +95,9 @@ public class UsuarioRegistrarViewController {
         aler.showAndWait();
     }
 
-    void showInicio(){
-        FXMLLoader loader = FXMLLoader(getClass().getResource())
+    void showInicio() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewController/Inicio.fxml"));
+        Parent root = loader.load();
+
     }
 }
