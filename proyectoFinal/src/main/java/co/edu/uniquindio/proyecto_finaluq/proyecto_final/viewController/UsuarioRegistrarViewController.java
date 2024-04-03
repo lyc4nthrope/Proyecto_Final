@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import java.util.Optional;
 
 public class UsuarioRegistrarViewController {
+    
     @FXML
     private Button btnAceptar;
 
@@ -32,11 +33,12 @@ public class UsuarioRegistrarViewController {
     @FXML
     void onAceptarButtonClick(ActionEvent event) {
         crearUsuario();
+        showInicio();
     }
 
     @FXML
     void onCancelarButtonClick(ActionEvent event) {
-
+        showInicio();
     }
 
     private void crearUsuario(){
@@ -88,5 +90,9 @@ public class UsuarioRegistrarViewController {
         aler.setHeaderText(header);
         aler.setContentText(contenido);
         aler.showAndWait();
+    }
+
+    void showInicio(){
+
     }
 }
