@@ -338,10 +338,13 @@ public class SGRE {
         return obtenerEmpleadoCorreo(correo,empleado,i+1);
     }
 
+    public boolean datoRegistrado(String correo, String id){
+        return existeUsuarioCorreo(correo, false, 0) && obtenerUsuarioId(id, null, 0, false) != null;
+    }
 
-
-
-
+    public boolean hayCupo(int cantCupos, Evento evento){
+        return cantCupos>evento.getCapacidadMax();
+    }
 
 
 }

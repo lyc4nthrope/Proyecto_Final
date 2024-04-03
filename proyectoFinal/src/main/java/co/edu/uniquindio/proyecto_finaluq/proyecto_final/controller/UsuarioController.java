@@ -13,7 +13,7 @@ public class UsuarioController implements IUsuarioControllerService {
         modelFactoryController = ModelFactoryController.getInstance();
     }
 
-    public List<UsuarioDto> obtenerUsuario() {
+    public List<UsuarioDto> obtenerUsuarios() {
         return modelFactoryController.obtenerUsuarios();
     }
 
