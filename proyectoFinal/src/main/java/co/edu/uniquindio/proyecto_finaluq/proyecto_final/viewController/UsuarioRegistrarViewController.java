@@ -105,7 +105,7 @@ public class UsuarioRegistrarViewController {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
-        controller.init;
+        controller.init();
         stage.show();
         this.stage.close();
     }
