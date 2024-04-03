@@ -30,6 +30,11 @@ public class InicioViewController {
     @FXML
     private TextField txtCorreo;
 
+    @FXML
+    void onRegistrarseButtonAction(ActionEvent event) {
+        switchUsuario(event,usuario);
+    }
+
     public void switchUsuario(ActionEvent event, UsuarioDto usuario) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("UsuarioUseView.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -40,6 +40,15 @@ public class UsuarioUseViewController {
     private Button btnActualizar;
 
     @FXML
+    private Label lblCorreo;
+
+    @FXML
+    private Label lblId;
+
+    @FXML
+    private Label lblNombre;
+
+    @FXML
     private Button btnNuevo;
 
     @FXML
