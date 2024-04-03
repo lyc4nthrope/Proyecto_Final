@@ -32,7 +32,7 @@ public class InicioViewController {
 
     @FXML
     void onRegistrarseButtonAction(ActionEvent event) {
-        switchUsuario(event,usuario);
+        
     }
 
     public void switchUsuario(ActionEvent event, UsuarioDto usuario) throws IOException {
