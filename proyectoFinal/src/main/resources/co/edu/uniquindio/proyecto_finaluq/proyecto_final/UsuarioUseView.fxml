@@ -17,14 +17,8 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <Label fx:id="nombreUsuario" layoutX="122.0" layoutY="87.0" text="Nombre" />
-                  <Label layoutX="91.0" layoutY="126.0" text="Identificacion:">
-                     <font>
-                        <Font size="17.0" />
-                     </font></Label>
-                  <Label layoutX="76.0" layoutY="206.0" text="Correo Electronico:">
-                     <font>
-                        <Font size="17.0" />
-                     </font></Label>
+                  <Label layoutX="107.0" layoutY="126.0" text="Identificacion:" />
+                  <Label layoutX="93.0" layoutY="204.0" text="Correo Electronico:" />
                   <Button fx:id="btnModificarDatos" layoutX="78.0" layoutY="424.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Modificar Datos" />
                   <Button fx:id="btnSalir" layoutX="124.0" layoutY="486.0" mnemonicParsing="false" text="Salir" />
                   <Label layoutX="105.0" layoutY="37.0" text="Usuario:">
@@ -32,7 +26,7 @@
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Label fx:id="idUsuario" layoutX="139.0" layoutY="173.0" text="id" />
+                  <Label fx:id="idUsuario" layoutX="139.0" layoutY="165.0" text="id" />
                   <Label fx:id="correoUsuario" layoutX="126.0" layoutY="253.0" text="correo" />
                </children>
             </AnchorPane>
