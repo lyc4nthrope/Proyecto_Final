@@ -89,7 +89,7 @@ public class UsuarioViewController {
     }
 
     private void obtenerUsuarios() {
-        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuario());
+        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuarios());
     }
 
     private void listenerSelection() {
@@ -202,7 +202,8 @@ public class UsuarioViewController {
                 txtNombre.getText(),
                 txtCorreo.getText(),
                 "",
-                new ArrayList<>()
+                new ArrayList<>(),
+                0
                 );
     }
 

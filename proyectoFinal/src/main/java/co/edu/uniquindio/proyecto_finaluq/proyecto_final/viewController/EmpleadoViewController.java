@@ -201,7 +201,8 @@ public class EmpleadoViewController {
                 txtNombre.getText(),
                 txtCorreo.getText(),
                 "",
-                new ArrayList<>()
+                new ArrayList<>(),
+                0
         );
     }
 

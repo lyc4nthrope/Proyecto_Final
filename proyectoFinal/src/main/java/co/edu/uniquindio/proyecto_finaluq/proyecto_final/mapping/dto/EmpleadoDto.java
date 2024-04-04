@@ -13,5 +13,6 @@ public record EmpleadoDto(
         String correo,
         String contrasenia,
 
-        ArrayList<Evento> eventosAsignados) {
+        ArrayList<EventoDto> eventosAsignados,
+        int cantidadEventos) {
 }

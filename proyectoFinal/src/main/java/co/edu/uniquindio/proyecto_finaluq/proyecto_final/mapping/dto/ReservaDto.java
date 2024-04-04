@@ -7,6 +7,7 @@ public record ReservaDto(
         UsuarioDto usuario,
         EventoDto evento,
         LocalDateTime fechaSolicitud,
-        String estado
+        String estado,
+        int espaciosSolicitados
 ){
 }

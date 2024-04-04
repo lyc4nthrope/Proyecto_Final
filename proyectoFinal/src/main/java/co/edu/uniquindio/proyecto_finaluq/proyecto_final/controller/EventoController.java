@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.services.IEventoControllerService;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class EventoController implements IEventoControllerService {
@@ -19,7 +20,7 @@ public class EventoController implements IEventoControllerService {
 
 
     @Override
-    public List<EventoDto> obtenerEventos() {
+    public ArrayList<EventoDto> obtenerEventos() {
         return null;
     }
 

@@ -8,5 +8,6 @@ public record UsuarioDto(
         String nombre,
         String correo,
         String contrasenia,
-        ArrayList<Reserva> reservasAsignados) {
+        ArrayList<ReservaDto> reservasAsignados,
+        int cantidadReservas) {
 }
