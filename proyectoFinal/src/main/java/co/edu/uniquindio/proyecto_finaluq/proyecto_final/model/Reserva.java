@@ -8,23 +8,13 @@ public class Reserva {
     private Evento evento;
     private LocalDateTime fechaSolicitud;
     private String estado;
-    private int espaciosSolicitados;
 
-    public Reserva(String id, Usuario usuario, Evento evento, LocalDateTime fechaSolicitud, String estado, int espaciosSolicitados) {
+    public Reserva(String id, Usuario usuario, Evento evento, LocalDateTime fechaSolicitud, String estado) {
         this.id = id;
         this.usuario = usuario;
         this.evento = evento;
         this.fechaSolicitud = fechaSolicitud;
         this.estado = estado;
-        this.espaciosSolicitados = espaciosSolicitados;
-    }
-
-    public int getEspaciosSolicitados() {
-        return espaciosSolicitados;
-    }
-
-    public void setEspaciosSolicitados(int espaciosSolicitados) {
-        this.espaciosSolicitados = espaciosSolicitados;
     }
 
     public String getId() {

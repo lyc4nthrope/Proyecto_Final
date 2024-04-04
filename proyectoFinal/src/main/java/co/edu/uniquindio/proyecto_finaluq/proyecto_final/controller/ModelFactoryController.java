@@ -191,9 +191,6 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         return eliminado;
     }
 
-    public  boolean existeReserva(String id){
-        return getSGRE().existeReserva(id,false,0);
-    }
     @Override
     public boolean modificarEvento(String idActual, EventoDto eventoDto) {
         try{

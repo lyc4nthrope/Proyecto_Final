@@ -10,9 +10,6 @@ public class Usuario extends Admin {
         this.reservasAsignados = reservasAsignados;
     }
 
-    public int cantidadReservas (){
-        return reservasAsignados.size();
-    }
     public ArrayList<Reserva> getReservasAsignados() {
         return reservasAsignados;
     }

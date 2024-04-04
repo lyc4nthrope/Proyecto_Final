@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IUsuarioControllerService {
 
-    List<UsuarioDto> obtenerUsuarios();
+    List<UsuarioDto> obtenerUsuario();
 
     boolean agregarUsuario(UsuarioDto usuarioDto);
 

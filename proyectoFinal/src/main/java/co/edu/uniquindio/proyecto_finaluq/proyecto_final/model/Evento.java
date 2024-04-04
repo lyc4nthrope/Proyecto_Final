@@ -11,6 +11,7 @@ public class Evento {
     private LocalDateTime fecha;
     private int capacidadMax;
     private Empleado empleadoEncargado;
+
     private ArrayList<Reserva> reservas;
 
 

@@ -35,13 +35,12 @@ public class SGREUtils {
         usuario1.setCorreo("juan@gmail.com");
         usuario1.setContrasenia("123wweaa");
 
-        Reserva reserva1 = new Reserva(null,null,null,null,null,0);
+        Reserva reserva1 = new Reserva(null,null,null,null,null);
         reserva1.setId(""+ Math.random());
         reserva1.setUsuario(usuario1);
         reserva1.setEvento(evento1);
         reserva1.setFechaSolicitud(LocalDateTime.now());
         reserva1.setEstado("PENDIENTE");
-        reserva1.setEspaciosSolicitados(10);
 
         evento1.getReservas().add(reserva1);
         usuario1.getReservasAsignados().add(reserva1);

@@ -30,6 +30,4 @@ public class ReservaController implements IReservaControllerService {
     public boolean actualizarReserva(String idActual, ReservaDto reservaDto) {
         return modelFactoryController.modificarReserva(idActual, reservaDto);
     }
-
-    public boolean existeReserva(String id){return modelFactoryController.existeReserva(id);}
 }
