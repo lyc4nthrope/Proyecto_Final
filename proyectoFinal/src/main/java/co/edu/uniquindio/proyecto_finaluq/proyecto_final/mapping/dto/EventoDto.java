@@ -1,11 +1,14 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 public record EventoDto(
         String id, String nombreEvento, String descripcion,
-        String fecha,
-        String capacidadMax,
-        String empleadoEncargado,
-        String reservas
+        LocalDateTime fecha,
+        int capacidadMax,
+        EmpleadoDto empleadoEncargado,
+        ArrayList<ReservaDto> reservas
 
 ) {
 }

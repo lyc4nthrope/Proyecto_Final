@@ -32,6 +32,7 @@ public class InicioViewController {
         stage.setScene(scene);
         stage.show();
     }
+
     public void switchEmpleadoUse(ActionEvent event, EmpleadoDto empleadoDto) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(".fxml"));
         Parent root = loader.load();
