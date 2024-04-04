@@ -1,20 +1,13 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.InicioController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Optional;
 
 public class UsuarioRegistrarViewController {
-
     @FXML
     private Button btnAceptar;
 
@@ -37,29 +30,70 @@ public class UsuarioRegistrarViewController {
     private TextField txtNombre;
 
     @FXML
-    void onAceptarButtonClick(ActionEvent event) {
-        crearUsuario();
-        showInicio();
+    void initialize() {
+        usuarioRegistrarViewController = new UsuarioRegistrarViewController();
+        intiView();
+    }
+
+    private void intiView() {
+        obtenerUsuarios();
+        listenerSelection();
+    }
+
+    private void obtenerUsuarios() {
+        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuarios());
     }
 
     @FXML
-    void onCancelarButtonClick(ActionEvent event) {
-        showInicio();
+    void nuevoUsuarioAction(ActionEvent event) {
+        txtId.setText("Ingrese el ID");
+        txtNombre.setText("Ingrese el nombre");
+        txtCorreo.setText("Ingrese el correo electronico");
+        txtContraseña.setText("Ingrese la contraseña");
+        txtConfimarContraseña.setText("Ingrese la contraseña de nuevo");
+
     }
 
-    private void crearUsuario(){
+    @FXML
+    void agregarUsuarioAction(ActionEvent event) {
+        crearUsuario();
+    }
+
+    private void crearUsuario() {
+        //1. Capturar los datos
         UsuarioDto usuarioDto = construirUsuarioDto();
+        //2. Validar la información
         if(datosValidos(usuarioDto)){
             if(usuarioControllerService.agregarUsuario(usuarioDto)){
                 listaUsuariosDto.add(usuarioDto);
-                mostrarMensaje("Notificación usuario", "Usuario creado", "El usuario se ha creado con éxito", Alert.AlertType.INFORMATION);
+                mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
                 limpiarCamposUsuario();
             }else{
-                mostrarMensaje("Notificación usuario", "Usuario no creado", "El usuario no se ha creado con éxito", Alert.AlertType.ERROR);
+                mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
             }
         }else{
-            mostrarMensaje("Notificación usuario", "Usuario no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+            mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
         }
+
+    }
+
+    private UsuarioDto construirUsuarioDto() {
+        return new UsuarioDto(
+                txtId.getText(),
+                txtNombre.getText(),
+                "",
+                txtCorreo.getText(),
+                txtContraseña.getText(),
+                txtConfimarContraseña.getText(),
+                );
+    }
+
+    private void limpiarCamposUsuario() {
+        txtId.setText("");
+        txtNombre.setText("");
+        txtCorreo.setText("");
+        txtContraseña.setText("");
+        txtConfimarContraseña.setText("");
     }
 
     private boolean datosValidos(UsuarioDto usuarioDto) {
@@ -72,22 +106,12 @@ public class UsuarioRegistrarViewController {
             mensaje += "El correo es invalido \n" ;
         if(usuarioDto.contraseña() == null || usuarioDto.contraseña().equals(""))
             mensaje += "El correo es invalido \n" ;
-        if(usuarioDto.confirmarContraseña() == null || usuarioDto.confirmarContraseña().equals(""))
-            mensaje += "El correo es invalido \n" ;
         if(mensaje.equals("")){
             return true;
         }else{
             mostrarMensaje("Notificación cliente","Datos invalidos",mensaje, Alert.AlertType.WARNING);
             return false;
         }
-    }
-
-    private void limpiarCamposUsuario() {
-        txtNombre.setText("");
-        txtId.setText("");
-        txtCorreo.setText("");
-        txtContraseña.setText("");
-        txtConfimarContraseña.setText("");
     }
 
     private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
@@ -98,15 +122,16 @@ public class UsuarioRegistrarViewController {
         aler.showAndWait();
     }
 
-    void showInicio() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/viewController/Inicio.fxml"));
-        Parent root = loader.load();
-        InicioController controller = loader.getController();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        controller.init();
-        stage.show();
-        this.stage.close();
+    private boolean mostrarMensajeConfirmacion(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setTitle("Confirmación");
+        alert.setContentText(mensaje);
+        Optional<ButtonType> action = alert.showAndWait();
+        if (action.get() == ButtonType.OK) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

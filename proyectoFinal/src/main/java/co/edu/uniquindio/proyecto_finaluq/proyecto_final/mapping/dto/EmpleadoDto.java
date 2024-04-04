@@ -2,6 +2,8 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto;
 
 
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Evento;
+
 import java.util.ArrayList;
 
 public record EmpleadoDto(
@@ -9,6 +11,8 @@ public record EmpleadoDto(
         String nombre,
 
         String correo,
+        String contrasenia,
 
-        ArrayList<EventoDto> eventosAsignados) {
+        ArrayList<EventoDto> eventosAsignados,
+        int cantidadEventos) {
 }

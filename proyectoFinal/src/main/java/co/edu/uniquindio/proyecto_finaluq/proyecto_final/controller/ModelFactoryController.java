@@ -27,7 +27,6 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         System.out.println("invocación clase singleton");
         cargarDatosBase();
     }
-
     private void cargarDatosBase() {
         sgre = SGREUtils.inicializarDatos();
     }
@@ -192,6 +191,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         return eliminado;
     }
 
+    public  boolean existeReserva(String id){
+        return getSGRE().existeReserva(id,false,0);
+    }
     @Override
     public boolean modificarEvento(String idActual, EventoDto eventoDto) {
         try{

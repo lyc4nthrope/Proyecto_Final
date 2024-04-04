@@ -1,10 +1,13 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto;
 
+import java.time.LocalDateTime;
+
 public record ReservaDto(
         String id,
-        String usuario,
-        String evento,
-        String fechaSolicitud,
-        String estado
+        UsuarioDto usuario,
+        EventoDto evento,
+        LocalDateTime fechaSolicitud,
+        String estado,
+        int espaciosSolicitados
 ){
 }
