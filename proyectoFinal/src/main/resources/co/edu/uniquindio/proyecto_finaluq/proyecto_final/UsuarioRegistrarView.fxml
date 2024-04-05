@@ -4,25 +4,70 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="261.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.RegistrarViewController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="174.0" layoutY="14.0" text="Registro de Usuario">
-         <font>
-            <Font size="14.0" />
-         </font></Label>
-      <Label layoutX="14.0" layoutY="116.0" text="Correo:" />
-      <Label layoutX="14.0" layoutY="148.0" text="Contraseña:" />
-      <TextField fx:id="txtCorreo" layoutX="141.0" layoutY="112.0" prefHeight="25.0" prefWidth="290.0" />
-      <TextField fx:id="txtContraseña" layoutX="141.0" layoutY="144.0" prefHeight="25.0" prefWidth="290.0" />
-      <Button fx:id="btnAceptar" layoutX="116.0" layoutY="222.0" mnemonicParsing="false" onAction="#onAceptarButtonClick" text="Aceptar" />
-      <Button fx:id="btnCancelar" layoutX="224.0" layoutY="222.0" mnemonicParsing="false" onAction="#onCancelarButtonClick" text="Cancelar" />
-      <Label layoutX="14.0" layoutY="52.0" text="ID:" />
-      <Label layoutX="14.0" layoutY="84.0" text="Nombre:" />
-      <TextField fx:id="txtId" layoutX="141.0" layoutY="48.0" prefHeight="25.0" prefWidth="290.0" />
-      <TextField fx:id="txtNombre" layoutX="141.0" layoutY="80.0" prefHeight="25.0" prefWidth="290.0" />
-      <Label layoutX="14.0" layoutY="181.0" text="Confirmar Contraseña:" />
-      <TextField fx:id="txtConfimarContraseña" layoutX="141.0" layoutY="177.0" prefHeight="25.0" prefWidth="290.0" />
+      <AnchorPane prefHeight="500.0" prefWidth="303.0" style="-fx-background-color: teal;" />
+      <AnchorPane prefHeight="500.0" prefWidth="444.0">
+         <children>
+            <Label layoutX="164.0" layoutY="39.0" text="Registro">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="140.0" text="Correo:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="171.0" text="Contraseña:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="98.0" layoutY="137.0" prefHeight="25.0" prefWidth="246.0" />
+            <TextField layoutX="98.0" layoutY="168.0" prefHeight="25.0" prefWidth="246.0" />
+            <Button layoutX="80.0" layoutY="344.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="211.0" style="-fx-cursor: hand; -fx-background-color: darkOrange;" text="Registrar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="35.0" layoutY="410.0" text="¿Ya estas regitrado?">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="164.0" layoutY="405.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Ingresa!" textFill="#0031ff" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="42.0" layoutY="79.0" text="ID:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="98.0" layoutY="76.0" prefHeight="25.0" prefWidth="246.0" />
+            <Label layoutX="23.0" layoutY="108.0" text="Nombre:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="98.0" layoutY="106.0" prefHeight="25.0" prefWidth="246.0" />
+            <Label layoutX="15.0" layoutY="206.0" text="Contraseña:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField layoutX="98.0" layoutY="197.0" prefHeight="25.0" prefWidth="246.0" />
+            <Label layoutX="16.0" layoutY="194.0" text="Confirmar">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</HBox>

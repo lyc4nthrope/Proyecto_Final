@@ -4,4 +4,8 @@ import javafx.fxml.FXML;
 
 public class SGREViewController {
 
+    SGREControllerService sgreControllerService;
+
+    @FXML
+    void initialize() {sgreControllerService = new SGREController();}
 }
