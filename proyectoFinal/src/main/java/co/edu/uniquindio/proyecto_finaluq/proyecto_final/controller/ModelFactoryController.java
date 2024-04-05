@@ -10,7 +10,6 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 import java.util.List;
 
 public class ModelFactoryController implements IModelFactoryController {
-
     SGRE sgre;
 SGREMapper mapper =SGREMapper.INSTANCE;
 

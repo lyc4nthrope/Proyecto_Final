@@ -10,18 +10,26 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Usuario;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
+import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface SGREMapper {
 
     SGREMapper INSTANCE = Mappers.getMapper(SGREMapper.class);
 
-
     @Named("usuarioToUsuarioDto")
-    @IterableMapping(qualifiedByName = "reservaToReservaDto")
-    @ValueMapping(target = "cantidadReservas",source = "usuario.reservasAsignados.size()")
-    UsuarioDto usuarioToUsuarioDto (Usuario usuario);
+        // Mapeo principal de Usuario a UsuarioDto
+    @Mapping(target = "reservasAsignados", ignore = true)
+        UsuarioDto usuarioToUsuarioDto(Usuario usuario);
+        // Método para establecer la longitud del ArrayList de reservas
+        @AfterMapping
+        default void establecerLongitudReservas(Usuario usuario, @MappingTarget UsuarioDto usuarioDto) {
+            usuarioDto.cantidadReservas(usuario.cantidadReservas());
+        }
+
+
 
     @IterableMapping(qualifiedByName = "eventoToEventoDto")
     Usuario usuarioDtoToUsuario(UsuarioDto usuarioDto);
@@ -46,7 +54,11 @@ public interface SGREMapper {
 
     @Named("reservaToReservaDto")
     ReservaDto reservaToReservaDto(Reserva reserva);
+
+
     Reserva reservaDtoToReserva(ReservaDto reservaDto);
+
+
     @IterableMapping(qualifiedByName = "reservaToReservaDto")
     List<ReservaDto> getListaReservasDto(List<Reserva> listaReservas);
 
