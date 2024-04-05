@@ -11,19 +11,22 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SGREApplication extends Application{
-    Scene scene;
+    private static Stage scene;
 
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SGREApplication.class.getResource("Inicio.fxml"));
-        scene = new Scene(loader.load());
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primera) throws IOException {
+        scene = primera;
+        primera.setResizable(false);
+        Parent root = FXMLLoader.load(getClass().getResource("inicio.fxml"));
+        primera.setScene( new Scene(root, 445,219));
+        primera.show();
     }
+
     public void changeScene(String url) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(url));
-
+        scene.getScene().setRoot(pane);
     }
+
     public static void main(String[] args) {
         launch();
     }
