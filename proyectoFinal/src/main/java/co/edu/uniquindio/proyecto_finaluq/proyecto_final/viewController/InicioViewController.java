@@ -61,7 +61,7 @@ public class InicioViewController implements Initializable {
     }
 
     private void changeScene(ActionEvent event, String fxmlFile, String correo, String contrasenia) {
-        Parent root = null;
+        /*Parent root = null;
 
         try {
             root = FXMLLoader.load(InicioViewController.class.getResource(fxmlFile));
@@ -71,16 +71,16 @@ public class InicioViewController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle(title);
         stage.setScene(new Scene(root, 600, 400));
-        stage.show();
+        stage.show();*/
     }
 
 
     private static void ingresarUsuario(ActionEvent event, String text, String text1) {
-        Connection connection = null;
+        /*Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
             preparedStatement = connection.prepareStatement("")
-        }
+        }*/
     }
 }
