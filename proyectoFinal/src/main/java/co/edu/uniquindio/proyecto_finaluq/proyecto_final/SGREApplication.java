@@ -20,10 +20,6 @@ public class SGREApplication extends Application{
         stage.setScene(scene);
         stage.show();
     }
-    public void changeScene(String url) throws IOException {
-        Parent pane = FXMLLoader.load(getClass().getResource(url));
-
-    }
     public static void main(String[] args) {
         launch();
     }
