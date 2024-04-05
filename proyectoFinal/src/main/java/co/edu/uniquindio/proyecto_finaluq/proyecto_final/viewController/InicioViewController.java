@@ -27,7 +27,7 @@ public class InicioViewController {
 
     public void switchUsuarioUse(ActionEvent event, UsuarioDto usuario) throws IOException {
         SGREApplication m = new SGREApplication();
-        m.changeScene("UsuarioUseViewCristhian.fxml");
+        m.changeScene("UsuarioUseView.fxml");
     }
 
     public void switchEmpleadoUse(ActionEvent event, EmpleadoDto empleadoDto) throws IOException {
