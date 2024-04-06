@@ -25,7 +25,7 @@ public class SGREApplication extends Application{
     public void start(Stage primera) throws IOException {
         scene = primera;
         Parent root = FXMLLoader.load(SGREApplication.class.getResource("Inicio.fxml"));
-        primera.setScene( new Scene(root, 700,500));
+        primera.setScene( new Scene(root, 600,500));
         primera.show();
     }
 
@@ -46,7 +46,7 @@ public class SGREApplication extends Application{
 
         scene.getScene().setRoot(root);
         Stage stage = (Stage) scene.getScene().getWindow();
-        stage.setScene(new Scene(root,700, 500));
+        stage.setScene(new Scene(root,600, 500));
     }
 
     public static void main(String[] args) {
