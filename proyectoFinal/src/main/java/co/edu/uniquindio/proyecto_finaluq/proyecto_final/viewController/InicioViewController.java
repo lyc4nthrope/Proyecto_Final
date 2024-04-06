@@ -27,7 +27,7 @@ public class InicioViewController {
 
     public void switchUsuarioUse(ActionEvent event, UsuarioDto usuario) throws IOException {
         SGREApplication m = new SGREApplication();
-        m.changeScene("UsuarioUseView.fxml");
+        m.changeScene("UsuarioUseView.fxml", null,null);
     }
 
     public void switchEmpleadoUse(ActionEvent event, EmpleadoDto empleadoDto) throws IOException {
@@ -36,7 +36,7 @@ public class InicioViewController {
         //Scene scene = new Scene(root);
        // stage.setScene(scene);
         //stage.show();
-        m.changeScene(".fxml");
+        //m.changeScene(".fxml");
     }
 
     public void iniciarSesion(ActionEvent event) throws IOException {
@@ -57,7 +57,7 @@ public class InicioViewController {
     @FXML
     void onRegistrarseButtonAction(ActionEvent event) throws IOException{
         SGREApplication m = new SGREApplication();
-        m.changeScene("UsuarioRegistrarView.fxml");
+        m.changeScene("UsuarioRegistrarView.fxml",null,null);
     }
 
     public void salir(){

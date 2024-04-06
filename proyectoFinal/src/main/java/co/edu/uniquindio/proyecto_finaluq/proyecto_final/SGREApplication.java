@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.InicioController;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,8 +24,10 @@ public class SGREApplication extends Application{
         primera.show();
     }
 
-    public void changeScene(String url) throws IOException {
-        Parent pane = FXMLLoader.load(getClass().getResource(url));
+    public void changeScene(String url, UsuarioDto usuarioDto, EmpleadoDto empleadoDto) throws IOException {
+        Parent pane;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+        pane = loader.load();
         scene.getScene().setRoot(pane);
     }
 
