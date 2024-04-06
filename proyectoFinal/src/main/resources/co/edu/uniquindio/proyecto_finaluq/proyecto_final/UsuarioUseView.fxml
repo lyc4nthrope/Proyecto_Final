@@ -10,35 +10,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="563.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.UseUsuarioController">
+<AnchorPane prefHeight="563.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.UsuarioUseViewController">
    <children>
       <SplitPane dividerPositions="0.4" layoutX="249.0" layoutY="217.0" prefHeight="563.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="nombreUsuario" layoutX="122.0" layoutY="87.0" text="Nombre" />
-                  <Label layoutX="91.0" layoutY="126.0" text="Identificacion:">
+                  <Label fx:id="nombreText" layoutX="105.0" layoutY="108.0" text="Nombre" />
+                  <Label fx:id="idText" layoutX="121.0" layoutY="142.0" text="ID" />
+                  <Label fx:id="correoText" layoutX="78.0" layoutY="176.0" text="Correo Electronico" />
+                  <Button fx:id="btnModificarDatos" layoutX="62.0" layoutY="226.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Modificar Datos" />
+                  <Button fx:id="btnSalir" layoutX="114.0" layoutY="452.0" mnemonicParsing="false" text="Salir" />
+                  <Label layoutX="99.0" layoutY="56.0" text="Usuario:">
                      <font>
-                        <Font size="17.0" />
-                     </font></Label>
-                  <Label layoutX="76.0" layoutY="206.0" text="Correo Electronico:">
-                     <font>
-                        <Font size="17.0" />
-                     </font></Label>
-                  <Button fx:id="btnModificarDatos" layoutX="78.0" layoutY="424.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Modificar Datos" />
-                  <Button fx:id="btnSalir" layoutX="124.0" layoutY="486.0" mnemonicParsing="false" text="Salir" />
-                  <Label layoutX="105.0" layoutY="37.0" text="Usuario:">
-                     <font>
-                        <Font size="21.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="idUsuario" layoutX="139.0" layoutY="173.0" text="id" />
-                  <Label fx:id="correoUsuario" layoutX="126.0" layoutY="253.0" text="correo" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView fx:id="tbReservas" layoutX="106.0" layoutY="45.0" prefHeight="333.0" prefWidth="444.0" AnchorPane.bottomAnchor="183.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
+                  <TableView fx:id="tableUsuariosUse" layoutX="106.0" layoutY="45.0" prefHeight="333.0" prefWidth="444.0" AnchorPane.bottomAnchor="183.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
                     <columns>
                       <TableColumn fx:id="tcEvento" prefWidth="111.0" text="Evento" />
                       <TableColumn fx:id="tcFecha" prefWidth="111.0" text="Fecha" />
@@ -46,7 +38,7 @@
                         <TableColumn fx:id="tcEspacios" prefWidth="111.0" text="Espacios" />
                     </columns>
                   </TableView>
-                  <Button fx:id="btnAniadirReserva" layoutX="44.0" layoutY="493.0" mnemonicParsing="false" text="Añadir Reserva" />
+                  <Button fx:id="btnAgregarReserva" layoutX="44.0" layoutY="493.0" mnemonicParsing="false" text="Añadir Reserva" />
                   <Button fx:id="btnCancelarReserva" layoutX="168.0" layoutY="493.0" mnemonicParsing="false" text="Cancelar Reserva" />
                   <Label layoutX="200.0" layoutY="14.0" text="Reservas">
                      <font>
