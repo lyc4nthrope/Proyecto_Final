@@ -30,7 +30,7 @@ public class SGREApplication extends Application{
     }
 
     public void changeScene(String url, UsuarioDto usuarioDto, EmpleadoDto empleadoDto) throws IOException {
-        FXMLLoader loader = new FXMLLoader(SGREApplication.class.getResource(url));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
         Parent root = loader.load();
         if (usuarioDto!=null){
             UseUsuarioController controllerUsuario = loader.getController();
