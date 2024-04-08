@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53028480-db3f-407e-a815-b267f2a3975b" name="Changes" comment=".">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/proyecto_finaluq/proyecto_final/UsuarioRegistrarView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/proyecto_finaluq/proyecto_final/UsuarioRegistrarView.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="53028480-db3f-407e-a815-b267f2a3975b" name="Changes" comment="." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
