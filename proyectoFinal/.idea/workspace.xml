@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53028480-db3f-407e-a815-b267f2a3975b" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/persistencia/archivos/usuario" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/persistencia/log/usuario_Log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/persistencia/model" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/persistencia/respaldo/usuario_08042024_16_37_00" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/proyecto_finaluq/proyecto_final/UsuarioRegistrarView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/proyecto_finaluq/proyecto_final/UsuarioRegistrarView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,8 +92,6 @@
       <workItem from="1712168467743" duration="84000" />
       <workItem from="1712336335054" duration="682000" />
       <workItem from="1712344635188" duration="1899000" />
-      <workItem from="1712609933870" duration="29000" />
-      <workItem from="1712611967199" duration="717000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
