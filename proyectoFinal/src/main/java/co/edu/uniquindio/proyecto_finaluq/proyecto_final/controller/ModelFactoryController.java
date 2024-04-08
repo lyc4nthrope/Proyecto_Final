@@ -7,6 +7,7 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMap
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModelFactoryController implements IModelFactoryController {
@@ -162,7 +163,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
 
     @Override
     public List<EventoDto> obtenerEventos() {
-        return mapper.getListaEventosDto(sgre.getListaEventos());
+        return new ArrayList<>(mapper.getListaEventosDto(sgre.getListaEventos()));
     }
 
     @Override

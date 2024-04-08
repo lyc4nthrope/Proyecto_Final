@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class SGREUtils {
+    private static Usuario usuarioEnSesion;
 
     public static SGRE inicializarDatos(){
         SGRE sgre = new SGRE();
@@ -82,5 +83,13 @@ public class SGREUtils {
 
         System.out.println("Información del sgre creada");
         return sgre;
+    }
+
+    public static Usuario getUsuarioEnSesion() {
+        return SGREUtils.usuarioEnSesion;
+    }
+
+    public static void setUsuarioEnSesion(Usuario usuario) {
+        SGREUtils.usuarioEnSesion = usuario;
     }
 }
