@@ -50,8 +50,6 @@ public class SGREApplication extends Application{
 
         Parent root = loader.load();
         scene.getScene().setRoot(root);
-        Stage stage = (Stage) scene.getScene().getWindow();
-        stage.setScene(new Scene(root,600, 500));
     }
 
     public static void main(String[] args) {

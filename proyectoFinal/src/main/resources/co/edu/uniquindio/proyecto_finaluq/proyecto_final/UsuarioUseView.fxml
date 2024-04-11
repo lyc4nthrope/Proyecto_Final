@@ -16,14 +16,23 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="nombreUsuario" layoutX="105.0" layoutY="108.0" text="Nombre" textAlignment="CENTER" />
-                  <Label fx:id="idUsuario" layoutX="121.0" layoutY="142.0" text="ID" textAlignment="CENTER" />
-                  <Label fx:id="correoUsuario" layoutX="78.0" layoutY="176.0" text="Correo Electronico" textAlignment="CENTER" />
-                  <Button fx:id="btnModificarDatos" layoutX="62.0" layoutY="226.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Modificar Datos" />
-                  <Button fx:id="btnSalir" layoutX="114.0" layoutY="452.0" mnemonicParsing="false" text="Salir" />
-                  <Label layoutX="99.0" layoutY="56.0" text="Usuario:">
+                  <Label fx:id="nombreUsuario" layoutX="116.0" layoutY="115.0" text="Nombre" textAlignment="CENTER">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="17.0" />
+                     </font></Label>
+                  <Label fx:id="idUsuario" layoutX="143.0" layoutY="186.0" text="ID" textAlignment="CENTER">
+                     <font>
+                        <Font size="19.0" />
+                     </font></Label>
+                  <Label fx:id="correoUsuario" layoutX="70.0" layoutY="250.0" text="Correo Electronico" textAlignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Button fx:id="btnModificarDatos" layoutX="83.0" layoutY="433.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: transpare; -fx-cursor: hand;" text="Modificar Datos" textAlignment="CENTER" textFill="#4c5fef" underline="true" />
+                  <Button fx:id="btnSalir" layoutX="124.0" layoutY="486.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="48.0" style="-fx-background-color: FC9595;" text="Salir" />
+                  <Label layoutX="95.0" layoutY="38.0" text="USUARIO" textFill="#0b7b17">
+                     <font>
+                        <Font size="25.0" />
                      </font>
                   </Label>
                </children>
