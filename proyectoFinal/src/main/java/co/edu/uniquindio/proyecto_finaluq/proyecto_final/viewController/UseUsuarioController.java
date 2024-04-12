@@ -163,7 +163,7 @@ public class UseUsuarioController implements Initializable {
     }
 
     private int crearId(){
-        int id =(int) (Math.random()*9999999);
+        int id =(int) (Math.random()*999999);
         if (reservaController.existeReserva(String.valueOf(id))){
             return crearId();
         }
