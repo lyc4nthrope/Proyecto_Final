@@ -25,13 +25,13 @@ public class InicioViewController {
     @FXML
     public TextField txtCorreo;
 
+    SGREApplication m = new SGREApplication();
+
     public void switchUsuarioUse(ActionEvent event, UsuarioDto usuario) throws IOException {
-        SGREApplication m = new SGREApplication();
         m.changeScene("UsuarioUseView.fxml", null,null);
     }
 
     public void switchEmpleadoUse(ActionEvent event, EmpleadoDto empleadoDto) throws IOException {
-        SGREApplication m = new SGREApplication();
         //controller.sesionUsuario=usuario;
         //Scene scene = new Scene(root);
        // stage.setScene(scene);
@@ -56,7 +56,6 @@ public class InicioViewController {
 
     @FXML
     void onRegistrarseButtonAction(ActionEvent event) throws IOException{
-        SGREApplication m = new SGREApplication();
         m.changeScene("UsuarioRegistrarView.fxml",null,null);
     }
 
