@@ -85,15 +85,16 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     @Override
     public boolean agregarUsuario(UsuarioDto usuarioDto) {
         try {
-            if (!sgre.verficarExisteUsuario(usuarioDto.id())){
+            if (!(sgre.verficarExisteUsuario(usuarioDto.id())) && !(sgre.datoRegistrado(usuarioDto.correo(),usuarioDto.id()))){
                 Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
                 getSGRE().getListaUsuarios().add(usuario);
+                return true;
             }
-            return true;
         }catch (UsuarioException e){
             e.printStackTrace();
             return false;
         }
+        return false;
     }
 
     @Override

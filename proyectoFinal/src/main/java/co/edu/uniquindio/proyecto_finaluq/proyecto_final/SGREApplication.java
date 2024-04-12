@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.mapstruct.Mapper;
 
@@ -28,7 +29,7 @@ public class SGREApplication extends Application{
     public void start(Stage primera) throws IOException {
         scene = primera;
         Parent root = FXMLLoader.load(SGREApplication.class.getResource("Inicio.fxml"));
-        primera.setScene( new Scene(root, 600,500));
+        primera.setScene( new Scene(root, 750,500));
         primera.show();
     }
 
@@ -52,6 +53,13 @@ public class SGREApplication extends Application{
         scene.getScene().setRoot(root);
     }
 
+    public void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
+        Alert aler = new Alert(alertType);
+        aler.setTitle(titulo);
+        aler.setHeaderText(header);
+        aler.setContentText(contenido);
+        aler.showAndWait();
+    }
     public static void main(String[] args) {
         launch();
     }
