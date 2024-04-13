@@ -86,6 +86,5 @@ public class RegistrarViewController {
         stage.show();*/
     }
 
-
 }
 

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53028480-db3f-407e-a815-b267f2a3975b" name="Changes" comment="." />
+    <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="UsuarioUseCristhian">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/SGREApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/SGREApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/InicioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/InicioViewController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,20 +17,59 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
+        <option value="Record" />
         <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="daniel" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="osorio" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;nosee8&quot;
+  }
 }</component>
-  <component name="ProjectId" id="2eTIxcHAlKxo3psKnr6GZfKvSyt" />
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="0a34bee3-f91e-4688-ba2d-1fc3995d2ed6" />
+        <option name="url" value="https://github.com/lyc4nthrope/Proyecto_Final.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2eF8nVxLTJmPTfIE1ST2Yiz7bge" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -34,87 +77,158 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.MainSGRE.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SGREApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;camilo&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/osori/OneDrive/Documentos/GitHub/Proyecto_Final/proyectoFinal/src/main/resources/co/edu/uniquindio/proyecto_finaluq/proyecto_final&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.SGREApplication.executor": "Run",
+    "Maven.proyecto_final [clean].executor": "Run",
+    "Maven.proyecto_final [compile].executor": "Run",
+    "Maven.proyecto_final [test].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "osorio",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/osori/OneDrive/Documentos/GitHub/Proyecto_Final/proyectoFinal",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\osori\OneDrive\Documentos\GitHub\Proyecto_Final\proyectoFinal\src\main\resources\co\edu\uniquindio\proyecto_finaluq\proyecto_final" />
-    </key>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="SGREApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto_finaluq.proyecto_final.SGREApplication" />
+      <module name="proyecto_final" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.edu.uniquindio.proyecto_finaluq.proyecto_final.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SGREApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="53028480-db3f-407e-a815-b267f2a3975b" name="Changes" comment="" />
-      <created>1711922395390</created>
+      <changelist id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="" />
+      <created>1711489132958</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1711922395390</updated>
-      <workItem from="1711922397493" duration="612000" />
-      <workItem from="1712005124520" duration="908000" />
-      <workItem from="1712096041279" duration="520000" />
-      <workItem from="1712097136485" duration="764000" />
-      <workItem from="1712097965068" duration="894000" />
-      <workItem from="1712099176252" duration="1093000" />
-      <workItem from="1712101707302" duration="204000" />
-      <workItem from="1712103917593" duration="694000" />
-      <workItem from="1712104703347" duration="205000" />
-      <workItem from="1712105027666" duration="1298000" />
-      <workItem from="1712106380918" duration="554000" />
-      <workItem from="1712107106626" duration="73000" />
-      <workItem from="1712167306524" duration="52000" />
-      <workItem from="1712167614854" duration="153000" />
-      <workItem from="1712167838511" duration="564000" />
-      <workItem from="1712168467743" duration="84000" />
-      <workItem from="1712336335054" duration="682000" />
-      <workItem from="1712344635188" duration="1899000" />
+      <updated>1711489132958</updated>
+      <workItem from="1711489133759" duration="2110000" />
+      <workItem from="1711564191608" duration="16093000" />
+      <workItem from="1711650645186" duration="3411000" />
+      <workItem from="1711821635362" duration="1941000" />
+      <workItem from="1711837873577" duration="22175000" />
+      <workItem from="1712094697650" duration="18347000" />
+      <workItem from="1712191959705" duration="243000" />
+      <workItem from="1712192215199" duration="417000" />
+      <workItem from="1712192648342" duration="117000" />
+      <workItem from="1712193066690" duration="130000" />
+      <workItem from="1712193207471" duration="2084000" />
+      <workItem from="1712271288046" duration="24000" />
+      <workItem from="1712271728333" duration="48000" />
+      <workItem from="1712273518416" duration="7816000" />
+      <workItem from="1712285443936" duration="1546000" />
+      <workItem from="1712342832182" duration="1190000" />
+      <workItem from="1712609854107" duration="39000" />
+      <workItem from="1712881697856" duration="976000" />
     </task>
-    <task id="LOCAL-00001" summary=".">
+    <task id="LOCAL-00001" summary="agregar errorcitos">
       <option name="closed" value="true" />
-      <created>1711922534091</created>
+      <created>1711823517452</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1711922534091</updated>
+      <updated>1711823517452</updated>
     </task>
-    <task id="LOCAL-00002" summary=".">
+    <task id="LOCAL-00002" summary="pausa">
       <option name="closed" value="true" />
-      <created>1711922997738</created>
+      <created>1711850411911</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1711922997738</updated>
+      <updated>1711850411911</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="pausa">
+      <option name="closed" value="true" />
+      <created>1711850514431</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1711850514431</updated>
+    </task>
+    <task id="LOCAL-00004" summary="UsuarioUseCristhian">
+      <option name="closed" value="true" />
+      <created>1712276526955</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712276526955</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="dto y mapper" />
+    <MESSAGE value="agregar errorcitos" />
+    <MESSAGE value="pausa" />
+    <MESSAGE value="UsuarioUseCristhian" />
+    <option name="LAST_COMMIT_MESSAGE" value="UsuarioUseCristhian" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/target/generated-sources/annotations/co/edu/uniquindio/proyecto_finaluq/proyecto_final/mapping/mappers/SGREMapperImpl.java</url>
+          <line>392</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/target/generated-sources/annotations/co/edu/uniquindio/proyecto_finaluq/proyecto_final/mapping/mappers/SGREMapperImpl.java</url>
+          <line>307</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/target/generated-sources/annotations/co/edu/uniquindio/proyecto_finaluq/proyecto_final/mapping/mappers/SGREMapperImpl.java</url>
+          <line>311</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
