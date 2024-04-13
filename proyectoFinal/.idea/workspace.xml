@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="pausa">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/utils/ArchivoUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/utils/Persistencia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Persistencia/archivoUsuario.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Persistencia/log/SGRELog.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/controller/ModelFactoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/controller/ModelFactoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/model/SGRE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/model/SGRE.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,13 +57,6 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -87,7 +76,7 @@
     "Maven.proyecto_final [test].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "daniel",
+    "git-widget-placeholder": "camilo",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/osori/Downloads/TRABAJOS/Progra/banco_javafx/bancoUq",
     "node.js.detected.package.eslint": "true",
@@ -104,8 +93,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
@@ -136,6 +125,7 @@
       <workItem from="1712883921489" duration="11530000" />
       <workItem from="1712935461610" duration="1902000" />
       <workItem from="1712965774048" duration="814000" />
+      <workItem from="1713032777402" duration="4073000" />
     </task>
     <task id="LOCAL-00001" summary="agregar errorcitos">
       <option name="closed" value="true" />
@@ -195,7 +185,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/RegistrarViewController.java</url>
           <line>42</line>
-          <properties class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.RegistrarViewController" method="registrarUsuario">
+          <properties class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.RegistrarViewController">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
@@ -204,7 +194,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/controller/ModelFactoryController.java</url>
           <line>93</line>
-          <properties class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ModelFactoryController" method="agregarUsuario">
+          <properties class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ModelFactoryController">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

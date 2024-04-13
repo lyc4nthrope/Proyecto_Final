@@ -346,5 +346,18 @@ public class SGRE {
         return cantCupos>evento.getCapacidadMax();
     }
 
+    public ArrayList<Reserva> buscarReserva(String id, int i,ArrayList<Reserva> reservasUsuario){
+        if (i<getListaReservas().size()){
+            if (getListaReservas().get(i).getUsuario().getId().equals(id)){
+                reservasUsuario.add(getListaReservas().get(i));
+                i++;
+            }
+            buscarReserva(id, i, reservasUsuario);
+        }
+        return reservasUsuario;
+    }
+
+
+
 
 }
