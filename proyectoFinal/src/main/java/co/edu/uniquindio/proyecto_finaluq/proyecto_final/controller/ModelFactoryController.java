@@ -5,6 +5,7 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.exceptions.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMapper;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.*;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.Persistencia;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 
 import java.util.ArrayList;
@@ -25,8 +26,14 @@ SGREMapper mapper =SGREMapper.INSTANCE;
 
     public ModelFactoryController() {
         System.out.println("invocación clase singleton");
-        cargarDatosBase();
+
+        if(sgre == null){
+            cargarDatosBase();
+            //guardarResourceXML();
+        }
+        registrarAccionesSistema("Inicio de sesión", 1, "inicioSesión");
     }
+
     private void cargarDatosBase() {
         sgre = SGREUtils.inicializarDatos();
     }
@@ -46,6 +53,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!sgre.verficarExisteEmpleado(empleadoDto.id())){
                 Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
                 getSGRE().getListaEmpleados().add(empleado);
+                registrarAccionesSistema("Se agrego el empleado"+ empleado.getNombre(),1,"agregarEmpleado");
             }
             return true;
         }catch (EmpleadoException e){
@@ -233,5 +241,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         return null;
     }
 
+
+    public void registrarAccionesSistema(String mensaje, int nivel, String accion) {
+        Persistencia.guardaRegistroLog(mensaje, nivel, accion);
+    }
 
 }
