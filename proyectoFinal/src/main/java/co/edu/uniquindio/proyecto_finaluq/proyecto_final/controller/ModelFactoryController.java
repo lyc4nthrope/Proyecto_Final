@@ -8,6 +8,7 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.Persistencia;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +63,14 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         }
     }
 
+    private void salvarDatosPrueba() {
+        try {
+            Persistencia.guardarEmpleados(getSGRE().getListaEmpleados());
+            Persistencia.guardarUsuario(getSGRE().getListaUsuarios());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public boolean eliminarEmpleado(String id) {
