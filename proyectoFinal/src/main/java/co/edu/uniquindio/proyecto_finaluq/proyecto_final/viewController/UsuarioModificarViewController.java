@@ -70,8 +70,11 @@ public class UsuarioModificarViewController {
     }
 
 
+
+
     @FXML
     void onButtonModificarAction(ActionEvent event) throws IOException {
+
 
     }
 }

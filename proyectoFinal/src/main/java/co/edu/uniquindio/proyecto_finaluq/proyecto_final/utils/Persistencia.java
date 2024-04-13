@@ -48,42 +48,42 @@ public class Persistencia {
     }
 
 
-    public static ArrayList<Usuario> cargarUsuario() throws FileNotFoundException, IOException
-    {
-        ArrayList<Usuario> usuarios =new ArrayList<Usuario>();
-        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_USUARIOS);
-        String linea="";
-        for (int i = 0; i < contenido.size(); i++)
-        {
-            linea = contenido.get(i);
-            Usuario usuario = new Usuario();
-            usuario.setId(linea.split(",")[0]);
-            usuario.setNombre(linea.split(",")[1]);
-            usuario.setCorreo(linea.split(",")[2]);
-            usuario.setContrasenia(linea.split(",")[3]);
-            usuario.setReservasAsignados(linea.split(",")[4]);
-            usuarios.add(usuario);
-        }
-        return usuarios;
-    }
+//    public static ArrayList<Usuario> cargarUsuario() throws FileNotFoundException, IOException
+//    {
+//        ArrayList<Usuario> usuarios =new ArrayList<Usuario>();
+//        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_USUARIOS);
+//        String linea="";
+//        for (int i = 0; i < contenido.size(); i++)
+//        {
+//            linea = contenido.get(i);
+//            Usuario usuario = new Usuario();
+//            usuario.setId(linea.split(",")[0]);
+//            usuario.setNombre(linea.split(",")[1]);
+//            usuario.setCorreo(linea.split(",")[2]);
+//            usuario.setContrasenia(linea.split(",")[3]);
+//            usuario.setReservasAsignados(linea.split(",")[4]);
+//            usuarios.add(usuario);
+//        }
+//        return usuarios;
+//    }
 
-    public static ArrayList<Empleado> cargarEmpleados() throws FileNotFoundException, IOException {
-        ArrayList<Empleado> empleados =new ArrayList<Empleado>();
-        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_EMPLEADOS);
-        String linea="";
-        for (int i = 0; i < contenido.size(); i++)
-        {
-            linea = contenido.get(i);
-            Empleado empleado = new Empleado();
-            empleado.setId(linea.split(",")[0]);
-            empleado.setNombre(linea.split(",")[1]);
-            empleado.setCorreo(linea.split(",")[2]);
-            empleado.setContrasenia(linea.split(",")[3]);
-            empleado.setEventosAsignados(linea.split(",")[4]);
-            empleados.add(empleado);
-        }
-        return empleados;
-    }
+//    public static ArrayList<Empleado> cargarEmpleados() throws FileNotFoundException, IOException {
+//        ArrayList<Empleado> empleados =new ArrayList<Empleado>();
+//        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_EMPLEADOS);
+//        String linea="";
+//        for (int i = 0; i < contenido.size(); i++)
+//        {
+//            linea = contenido.get(i);
+//            Empleado empleado = new Empleado();
+//            empleado.setId(linea.split(",")[0]);
+//            empleado.setNombre(linea.split(",")[1]);
+//            empleado.setCorreo(linea.split(",")[2]);
+//            empleado.setContrasenia(linea.split(",")[3]);
+//            empleado.setEventosAsignados(linea.split(",")[4]);
+//            empleados.add(empleado);
+//        }
+//        return empleados;
+//    }
 
 
 
