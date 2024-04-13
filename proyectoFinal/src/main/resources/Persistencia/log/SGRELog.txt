@@ -1,2 +1,4 @@
 abr 13, 2024 12:50:04 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
 INFO: inicioSesión,Inicio de sesión,2024-04-13
+abr. 13, 2024 1:06:12 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-13
