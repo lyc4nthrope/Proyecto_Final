@@ -2,3 +2,17 @@ abr 13, 2024 12:50:04 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.u
 INFO: inicioSesión,Inicio de sesión,2024-04-13
 abr. 13, 2024 1:06:12 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
 INFO: inicioSesión,Inicio de sesión,2024-04-13
+abr. 13, 2024 1:20:51 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-13
+abr. 13, 2024 1:25:56 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-13
+abr. 13, 2024 2:18:02 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-13
+abr. 13, 2024 2:22:16 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-13
+abr. 13, 2024 2:24:15 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-13
+abr. 13, 2024 2:25:37 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-13
+abr. 13, 2024 3:29:42 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-13

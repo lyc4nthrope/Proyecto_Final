@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="563.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.UsuarioUseViewController">
+<AnchorPane prefHeight="563.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.UsuarioModificarViewController">
    <children>
       <SplitPane dividerPositions="0.4" layoutX="249.0" layoutY="217.0" prefHeight="563.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -19,15 +19,14 @@
                   <Label fx:id="nombreText" layoutX="18.0" layoutY="108.0" text="Nombre:" />
                   <Label fx:id="idText" layoutX="34.0" layoutY="142.0" text="ID:" />
                   <Label fx:id="correoText" layoutX="22.0" layoutY="176.0" text="Correo:" />
-                  <Button fx:id="btnModificarDatos" layoutX="62.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Regresar" />
-                  <Button fx:id="btnSalir" layoutX="108.0" layoutY="459.0" mnemonicParsing="false" text="Salir" />
-                  <Label fx:id="correoText1" layoutX="12.0" layoutY="241.0" text="Confirmar" />
-                  <Label fx:id="correoText2" layoutX="10.0" layoutY="258.0" text="Contraseña:" />
+                  <Button fx:id="btnModificarDatos" layoutX="82.0" layoutY="373.0" mnemonicParsing="false" onAction="#onButtonModificarAction" prefHeight="25.0" prefWidth="131.0" text="Modificar" />
+                  <Button fx:id="btnSalir" layoutX="117.0" layoutY="435.0" mnemonicParsing="false" onAction="#onButtonCancelarAction" text="Cancelar" />
+                  <Label fx:id="contraseñaText2" layoutX="82.0" layoutY="222.0" prefHeight="76.0" prefWidth="131.0" text="Confirmar Contraseña" />
                   <TextField layoutX="73.0" layoutY="104.0" prefHeight="25.0" prefWidth="211.0" />
                   <TextField layoutX="73.0" layoutY="138.0" prefHeight="25.0" prefWidth="211.0" />
                   <TextField layoutX="73.0" layoutY="172.0" prefHeight="25.0" prefWidth="211.0" />
-                  <TextField layoutX="73.0" layoutY="245.0" prefHeight="25.0" prefWidth="211.0" />
-                  <Label fx:id="correoText21" layoutX="8.0" layoutY="213.0" text="Contraseña:" />
+                  <TextField layoutX="43.0" layoutY="286.0" prefHeight="25.0" prefWidth="211.0" />
+                  <Label fx:id="contraseñaText" layoutX="8.0" layoutY="213.0" text="Contraseña:" />
                   <TextField layoutX="73.0" layoutY="209.0" prefHeight="25.0" prefWidth="211.0" />
                </children>
             </AnchorPane>

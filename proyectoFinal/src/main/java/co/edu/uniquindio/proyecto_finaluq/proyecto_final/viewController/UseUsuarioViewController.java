@@ -1,19 +1,16 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
-
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.SGREApplication;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EventoController;
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ModelFactoryController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ReservaController;
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
-
+import javafx.event.ActionEvent;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMapper;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -25,14 +22,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 
-public class UseUsuarioController implements Initializable {
+public class UseUsuarioViewController implements Initializable {
+    SGREApplication principal = new SGREApplication();
+
+
     @FXML
     AnchorPane panelUsuarioUse;
     ReservaController reservaController;
@@ -199,6 +199,8 @@ public class UseUsuarioController implements Initializable {
     }
 
 
-
-
+    @FXML
+    public void onButtonModificarAction(ActionEvent event) throws IOException {
+        principal.changeScene("UsuarioModificarView.fxml", null, null);
+    }
 }

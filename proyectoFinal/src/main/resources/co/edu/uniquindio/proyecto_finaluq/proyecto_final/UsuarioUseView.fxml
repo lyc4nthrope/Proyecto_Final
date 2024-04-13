@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.UseUsuarioController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.UseUsuarioViewController">
    <children>
       <SplitPane dividerPositions="0.4" layoutX="249.0" layoutY="217.0" prefHeight="563.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -28,7 +28,7 @@
                      <font>
                         <Font size="20.0" />
                      </font></Label>
-                  <Button fx:id="btnModificarDatos" layoutX="96.0" layoutY="385.0" mnemonicParsing="false" style="-fx-background-color: transpare; -fx-cursor: hand;" text="Modificar Datos" textAlignment="CENTER" textFill="#4c5fef" underline="true" />
+                  <Button fx:id="btnModificarDatos" layoutX="96.0" layoutY="385.0" mnemonicParsing="false" onAction="#onButtonModificarAction" style="-fx-background-color: transpare; -fx-cursor: hand;" text="Modificar Datos" textAlignment="CENTER" textFill="#4c5fef" underline="true" />
                   <Button fx:id="btnSalir" layoutX="118.0" layoutY="434.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="48.0" style="-fx-background-color: FC9595;" text="Salir" />
                   <Label layoutX="95.0" layoutY="38.0" text="USUARIO" textFill="#0b7b17">
                      <font>

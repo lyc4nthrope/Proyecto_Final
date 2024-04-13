@@ -67,6 +67,7 @@ public class InicioViewController {
         principal.changeScene("UsuarioRegistrarView.fxml", null,null);
     }
 
+
     public void salir(){
 System.exit(0);
     }

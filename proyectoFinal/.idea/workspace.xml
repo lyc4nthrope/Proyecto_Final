@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="pausa">
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/UsuarioModificarViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/SGREApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/SGREApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/InicioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/InicioViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/UseUsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/UseUsuarioViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Persistencia/log/SGRELog.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Persistencia/log/SGRELog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/proyecto_finaluq/proyecto_final/UsuarioModificarView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/proyecto_finaluq/proyecto_final/UsuarioModificarView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/proyecto_finaluq/proyecto_final/UsuarioUseView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/co/edu/uniquindio/proyecto_finaluq/proyecto_final/UsuarioUseView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Record" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,7 +66,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -74,32 +81,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.SGREApplication.executor": "Run",
-    "Maven.proyecto_final [clean].executor": "Run",
-    "Maven.proyecto_final [compile].executor": "Run",
-    "Maven.proyecto_final [test].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "osorio",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/user/Documents/GitHub/a/Proyecto_Final/proyectoFinal",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.SGREApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.proyecto_final [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.proyecto_final [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.proyecto_final [test].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;osorio&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Documents/GitHub/a/Proyecto_Final/proyectoFinal&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-5cd809f4" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -130,6 +138,9 @@
       <workItem from="1712883921489" duration="11530000" />
       <workItem from="1712935461610" duration="2278000" />
       <workItem from="1713031410762" duration="8000" />
+      <workItem from="1713031876616" duration="402000" />
+      <workItem from="1713032339513" duration="727000" />
+      <workItem from="1713033597016" duration="6690000" />
     </task>
     <task id="LOCAL-00001" summary="agregar errorcitos">
       <option name="closed" value="true" />
@@ -181,11 +192,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/UseUsuarioController.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/RegistrarViewController.java</url>
           <line>42</line>
