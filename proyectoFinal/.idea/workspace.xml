@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="UsuarioUseCristhian">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/SGREApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/SGREApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/InicioViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/InicioViewController.java" afterDir="false" />
+    <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="pausa">
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/utils/ArchivoUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/utils/Persistencia.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Persistencia/archivoUsuario.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Persistencia/log/SGRELog.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/controller/ModelFactoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/controller/ModelFactoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Record" />
-        <option value="FxmlFile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -85,9 +87,9 @@
     "Maven.proyecto_final [test].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "osorio",
+    "git-widget-placeholder": "daniel",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/osori/OneDrive/Documentos/GitHub/Proyecto_Final/proyectoFinal",
+    "last_opened_file_path": "C:/Users/osori/Downloads/TRABAJOS/Progra/banco_javafx/bancoUq",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -99,26 +101,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="SGREApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="co.edu.uniquindio.proyecto_finaluq.proyecto_final.SGREApplication" />
-      <module name="proyecto_final" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="co.edu.uniquindio.proyecto_finaluq.proyecto_final.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.SGREApplication" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -146,13 +128,14 @@
       <workItem from="1712192648342" duration="117000" />
       <workItem from="1712193066690" duration="130000" />
       <workItem from="1712193207471" duration="2084000" />
-      <workItem from="1712271288046" duration="24000" />
-      <workItem from="1712271728333" duration="48000" />
-      <workItem from="1712273518416" duration="7816000" />
-      <workItem from="1712285443936" duration="1546000" />
-      <workItem from="1712342832182" duration="1190000" />
-      <workItem from="1712609854107" duration="39000" />
-      <workItem from="1712881697856" duration="976000" />
+      <workItem from="1712277915059" duration="2044000" />
+      <workItem from="1712354164975" duration="4492000" />
+      <workItem from="1712532781012" duration="8618000" />
+      <workItem from="1712548321781" duration="1760000" />
+      <workItem from="1712809722179" duration="8346000" />
+      <workItem from="1712883921489" duration="11530000" />
+      <workItem from="1712935461610" duration="1902000" />
+      <workItem from="1712965774048" duration="814000" />
     </task>
     <task id="LOCAL-00001" summary="agregar errorcitos">
       <option name="closed" value="true" />
@@ -178,15 +161,7 @@
       <option name="project" value="LOCAL" />
       <updated>1711850514431</updated>
     </task>
-    <task id="LOCAL-00004" summary="UsuarioUseCristhian">
-      <option name="closed" value="true" />
-      <created>1712276526955</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1712276526955</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,26 +182,33 @@
     <MESSAGE value="dto y mapper" />
     <MESSAGE value="agregar errorcitos" />
     <MESSAGE value="pausa" />
-    <MESSAGE value="UsuarioUseCristhian" />
-    <option name="LAST_COMMIT_MESSAGE" value="UsuarioUseCristhian" />
+    <option name="LAST_COMMIT_MESSAGE" value="pausa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/target/generated-sources/annotations/co/edu/uniquindio/proyecto_finaluq/proyecto_final/mapping/mappers/SGREMapperImpl.java</url>
-          <line>392</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/UseUsuarioController.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/target/generated-sources/annotations/co/edu/uniquindio/proyecto_finaluq/proyecto_final/mapping/mappers/SGREMapperImpl.java</url>
-          <line>307</line>
-          <option name="timeStamp" value="2" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/RegistrarViewController.java</url>
+          <line>42</line>
+          <properties class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.RegistrarViewController" method="registrarUsuario">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/target/generated-sources/annotations/co/edu/uniquindio/proyecto_finaluq/proyecto_final/mapping/mappers/SGREMapperImpl.java</url>
-          <line>311</line>
-          <option name="timeStamp" value="4" />
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/controller/ModelFactoryController.java</url>
+          <line>93</line>
+          <properties class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ModelFactoryController" method="agregarUsuario">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

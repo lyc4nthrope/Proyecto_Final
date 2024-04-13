@@ -4,23 +4,51 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="219.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.InicioViewController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.InicioViewController">
    <children>
-      <Label layoutX="152.0" layoutY="14.0" text="Gestion de Reservas">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <Label layoutX="14.0" layoutY="64.0" text="Correo:" />
-      <Label layoutX="14.0" layoutY="125.0" text="Contraseña:" />
-      <TextField fx:id="txtCorreo" layoutX="141.0" layoutY="60.0" prefHeight="25.0" prefWidth="290.0" />
-      <TextField fx:id="txtContrasenia" layoutX="141.0" layoutY="121.0" prefHeight="25.0" prefWidth="290.0" />
-      <Button fx:id="btnIngresar" layoutX="82.0" layoutY="168.0" mnemonicParsing="false" onAction="#iniciarSesion" text="Ingresar" />
-      <Button fx:id="btnSalir" layoutX="357.0" layoutY="168.0" mnemonicParsing="false" onAction="#salir" text="Salir">
-         <font>
-            <Font size="11.0" />
-         </font></Button>
-      <Button fx:id="btnRegistrarse" layoutX="223.0" layoutY="168.0" mnemonicParsing="false" onAction="#onRegistrarseButtonAction" text="Registrarse" />
+      <AnchorPane prefHeight="500.0" prefWidth="291.0" style="-fx-background-color: teal;" />
+      <AnchorPane prefHeight="500.0" prefWidth="444.0">
+         <children>
+            <Label layoutX="22.0" layoutY="197.0" text="Correo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="9.0" layoutY="270.0" text="Contraseña:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCorreo" layoutX="99.0" layoutY="195.0" prefHeight="30.0" prefWidth="281.0" />
+            <TextField fx:id="txtContrasenia" layoutX="98.0" layoutY="268.0" prefHeight="30.0" prefWidth="282.0" />
+            <Button layoutX="125.0" layoutY="334.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="39.0" prefWidth="211.0" style="-fx-cursor: hand; -fx-background-color: darkOrange;" text="Ingresar">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="99.0" layoutY="420.0" text="¿No estas regitrado?">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="240.0" layoutY="415.0" mnemonicParsing="false" onAction="#onRegistrarseButtonAction" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Registrate!!" textFill="#0031ff" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Pane layoutX="22.0" layoutY="30.0" prefHeight="134.0" prefWidth="393.0" style="-fx-background-color: Green;">
+               <children>
+                  <Label layoutX="72.0" layoutY="44.0" text="INICIO DE SESION" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</HBox>

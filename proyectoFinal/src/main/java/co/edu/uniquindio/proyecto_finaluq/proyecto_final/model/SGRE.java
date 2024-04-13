@@ -141,7 +141,7 @@ public class SGRE {
     }
 
     public Usuario obtenerUsuarioId(String id,Usuario usuario, int i, boolean encontrado){
-        if (encontrado){
+        if (encontrado || i>=listaUsuarios.size()){
             return usuario;
         }else{
             if (listaUsuarios.get(i).getId().equals(id)){
@@ -339,7 +339,7 @@ public class SGRE {
     }
 
     public boolean datoRegistrado(String correo, String id){
-        return existeUsuarioCorreo(correo, false, 0) && obtenerUsuarioId(id, null, 0, false) != null;
+        return existeUsuarioCorreo(correo, false, 0) || obtenerUsuarioId(id, null, 0, false) != null;
     }
 
     public boolean hayCupo(int cantCupos, Evento evento){

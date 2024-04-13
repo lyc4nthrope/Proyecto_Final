@@ -1,12 +1,15 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EventoController;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ModelFactoryController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ReservaController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMapper;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,14 +23,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class UseUsuarioController implements Initializable {
+    @FXML
+    AnchorPane panelUsuarioUse;
     ReservaController reservaController;
     UsuarioDto sesionUsuario;
      ReservaDto reservaSeleccionada;
@@ -92,6 +99,8 @@ public class UseUsuarioController implements Initializable {
     }
 
     private void setDatosUsuario(){
+        SGREMapper mapper =SGREMapper.INSTANCE;
+        this.sesionUsuario=mapper.usuarioToUsuarioDto(SGREUtils.getUsuarioEnSesion());
         nombreUsuario.setText(sesionUsuario.nombre());
         idUsuario.setText(sesionUsuario.id());
         correoUsuario.setText(sesionUsuario.correo());
@@ -114,12 +123,16 @@ public class UseUsuarioController implements Initializable {
         return nombresEventos(eventosDto,nombreEventos,i+1);
     }
     private void setTablaReserva(){
-        reservasDto = FXCollections.observableArrayList(sesionUsuario.reservasAsignados());
+        reservasDto = FXCollections.observableArrayList(getList(sesionUsuario.reservasAsignados()));
         tcEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().evento().nombreEvento()));
         tcFecha.setCellValueFactory(new PropertyValueFactory<ReservaDto, LocalDateTime>("fechaSolicitud"));
         tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
         tcEspacios.setCellValueFactory(new PropertyValueFactory<ReservaDto, Integer>("espaciosSolicitados"));
         tbReservas.setItems(reservasDto);
+    }
+
+    private List getList(List lista){
+        return (lista==null || lista.size() == 0) ? new ArrayList<>() : new ArrayList<>(lista);
     }
     private void listenerSelection() {
         tbReservas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -150,7 +163,7 @@ public class UseUsuarioController implements Initializable {
     }
 
     private int crearId(){
-        int id =(int) (Math.random()*9999999);
+        int id =(int) (Math.random()*999999);
         if (reservaController.existeReserva(String.valueOf(id))){
             return crearId();
         }

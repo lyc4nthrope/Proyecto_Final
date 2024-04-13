@@ -14,14 +14,10 @@ public class EventoController implements IEventoControllerService {
         modelFactoryController = ModelFactoryController.getInstance();
     }
 
-    public List<EventoDto> obtenerEvento() {
-        return modelFactoryController.obtenerEventos();
-    }
-
 
     @Override
     public ArrayList<EventoDto> obtenerEventos() {
-        return null;
+        return new ArrayList<>(modelFactoryController.obtenerEventos());
     }
 
     @Override
