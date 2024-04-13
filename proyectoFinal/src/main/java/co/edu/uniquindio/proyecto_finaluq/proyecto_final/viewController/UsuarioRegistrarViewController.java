@@ -1,13 +1,16 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class UsuarioRegistrarViewController {
+    UsuarioController usuarioController =new UsuarioController();
     @FXML
     private Button btnAceptar;
 
@@ -31,19 +34,8 @@ public class UsuarioRegistrarViewController {
 
     @FXML
     void initialize() {
-        usuarioRegistrarViewController = new UsuarioRegistrarViewController();
-        intiView();
+        UsuarioRegistrarViewController usuarioRegistrarViewController = new UsuarioRegistrarViewController();
     }
-
-    private void intiView() {
-        obtenerUsuarios();
-        listenerSelection();
-    }
-
-    private void obtenerUsuarios() {
-        listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuarios());
-    }
-
     @FXML
     void nuevoUsuarioAction(ActionEvent event) {
         txtId.setText("Ingrese el ID");
@@ -63,9 +55,8 @@ public class UsuarioRegistrarViewController {
         //1. Capturar los datos
         UsuarioDto usuarioDto = construirUsuarioDto();
         //2. Validar la información
-        if(datosValidos(usuarioDto)){
-            if(usuarioControllerService.agregarUsuario(usuarioDto)){
-                listaUsuariosDto.add(usuarioDto);
+        if(usuarioDto!=null && datosValidos(usuarioDto)){
+            if(usuarioController.agregarUsuario(usuarioDto)){
                 mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
                 limpiarCamposUsuario();
             }else{
@@ -78,14 +69,17 @@ public class UsuarioRegistrarViewController {
     }
 
     private UsuarioDto construirUsuarioDto() {
-        return new UsuarioDto(
-                txtId.getText(),
-                txtNombre.getText(),
-                "",
-                txtCorreo.getText(),
-                txtContraseña.getText(),
-                txtConfimarContraseña.getText(),
-                );
+        if (txtContraseña.getText().equals(txtConfimarContraseña.getText())){
+            return new UsuarioDto(
+                    txtId.getText(),
+                    txtNombre.getText(),
+                    txtCorreo.getText(),
+                    txtContraseña.getText(),
+                    new ArrayList<>(),
+                    0
+                    );
+        }
+        return null;
     }
 
     private void limpiarCamposUsuario() {
@@ -104,7 +98,7 @@ public class UsuarioRegistrarViewController {
             mensaje += "El ID es invalido \n" ;
         if(usuarioDto.correo() == null || usuarioDto.correo().equals(""))
             mensaje += "El correo es invalido \n" ;
-        if(usuarioDto.contraseña() == null || usuarioDto.contraseña().equals(""))
+        if(usuarioDto.contrasenia() == null || usuarioDto.contrasenia().equals(""))
             mensaje += "El correo es invalido \n" ;
         if(mensaje.equals("")){
             return true;

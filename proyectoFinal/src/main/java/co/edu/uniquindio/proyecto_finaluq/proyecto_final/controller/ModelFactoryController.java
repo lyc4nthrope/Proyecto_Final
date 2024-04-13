@@ -5,8 +5,10 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.exceptions.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMapper;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.*;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.Persistencia;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModelFactoryController implements IModelFactoryController {
@@ -24,8 +26,14 @@ SGREMapper mapper =SGREMapper.INSTANCE;
 
     public ModelFactoryController() {
         System.out.println("invocación clase singleton");
-        cargarDatosBase();
+
+        if(sgre == null){
+            cargarDatosBase();
+            //guardarResourceXML();
+        }
+        registrarAccionesSistema("Inicio de sesión", 1, "inicioSesión");
     }
+
     private void cargarDatosBase() {
         sgre = SGREUtils.inicializarDatos();
     }
@@ -45,6 +53,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!sgre.verficarExisteEmpleado(empleadoDto.id())){
                 Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
                 getSGRE().getListaEmpleados().add(empleado);
+                registrarAccionesSistema("Se agrego el empleado"+ empleado.getNombre(),1,"agregarEmpleado");
             }
             return true;
         }catch (EmpleadoException e){
@@ -84,15 +93,16 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     @Override
     public boolean agregarUsuario(UsuarioDto usuarioDto) {
         try {
-            if (!sgre.verficarExisteUsuario(usuarioDto.id())){
+            if (!(sgre.verficarExisteUsuario(usuarioDto.id())) && !(sgre.datoRegistrado(usuarioDto.correo(),usuarioDto.id()))){
                 Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
                 getSGRE().getListaUsuarios().add(usuario);
+                return true;
             }
-            return true;
         }catch (UsuarioException e){
             e.printStackTrace();
             return false;
         }
+        return false;
     }
 
     @Override
@@ -162,7 +172,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
 
     @Override
     public List<EventoDto> obtenerEventos() {
-        return mapper.getListaEventosDto(sgre.getListaEventos());
+        return new ArrayList<>(mapper.getListaEventosDto(sgre.getListaEventos()));
     }
 
     @Override
@@ -231,5 +241,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         return null;
     }
 
+
+    public void registrarAccionesSistema(String mensaje, int nivel, String accion) {
+        Persistencia.guardaRegistroLog(mensaje, nivel, accion);
+    }
 
 }

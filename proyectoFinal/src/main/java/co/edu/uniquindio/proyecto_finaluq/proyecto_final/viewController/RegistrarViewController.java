@@ -1,5 +1,8 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.SGREApplication;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,15 +17,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class RegistrarViewController {
-
-    @FXML
-    private Button btnAceptar;
-
-    @FXML
-    private Button btnCancelar;
+public class RegistrarViewController{
+    private SGREApplication main = new SGREApplication();
 
     @FXML
     private TextField txtConfimarContraseña;
@@ -39,52 +38,49 @@ public class RegistrarViewController {
     @FXML
     private TextField txtNombre;
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnAceptar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                if (!txtNombre.getText().trim().isEmpty() && !txtId.getText().trim().isEmpty() && !txtCorreo.getText().trim().isEmpty() && !txtContraseña.getText().trim().isEmpty() && !txtConfimarContraseña.getText().trim().isEmpty()){
-                    if (!txtContraseña.getText().equals(txtConfimarContraseña)){
-                        registrarUsuario(event, txtNombre.getText(), txtId.getText(), txtCorreo.getText(), txtContraseña.getText());
-                    }else {
-                        System.out.println("Las contraseñas no coinciden");
-                        Alert alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                        alert.setContentText("Las contraseñas tienen que ser iguales");
-                        alert.show();
-                    }
-                }else {
-                    System.out.println("Por favor llene toda la informacion");
-                    Alert alert = new Alert(javafx.scene.control.Alert.AlertType.ERROR);
-                    alert.setContentText("Por favor llene toda la informacion");
-                    alert.show();
+
+    @FXML
+    private void registrarUsuario(ActionEvent event) throws IOException {
+        if (!txtNombre.getText().trim().isEmpty() && !txtId.getText().trim().isEmpty() && !txtCorreo.getText().trim().isEmpty() && !txtContraseña.getText().trim().isEmpty() && !txtConfimarContraseña.getText().trim().isEmpty()){
+            if (!txtContraseña.getText().equals(txtConfimarContraseña.getText())){
+            main.mostrarMensaje("Error","Contraseñas no coinciden", "Las contraseñas no coinciden asegurese de que ingreso correctamente", Alert.AlertType.ERROR );
+            }else {
+                // registrar usuario con comprobacion
+                UsuarioController usuarioController = new UsuarioController();
+                if (usuarioController.agregarUsuario(obtenerUsuario())){
+                    vaciarCampos();
+                    main.mostrarMensaje("Registro completo", "El registro se realizo correctamente", "Se registro correctamente, ahora inicia sesion!", Alert.AlertType.INFORMATION);
+                    volver();
+                }else{
+                    main.mostrarMensaje("Error al registrar", "Hubo un error al registrar", "Se genero un error al registrar, posiblemente tu cedula ya este registrado o tu correo ya este en uso", Alert.AlertType.ERROR);
                 }
             }
-        });
-        btnCancelar.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                changeScene(event, "Inicio.fxml", null, null);
-            }
-        });
-    }
-
-    private void registrarUsuario(ActionEvent event, String nombre, String id, String correo, String contraseña) {
-
-    }
-
-    private void changeScene(ActionEvent event, String fxmlFile, String correo, String contrasenia) {
-        /*Parent root = null;
-
-        try {
-            root = FXMLLoader.load(InicioViewController.class.getResource(fxmlFile));
-        }catch (IOException e){
-            e.printStackTrace();
+        }else {
+            main.mostrarMensaje("Error", "Campos vacios", "Algun campo no ha sido llenado, por favor ingrese todos los datos", Alert.AlertType.ERROR);
         }
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle(title);
-        stage.setScene(new Scene(root, 600, 400));
-        stage.show();*/
     }
 
+    @FXML
+    private void volver() throws IOException {
+        SGREApplication principal=new SGREApplication();
+        principal.changeScene("Inicio.fxml",null,null);
+    }
+
+
+    private UsuarioDto obtenerUsuario(){
+        String nombreUsuario = txtNombre.getText();
+        String cedulaUsuario = txtId.getText();
+        String correoUsuario = txtCorreo.getText();
+        String contraseñaUsuario = txtContraseña.getText();
+        return new UsuarioDto(cedulaUsuario,nombreUsuario,correoUsuario,contraseñaUsuario,new ArrayList<>(),0);
+    }
+
+    private void vaciarCampos(){
+        txtNombre.setText("");
+        txtContraseña.setText("");
+        txtCorreo.setText("");
+        txtId.setText("");
+        txtConfimarContraseña.setText("");
+    }
 }
 

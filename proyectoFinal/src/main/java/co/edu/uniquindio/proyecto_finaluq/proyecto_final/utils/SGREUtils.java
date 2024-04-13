@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class SGREUtils {
+    private static Usuario usuarioEnSesion;
 
     public static SGRE inicializarDatos(){
         SGRE sgre = new SGRE();
@@ -18,7 +19,7 @@ public class SGREUtils {
         empleado1.setContrasenia("pepePro");
 
         Evento evento1=new Evento(null,null,null,null,0,null,new ArrayList<>());
-        evento1.setId(Math.random()+"");
+        evento1.setId(((int) (Math.random() * 999999))+"");
         evento1.setNombreEvento("rumba");
         evento1.setDescripcion("pa gozar");
         evento1.setFecha(LocalDateTime.now());
@@ -36,7 +37,7 @@ public class SGREUtils {
         usuario1.setContrasenia("123wweaa");
 
         Reserva reserva1 = new Reserva(null,null,null,null,null,0);
-        reserva1.setId(""+ Math.random());
+        reserva1.setId(((int) (Math.random() * 999999))+"");
         reserva1.setUsuario(usuario1);
         reserva1.setEvento(evento1);
         reserva1.setFechaSolicitud(LocalDateTime.now());
@@ -57,7 +58,7 @@ public class SGREUtils {
         empleado2.setContrasenia("marialasanta");
 
         Evento evento2= new Evento(null,null,null,null,0,null,new ArrayList<>());
-        evento2.setId(Math.random()+"");
+        evento2.setId(((int) (Math.random() * 999999))+"");
         evento2.setNombreEvento("concierto");
         evento2.setDescripcion("ir a disfrutar");
         evento2.setFecha(LocalDateTime.now());
@@ -67,7 +68,7 @@ public class SGREUtils {
         empleado1.getEventosAsignados().add(evento2);
 
         Evento evento3=new Evento(null,null,null,null,0,null,new ArrayList<>());
-        evento3.setId(Math.random()+"");
+        evento3.setId(((int) (Math.random() * 999999))+"");
         evento3.setNombreEvento("bingo");
         evento3.setDescripcion("quien gana mas");
         evento3.setFecha(LocalDateTime.now());
@@ -82,5 +83,13 @@ public class SGREUtils {
 
         System.out.println("Información del sgre creada");
         return sgre;
+    }
+
+    public static Usuario getUsuarioEnSesion() {
+        return SGREUtils.usuarioEnSesion;
+    }
+
+    public static void setUsuarioEnSesion(Usuario usuario) {
+        SGREUtils.usuarioEnSesion = usuario;
     }
 }

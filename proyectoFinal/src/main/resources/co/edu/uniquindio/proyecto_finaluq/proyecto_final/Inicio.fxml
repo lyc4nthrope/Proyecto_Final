@@ -8,45 +8,46 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.InicioViewController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="303.0" style="-fx-background-color: teal;" />
+      <AnchorPane prefHeight="500.0" prefWidth="291.0" style="-fx-background-color: teal;" />
       <AnchorPane prefHeight="500.0" prefWidth="444.0">
          <children>
-            <Label layoutX="164.0" layoutY="39.0" text="Inicio">
+            <Label layoutX="22.0" layoutY="197.0" text="Correo:">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="26.0" layoutY="214.0" text="Correo:">
+            <Label layoutX="9.0" layoutY="270.0" text="Contraseña:">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="12.0" layoutY="271.0" text="Contraseña:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField layoutX="98.0" layoutY="211.0" prefHeight="25.0" prefWidth="246.0" />
-            <TextField layoutX="98.0" layoutY="268.0" prefHeight="25.0" prefWidth="246.0" />
-            <Button layoutX="80.0" layoutY="344.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="211.0" style="-fx-cursor: hand; -fx-background-color: darkOrange;" text="Ingresar">
+            <TextField fx:id="txtCorreo" layoutX="99.0" layoutY="195.0" prefHeight="30.0" prefWidth="281.0" />
+            <TextField fx:id="txtContrasenia" layoutX="98.0" layoutY="268.0" prefHeight="30.0" prefWidth="282.0" />
+            <Button layoutX="125.0" layoutY="334.0" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="39.0" prefWidth="211.0" style="-fx-cursor: hand; -fx-background-color: darkOrange;" text="Ingresar">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="35.0" layoutY="410.0" text="¿No estas regitrado?">
+            <Label layoutX="99.0" layoutY="420.0" text="¿No estas regitrado?">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="164.0" layoutY="405.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Registrate!!" textFill="#0031ff" underline="true">
+            <Button layoutX="240.0" layoutY="415.0" mnemonicParsing="false" onAction="#onRegistrarseButtonAction" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Registrate!!" textFill="#0031ff" underline="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Pane layoutX="23.0" layoutY="74.0" prefHeight="113.0" prefWidth="327.0" style="-fx-background-color: Green;" />
+            <Pane layoutX="22.0" layoutY="30.0" prefHeight="134.0" prefWidth="393.0" style="-fx-background-color: Green;">
+               <children>
+                  <Label layoutX="72.0" layoutY="44.0" text="INICIO DE SESION" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
          </children>
       </AnchorPane>
    </children>
