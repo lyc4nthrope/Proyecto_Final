@@ -61,7 +61,7 @@ public class Persistencia {
             usuario.setNombre(linea.split(",")[1]);
             usuario.setCorreo(linea.split(",")[2]);
             usuario.setContrasenia(linea.split(",")[3]);
-            usuario.setReservasAsignados();
+            usuario.setReservasAsignados(linea.split(",")[4]);
             usuarios.add(usuario);
         }
         return usuarios;
