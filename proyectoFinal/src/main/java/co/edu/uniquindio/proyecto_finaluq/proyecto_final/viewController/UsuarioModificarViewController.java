@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class UsuarioModificarViewController {
     SGREApplication principal = new SGREApplication();
+    UsuarioRegistrarViewController usuarioRegistrarViewController = new UsuarioRegistrarViewController();
 
 
     @FXML
@@ -69,11 +70,25 @@ public class UsuarioModificarViewController {
         principal.changeScene("UsuarioUseView.fxml", null, null);
     }
 
-
-
+    private void limpiarCamposUsuario() {
+        idText.setText("");
+        nombreText.setText("");
+        correoText.setText("");
+        contraseñaText.setText("");
+        ContraseñaText2.setText("");
+    }
 
     @FXML
     void onButtonModificarAction(ActionEvent event) throws IOException {
+        if (contraseñaText == ContraseñaText2){
+            limpiarCamposUsuario();
+            nombreText.getText();
+            idText.getText();
+            correoText.getText();
+            contraseñaText.getText();
+            ContraseñaText2.getText();
+
+        }
 
 
     }
