@@ -279,10 +279,11 @@ public class SGRE {
             throw new ReservaException("Reserva a modificar no existe");
         }else {
             reservaActual.setId(reserva.getId());
-            reservaActual.setUsuario(reservaActual.getUsuario());
-            reservaActual.setEvento(reservaActual.getEvento());
-            reservaActual.setFechaSolicitud(reservaActual.getFechaSolicitud());
-            reservaActual.setEstado(reservaActual.getEstado());
+            reservaActual.setUsuario(reserva.getUsuario());
+            reservaActual.setEvento(reserva.getEvento());
+            reservaActual.setFechaSolicitud(reserva.getFechaSolicitud());
+            reservaActual.setEstado(reserva.getEstado());
+            reservaActual.setEspaciosSolicitados(reserva.getEspaciosSolicitados());
             return true;
         }
     }

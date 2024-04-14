@@ -79,7 +79,6 @@ public class UseUsuarioController implements Initializable {
         setComboBox();
         tbReservas.getItems().clear();
         setTablaReserva();
-        listenerSelection();
     }
 
     private void setDatosUsuario(){
@@ -118,11 +117,21 @@ public class UseUsuarioController implements Initializable {
     private List getList(List lista){
         return (lista==null || lista.size() == 0) ? new ArrayList<>() : new ArrayList<>(lista);
     }
-    private void listenerSelection() {
-        tbReservas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            reservaSeleccionada = newSelection;
-            mostrarInformacionReserva(reservaSeleccionada);
-        });
+//    private void listenerSelection() {
+//
+//        tbReservas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+//            reservaSeleccionada = newSelection;
+//            mostrarInformacionReserva(reservaSeleccionada);
+//        });
+//    }
+
+
+    @FXML
+    public void seleccionar(javafx.scene.input.MouseEvent mouseEvent) {
+        reservaSeleccionada= this.tbReservas.getSelectionModel().getSelectedItem();
+        if(reservaController!=null){
+            this.txtEspacios.setText(Integer.toString(reservaSeleccionada.espaciosSolicitados()));
+        }
     }
 
     private void mostrarInformacionReserva(ReservaDto reservaDto){
@@ -134,17 +143,24 @@ public class UseUsuarioController implements Initializable {
 
     @FXML
     private void aniadirReserva(){
-        int espaciosSoli = Integer.parseInt(txtEspacios.getText());
-        EventoDto eventoSoli = obtenerEvento();
-        if (!reservaRegistrada(eventoSoli,false,0)){
-            String id = String.valueOf(crearId());
-            ReservaDto reservaDto = new ReservaDto(id,sesionUsuario,eventoSoli,LocalDateTime.now(),"PENDIENTE",espaciosSoli);
-            if (reservaController.agregarReserva(reservaDto)) {
-                reservasAsignadas.add(reservaDto);
-                reservasDto.add(reservaDto);
-                limpiarCampos();
+        try {
+            int espaciosSoli = Integer.parseInt(txtEspacios.getText());
+            EventoDto eventoSoli = obtenerEvento();
+            if (!reservaRegistrada(eventoSoli,false,0)){
+                String id = String.valueOf(crearId());
+                ReservaDto reservaDto = new ReservaDto(id,sesionUsuario,eventoSoli,LocalDateTime.now(),"PENDIENTE",espaciosSoli);
+                if (reservaController.agregarReserva(reservaDto)) {
+                    reservasAsignadas.add(reservaDto);
+                    reservasDto.add(reservaDto);
+                    limpiarCampos();
+                }
+            }else {
+                SGREApplication.mostrarMensaje("error","no se solicito reserva","la reserva a este evento ya existe", Alert.AlertType.ERROR);
             }
+        }catch (Exception e){
+            SGREApplication.mostrarMensaje("error","error", "datos de reserva", Alert.AlertType.ERROR);
         }
+
     }
 
     @FXML
@@ -205,9 +221,10 @@ public class UseUsuarioController implements Initializable {
                 int espaciosAux = Integer.parseInt(txtEspacios.getText());
                 ReservaDto reservaAux= new ReservaDto(reservaSeleccionada.id(), reservaSeleccionada.usuario(), reservaSeleccionada.evento(),LocalDateTime.now(),"PENDIENTE", espaciosAux);
                 if (reservaController.actualizarReserva(reservaSeleccionada.id(),reservaAux)){
-                    reservasAsignadas.remove(reservaSeleccionada);
-                    reservasAsignadas.add(reservaAux);
+                    reservasDto.remove(reservaSeleccionada);
+                    reservasDto.add(reservaAux);
                     tbReservas.refresh();
+                    reservaSeleccionada=null;
                     SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva actualizada", "El Reserva se ha actualizado con éxito", Alert.AlertType.INFORMATION);
                     limpiarCampos();
                 }else {
@@ -216,6 +233,8 @@ public class UseUsuarioController implements Initializable {
             }catch (Exception e){
                 SGREApplication.mostrarMensaje("error","error con datos", "datos mal ingresado", Alert.AlertType.WARNING);
             }
+        }else {
+            SGREApplication.mostrarMensaje("error","reserva no seleccionada","seleccione una reserva nuevamnente", Alert.AlertType.ERROR);
         }
     }
 

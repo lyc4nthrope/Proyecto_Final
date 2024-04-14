@@ -192,7 +192,7 @@ public class UsuarioSesionModificarView implements Initializable {
     }
     @FXML
     private void guardarModificar() throws IOException {
-        if(txtContnraseniaUsuario.getText().equals(txtContraConfirmarUsuario.getText())){
+        if(datosValidos() && txtContnraseniaUsuario.getText().equals(txtContraConfirmarUsuario.getText())){
             if(usuarioController.actualizarUsuario(SGREUtils.getUsuarioEnSesion().id(), obtenerUsuario())){
                 SGREUtils.setUsuarioEnSesion(obtenerUsuario());
                 SGREApplication.changeScene("UsuarioUseView.fxml", SGREUtils.getUsuarioEnSesion(),null);
@@ -202,7 +202,7 @@ public class UsuarioSesionModificarView implements Initializable {
             }
 
         }else {
-            SGREApplication.mostrarMensaje("Error en la Modificacion","Las contrasenias no coinciden","Por favor verifica que las contrasenias coincidan", Alert.AlertType.ERROR);
+            SGREApplication.mostrarMensaje("Error en la Modificacion","Algun dato esta erroneo","Por favor verifica que las contrasenias coincidan\nSino verifique que todos los campos esten relleno", Alert.AlertType.ERROR);
         }
 
     }
@@ -213,5 +213,15 @@ public class UsuarioSesionModificarView implements Initializable {
         String correoUsuario = txtCorreoUsuario.getText();
         String contraseñaUsuario = txtContnraseniaUsuario.getText();
         return new UsuarioDto(cedulaUsuario,nombreUsuario,correoUsuario,contraseñaUsuario);
+    }
+
+    private boolean datosValidos(){
+        boolean valido = true;
+        if (txtNombreUsuario.getText().isBlank() || txtCedulaUsuario.getText().isBlank()
+            || txtCorreoUsuario.getText().isBlank() || txtContnraseniaUsuario.getText().isBlank()
+            || txtContraConfirmarUsuario.getText().isBlank()){
+            valido=false;
+        }
+        return valido;
     }
 }

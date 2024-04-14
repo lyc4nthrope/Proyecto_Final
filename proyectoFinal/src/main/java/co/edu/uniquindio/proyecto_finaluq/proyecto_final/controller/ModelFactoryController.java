@@ -222,7 +222,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             getSGRE().registroCorrecto(correo,contrasenia);
             return true;
         }catch (InicioException e){
-            e.printStackTrace();
+            SGREApplication.mostrarMensaje("error","error al iniciar sesion","Los datos ingresados no estan registrados o hubo un error al introducirlos", Alert.AlertType.ERROR);
             return false;
         }
     }
