@@ -10,6 +10,7 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMapper;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -73,7 +74,7 @@ public class UseUsuarioController implements Initializable {
     private TableView<ReservaDto> tbReservas;
 
     @FXML
-    private TableColumn<ReservaDto, Integer> tcEspacios;
+    private TableColumn<ReservaDto, Number> tcEspacios;
 
     @FXML
     private TableColumn<ReservaDto, String> tcEstado;
@@ -127,7 +128,7 @@ public class UseUsuarioController implements Initializable {
         tcEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().evento().nombreEvento()));
         tcFecha.setCellValueFactory(new PropertyValueFactory<ReservaDto, LocalDateTime>("fechaSolicitud"));
         tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
-        tcEspacios.setCellValueFactory(new PropertyValueFactory<ReservaDto, Integer>("espaciosSolicitados"));
+        tcEspacios.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().espaciosSolicitados().asObject());
         tbReservas.setItems(reservasDto);
     }
 
