@@ -1,0 +1,2 @@
+Apr 13, 2024 7:12:06 PM co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-13

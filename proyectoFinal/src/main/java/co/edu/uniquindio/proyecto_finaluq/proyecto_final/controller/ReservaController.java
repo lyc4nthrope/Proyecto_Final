@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.services.IReservaControllerService;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 
 import java.util.List;
 
@@ -32,4 +33,9 @@ public class ReservaController implements IReservaControllerService {
     }
 
     public boolean existeReserva(String id){return modelFactoryController.existeReserva(id);}
+
+    public List<ReservaDto> reservasUsuario(UsuarioDto usuario){
+        return modelFactoryController.reservasUsuario(usuario.id());
+    }
+
 }

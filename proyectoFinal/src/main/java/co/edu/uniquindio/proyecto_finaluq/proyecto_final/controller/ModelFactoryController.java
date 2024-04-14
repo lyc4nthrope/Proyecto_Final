@@ -246,4 +246,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         Persistencia.guardaRegistroLog(mensaje, nivel, accion);
     }
 
+    public List<ReservaDto> reservasUsuario(String id){
+        List<ReservaDto> res= mapper.getListaReservasDto(getSGRE().buscarReserva(id, 0, new ArrayList<>()));
+        return res;
+    }
+
 }

@@ -1,8 +1,12 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller;
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.services.IUsuarioControllerService;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Reserva;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioController implements IUsuarioControllerService {
@@ -31,6 +35,9 @@ public class UsuarioController implements IUsuarioControllerService {
     public boolean actualizarUsuario(String idActual, UsuarioDto usuarioDto) {
         return modelFactoryController.modificarUsuario(idActual, usuarioDto);
     }
+
+
+
 
 
 }

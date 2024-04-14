@@ -123,7 +123,7 @@ public class UseUsuarioController implements Initializable {
         return nombresEventos(eventosDto,nombreEventos,i+1);
     }
     private void setTablaReserva(){
-        reservasDto = FXCollections.observableArrayList(getList(sesionUsuario.reservasAsignados()));
+        reservasDto = FXCollections.observableArrayList(getList(reservaController.reservasUsuario(sesionUsuario)));
         tcEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().evento().nombreEvento()));
         tcFecha.setCellValueFactory(new PropertyValueFactory<ReservaDto, LocalDateTime>("fechaSolicitud"));
         tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
