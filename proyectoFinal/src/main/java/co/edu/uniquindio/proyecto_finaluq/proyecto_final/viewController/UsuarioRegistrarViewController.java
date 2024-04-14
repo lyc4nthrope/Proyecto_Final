@@ -32,81 +32,81 @@ public class UsuarioRegistrarViewController {
     @FXML
     private TextField txtNombre;
 
-    @FXML
-    void initialize() {
-        UsuarioRegistrarViewController usuarioRegistrarViewController = new UsuarioRegistrarViewController();
-    }
-    @FXML
-    void nuevoUsuarioAction(ActionEvent event) {
-        txtId.setText("Ingrese el ID");
-        txtNombre.setText("Ingrese el nombre");
-        txtCorreo.setText("Ingrese el correo electronico");
-        txtContraseña.setText("Ingrese la contraseña");
-        txtConfimarContraseña.setText("Ingrese la contraseña de nuevo");
-
-    }
-
-    @FXML
-    void agregarUsuarioAction(ActionEvent event) {
-        crearUsuario();
-    }
-
-    private void crearUsuario() {
-        //1. Capturar los datos
-        UsuarioDto usuarioDto = construirUsuarioDto();
-        //2. Validar la información
-        if(usuarioDto!=null && datosValidos(usuarioDto)){
-            if(usuarioController.agregarUsuario(usuarioDto)){
-                mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
-                limpiarCamposUsuario();
-            }else{
-                mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
-            }
-        }else{
-            mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
-        }
-
-    }
-
-    private UsuarioDto construirUsuarioDto() {
-        if (txtContraseña.getText().equals(txtConfimarContraseña.getText())){
-            return new UsuarioDto(
-                    txtId.getText(),
-                    txtNombre.getText(),
-                    txtCorreo.getText(),
-                    txtContraseña.getText(),
-                    new ArrayList<>(),
-                    0
-                    );
-        }
-        return null;
-    }
-
-    private void limpiarCamposUsuario() {
-        txtId.setText("");
-        txtNombre.setText("");
-        txtCorreo.setText("");
-        txtContraseña.setText("");
-        txtConfimarContraseña.setText("");
-    }
-
-    private boolean datosValidos(UsuarioDto usuarioDto) {
-        String mensaje = "";
-        if(usuarioDto.nombre() == null || usuarioDto.nombre().equals(""))
-            mensaje += "El nombre es invalido \n" ;
-        if(usuarioDto.id() == null || usuarioDto.id() .equals(""))
-            mensaje += "El ID es invalido \n" ;
-        if(usuarioDto.correo() == null || usuarioDto.correo().equals(""))
-            mensaje += "El correo es invalido \n" ;
-        if(usuarioDto.contrasenia() == null || usuarioDto.contrasenia().equals(""))
-            mensaje += "El correo es invalido \n" ;
-        if(mensaje.equals("")){
-            return true;
-        }else{
-            mostrarMensaje("Notificación cliente","Datos invalidos",mensaje, Alert.AlertType.WARNING);
-            return false;
-        }
-    }
+//    @FXML
+//    void initialize() {
+//        UsuarioRegistrarViewController usuarioRegistrarViewController = new UsuarioRegistrarViewController();
+//    }
+//    @FXML
+//    void nuevoUsuarioAction(ActionEvent event) {
+//        txtId.setText("Ingrese el ID");
+//        txtNombre.setText("Ingrese el nombre");
+//        txtCorreo.setText("Ingrese el correo electronico");
+//        txtContraseña.setText("Ingrese la contraseña");
+//        txtConfimarContraseña.setText("Ingrese la contraseña de nuevo");
+//
+//    }
+//
+//    @FXML
+//    void agregarUsuarioAction(ActionEvent event) {
+//        crearUsuario();
+//    }
+//
+//    private void crearUsuario() {
+//        //1. Capturar los datos
+//        UsuarioDto usuarioDto = construirUsuarioDto();
+//        //2. Validar la información
+//        if(usuarioDto!=null && datosValidos(usuarioDto)){
+//            if(usuarioController.agregarUsuario(usuarioDto)){
+//                mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
+//                limpiarCamposUsuario();
+//            }else{
+//                mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
+//            }
+//        }else{
+//            mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+//        }
+//
+//    }
+//
+//    private UsuarioDto construirUsuarioDto() {
+//        if (txtContraseña.getText().equals(txtConfimarContraseña.getText())){
+//            return new UsuarioDto(
+//                    txtId.getText(),
+//                    txtNombre.getText(),
+//                    txtCorreo.getText(),
+//                    txtContraseña.getText(),
+//                    new ArrayList<>(),
+//                    0
+//                    );
+//        }
+//        return null;
+//    }
+//
+//    private void limpiarCamposUsuario() {
+//        txtId.setText("");
+//        txtNombre.setText("");
+//        txtCorreo.setText("");
+//        txtContraseña.setText("");
+//        txtConfimarContraseña.setText("");
+//    }
+//
+//    private boolean datosValidos(UsuarioDto usuarioDto) {
+//        String mensaje = "";
+//        if(usuarioDto.nombre() == null || usuarioDto.nombre().equals(""))
+//            mensaje += "El nombre es invalido \n" ;
+//        if(usuarioDto.id() == null || usuarioDto.id() .equals(""))
+//            mensaje += "El ID es invalido \n" ;
+//        if(usuarioDto.correo() == null || usuarioDto.correo().equals(""))
+//            mensaje += "El correo es invalido \n" ;
+//        if(usuarioDto.contrasenia() == null || usuarioDto.contrasenia().equals(""))
+//            mensaje += "El correo es invalido \n" ;
+//        if(mensaje.equals("")){
+//            return true;
+//        }else{
+//            mostrarMensaje("Notificación cliente","Datos invalidos",mensaje, Alert.AlertType.WARNING);
+//            return false;
+//        }
+//    }
 
     private void mostrarMensaje(String titulo, String header, String contenido, Alert.AlertType alertType) {
         Alert aler = new Alert(alertType);

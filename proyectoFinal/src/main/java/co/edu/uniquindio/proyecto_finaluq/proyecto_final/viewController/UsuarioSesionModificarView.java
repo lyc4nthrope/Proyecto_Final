@@ -8,50 +8,54 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioContr
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
-
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMapper;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.interfaces.RSAKey;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javax.swing.JOptionPane;
-import java.util.concurrent.atomic.AtomicReferenceArray;
 
-public class UseUsuarioController implements Initializable {
+public class UsuarioSesionModificarView implements Initializable {
+
     ReservaController reservaController;
     UsuarioDto sesionUsuario;
-     ReservaDto reservaSeleccionada;
+    ReservaDto reservaSeleccionada;
     List<ReservaDto> reservasAsignadas;
 
-    ObservableList <ReservaDto>reservasDto;
-    public  void setSesionUsuario(UsuarioDto usuarioDto){this.sesionUsuario=usuarioDto;}
+    UsuarioController usuarioController = new UsuarioController();
+    ObservableList<ReservaDto> reservasDtoMod;
+    @FXML
+    private ComboBox<String> cmboxEvento;
 
     @FXML
-    private ComboBox<?> cmboxEvento;
+    private TextField txtCedulaUsuario;
 
     @FXML
-    private Label correoUsuario;
+    private TextField txtContnraseniaUsuario;
 
     @FXML
-    private Label idUsuario;
+    private TextField txtContraConfirmarUsuario;
 
     @FXML
-    private Label nombreUsuario;
+    private TextField txtCorreoUsuario;
 
+    @FXML
+    private TextField txtEspacios;
+
+    @FXML
+    private TextField txtNombreUsuario;
     @FXML
     private TableView<ReservaDto> tbReservas;
 
@@ -67,8 +71,6 @@ public class UseUsuarioController implements Initializable {
     @FXML
     private TableColumn<ReservaDto, String> tcFecha;
 
-    @FXML
-    private TextField txtEspacios;
 
 
     @Override
@@ -84,9 +86,11 @@ public class UseUsuarioController implements Initializable {
 
     private void setDatosUsuario(){
         this.sesionUsuario=SGREUtils.getUsuarioEnSesion();
-        nombreUsuario.setText(sesionUsuario.nombre());
-        idUsuario.setText(sesionUsuario.id());
-        correoUsuario.setText(sesionUsuario.correo());
+        txtNombreUsuario.setText(sesionUsuario.nombre());
+        txtCedulaUsuario.setText(sesionUsuario.id());
+        txtCorreoUsuario.setText(sesionUsuario.correo());
+        txtContnraseniaUsuario.setText(sesionUsuario.contrasenia());
+        txtContraConfirmarUsuario.setText(sesionUsuario.contrasenia());
     }
 
     private void setComboBox(){
@@ -107,12 +111,12 @@ public class UseUsuarioController implements Initializable {
     }
     private void setTablaReserva(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        reservasDto = FXCollections.observableArrayList(reservasAsignadas);
+        reservasDtoMod = FXCollections.observableArrayList(getList(reservasAsignadas));
         tcEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().evento().nombreEvento()));
         tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fechaSolicitud().format(formatter)));
         tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
         tcEspacios.setCellValueFactory(cellData -> new SimpleStringProperty(Integer.toString(cellData.getValue().espaciosSolicitados())));
-        tbReservas.setItems(reservasDto);
+        tbReservas.setItems(reservasDtoMod);
     }
 
     private List getList(List lista){
@@ -132,7 +136,6 @@ public class UseUsuarioController implements Initializable {
 
     }
 
-    @FXML
     private void aniadirReserva(){
         int espaciosSoli = Integer.parseInt(txtEspacios.getText());
         EventoDto eventoSoli = obtenerEvento();
@@ -141,30 +144,9 @@ public class UseUsuarioController implements Initializable {
             ReservaDto reservaDto = new ReservaDto(id,sesionUsuario,eventoSoli,LocalDateTime.now(),"PENDIENTE",espaciosSoli);
             if (reservaController.agregarReserva(reservaDto)) {
                 reservasAsignadas.add(reservaDto);
-                reservasDto.add(reservaDto);
+                reservasDtoMod.add(reservaDto);
                 limpiarCampos();
             }
-        }
-    }
-
-    @FXML
-    public void borrarReserva(){
-        boolean reservaEliminada = false;
-        if(reservaSeleccionada != null){
-            if(SGREApplication.mostrarMensajeConfirmacion("¿Estas seguro de Cancelar la Reserva?")){
-                reservaEliminada = reservaController.eliminarReserva(reservaSeleccionada.id());
-                if(reservaEliminada == true){
-                    reservasDto.remove(reservaSeleccionada);
-                    reservaSeleccionada = null;
-                    tbReservas.getSelectionModel().clearSelection();
-                    limpiarCampos();
-                    SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva eliminado", "El Reserva se ha eliminado con éxito", Alert.AlertType.INFORMATION);
-                }else{
-                    SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva no eliminado", "El Reserva no se puede eliminar", Alert.AlertType.ERROR);
-                }
-            }
-        }else{
-            SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva no seleccionado", "Seleccionado un Reserva de la lista", Alert.AlertType.WARNING);
         }
     }
 
@@ -198,43 +180,38 @@ public class UseUsuarioController implements Initializable {
         txtEspacios.setText("");
     }
 
-    @FXML
     private void modificarReserva(){
         if (reservaSeleccionada!=null){
-            try {
-                int espaciosAux = Integer.parseInt(txtEspacios.getText());
-                ReservaDto reservaAux= new ReservaDto(reservaSeleccionada.id(), reservaSeleccionada.usuario(), reservaSeleccionada.evento(),LocalDateTime.now(),"PENDIENTE", espaciosAux);
-                if (reservaController.actualizarReserva(reservaSeleccionada.id(),reservaAux)){
-                    reservasAsignadas.remove(reservaSeleccionada);
-                    reservasAsignadas.add(reservaAux);
-                    tbReservas.refresh();
-                    SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva actualizada", "El Reserva se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-                    limpiarCampos();
-                }else {
-                    SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva no actualizada", "El Reserva no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-                }
-            }catch (Exception e){
-                SGREApplication.mostrarMensaje("error","error con datos", "datos mal ingresado", Alert.AlertType.WARNING);
-            }
+            int espaciosAux = Integer.parseInt(txtEspacios.getText());
         }
     }
 
     @FXML
-    private void cierreSesion() throws IOException {
-        SGREUtils.setUsuarioEnSesion(null);
-        SGREApplication.changeScene("Inicio.fxml",null,null);
+    private void cancelar() throws IOException {
+        SGREApplication.changeScene("UsuarioUseView.fxml",null,null);
     }
-
     @FXML
-    private void modificarDatos() throws IOException {
-        String contraseniaConfir = JOptionPane.showInputDialog("Confirme que es usted ingresando su contrasenia por favor");
-       if(contraseniaConfir.equals(sesionUsuario.contrasenia())){
-           SGREApplication.changeScene("UsuarioModificarView.fxml",null,null);
-       }else {
-           SGREApplication.mostrarMensaje("Error de confirmacion", "La contrasenia es incorrecta","Por favor verifique que esta ingresando correctamente la contrasenia", Alert.AlertType.ERROR);
-       }
+    private void guardarModificar() throws IOException {
+        if(txtContnraseniaUsuario.getText().equals(txtContraConfirmarUsuario.getText())){
+            if(usuarioController.actualizarUsuario(SGREUtils.getUsuarioEnSesion().id(), obtenerUsuario())){
+                SGREUtils.setUsuarioEnSesion(obtenerUsuario());
+                SGREApplication.changeScene("UsuarioUseView.fxml", SGREUtils.getUsuarioEnSesion(),null);
+                SGREApplication.mostrarMensaje("Modificacion Completa","La modificacion fue hecha con exito","Sus datos fueron modificados correctamente", Alert.AlertType.INFORMATION);
+            }else {
+                SGREApplication.mostrarMensaje("Error en la Modificacion","Datos ingresados erroneos","Algun dato ya esta registrado verifique ingreso la modificacion de forma correcta", Alert.AlertType.ERROR);
+            }
+
+        }else {
+            SGREApplication.mostrarMensaje("Error en la Modificacion","Las contrasenias no coinciden","Por favor verifica que las contrasenias coincidan", Alert.AlertType.ERROR);
+        }
 
     }
 
-
+    private UsuarioDto obtenerUsuario(){
+        String nombreUsuario = txtNombreUsuario.getText();
+        String cedulaUsuario = txtCedulaUsuario.getText();
+        String correoUsuario = txtCorreoUsuario.getText();
+        String contraseñaUsuario = txtContnraseniaUsuario.getText();
+        return new UsuarioDto(cedulaUsuario,nombreUsuario,correoUsuario,contraseñaUsuario);
+    }
 }

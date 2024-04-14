@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.SGREApplication;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
@@ -17,7 +18,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class UsuarioViewController {
-
+    private SGREApplication main = new SGREApplication();
     UsuarioController usuarioControllerService;
     ObservableList<UsuarioDto> listaUsuariosDto = FXCollections.observableArrayList();
 
@@ -67,19 +68,19 @@ public class UsuarioViewController {
     @FXML
     private TableColumn<UsuarioDto, Integer> tcReservas;
 
-    @FXML
-    void initialize() {
-        usuarioControllerService = new UsuarioController();
-        intiView();
-    }
+//    @FXML
+//    void initialize() {
+//        usuarioControllerService = new UsuarioController();
+//        intiView();
+//    }
 
-    private void intiView() {
-        initDataBinding();
-        obtenerUsuarios();
-        tableUsuarios.getItems().clear();
-        tableUsuarios.setItems(listaUsuariosDto);
-        listenerSelection();
-    }
+//    private void intiView() {
+//        initDataBinding();
+//        obtenerUsuarios();
+//        tableUsuarios.getItems().clear();
+//        tableUsuarios.setItems(listaUsuariosDto);
+//        listenerSelection();
+//    }
 
     private void initDataBinding() {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
@@ -92,21 +93,21 @@ public class UsuarioViewController {
         listaUsuariosDto.addAll(usuarioControllerService.obtenerUsuarios());
     }
 
-    private void listenerSelection() {
-        tableUsuarios.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            usuarioSeleccionado = newSelection;
-            mostrarInformacionUsuario(usuarioSeleccionado);
-        });
-    }
+//    private void listenerSelection() {
+//        tableUsuarios.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+//            usuarioSeleccionado = newSelection;
+//            mostrarInformacionUsuario(usuarioSeleccionado);
+//        });
+//    }
 
-    private void mostrarInformacionUsuario(UsuarioDto usuarioSeleccionado) {
-        if(usuarioSeleccionado != null){
-            txtId.setText(usuarioSeleccionado.id());
-            txtNombre.setText(usuarioSeleccionado.nombre());
-            txtCorreo.setText(usuarioSeleccionado.correo());
-            txtReservas.setText(String.valueOf(usuarioSeleccionado.reservasAsignados()));
-        }
-    }
+//    private void mostrarInformacionUsuario(UsuarioDto usuarioSeleccionado) {
+//        if(usuarioSeleccionado != null){
+//            txtId.setText(usuarioSeleccionado.id());
+//            txtNombre.setText(usuarioSeleccionado.nombre());
+//            txtCorreo.setText(usuarioSeleccionado.correo());
+//            txtReservas.setText(String.valueOf(usuarioSeleccionado.reservasAsignados()));
+//        }
+//    }
 
     @FXML
     void nuevoUsuarioAction(ActionEvent event) {
@@ -116,39 +117,39 @@ public class UsuarioViewController {
         txtReservas.setText("Ingrese las reservas realizadas");
     }
 
-    @FXML
-    void agregarUsuarioAction(ActionEvent event) {
-        crearUsuario();
-    }
+//    @FXML
+//    void agregarUsuarioAction(ActionEvent event) {
+//        crearUsuario();
+//    }
+//
+//    @FXML
+//    void eliminarUsuarioAction(ActionEvent event) {
+//        eliminarUsuario();
+//    }
 
-    @FXML
-    void eliminarUsuarioAction(ActionEvent event) {
-        eliminarUsuario();
-    }
 
-
-    @FXML
-    void actualizarUsuarioAction(ActionEvent event) {
-        actualizarUsuario();
-    }
-
-    private void crearUsuario() {
-        //1. Capturar los datos
-        UsuarioDto usuarioDto = construirUsuarioDto();
-        //2. Validar la información
-        if(datosValidos(usuarioDto)){
-            if(usuarioControllerService.agregarUsuario(usuarioDto)){
-                listaUsuariosDto.add(usuarioDto);
-                mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
-                limpiarCamposUsuario();
-            }else{
-                mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
-            }
-        }else{
-            mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
-        }
-
-    }
+//    @FXML
+//    void actualizarUsuarioAction(ActionEvent event) {
+//        actualizarUsuario();
+//    }
+//
+//    private void crearUsuario() {
+//        //1. Capturar los datos
+//        UsuarioDto usuarioDto = construirUsuarioDto();
+//        //2. Validar la información
+//        if(datosValidos(usuarioDto)){
+//            if(usuarioControllerService.agregarUsuario(usuarioDto)){
+//                listaUsuariosDto.add(usuarioDto);
+//                mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
+//                limpiarCamposUsuario();
+//            }else{
+//                mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
+//            }
+//        }else{
+//            mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+//        }
+//
+//    }
 
     private void eliminarUsuario() {
         boolean usuarioEliminado = false;
@@ -170,42 +171,42 @@ public class UsuarioViewController {
         }
     }
 
-    private void actualizarUsuario() {
-        boolean clienteActualizado = false;
-        //1. Capturar los datos
-        String idActual = usuarioSeleccionado.id();
-        UsuarioDto usuarioDto = construirUsuarioDto();
-        //2. verificar el empleado seleccionado
-        if(usuarioSeleccionado != null){
-            //3. Validar la información
-            if(datosValidos(usuarioSeleccionado)){
-                clienteActualizado = usuarioControllerService.actualizarUsuario(idActual,usuarioDto);
-                if(clienteActualizado){
-                    listaUsuariosDto.remove(usuarioSeleccionado);
-                    listaUsuariosDto.add(usuarioDto);
-                    tableUsuarios.refresh();
-                    mostrarMensaje("Notificación usuario", "Usuario actualizado", "El usuario se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-                    limpiarCamposUsuario();
-                }else{
-                    mostrarMensaje("Notificación usuario", "Usuario no actualizado", "El usuario no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-                }
-            }else{
-                mostrarMensaje("Notificación usuario", "Usuario no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
-            }
+//    private void actualizarUsuario() {
+//        boolean clienteActualizado = false;
+//        //1. Capturar los datos
+//        String idActual = usuarioSeleccionado.id();
+//        UsuarioDto usuarioDto = construirUsuarioDto();
+//        //2. verificar el empleado seleccionado
+//        if(usuarioSeleccionado != null){
+//            //3. Validar la información
+//            if(datosValidos(usuarioSeleccionado)){
+//                clienteActualizado = usuarioControllerService.actualizarUsuario(idActual,usuarioDto);
+//                if(clienteActualizado){
+//                    listaUsuariosDto.remove(usuarioSeleccionado);
+//                    listaUsuariosDto.add(usuarioDto);
+//                    tableUsuarios.refresh();
+//                    mostrarMensaje("Notificación usuario", "Usuario actualizado", "El usuario se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+//                    limpiarCamposUsuario();
+//                }else{
+//                    mostrarMensaje("Notificación usuario", "Usuario no actualizado", "El usuario no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+//                }
+//            }else{
+//                mostrarMensaje("Notificación usuario", "Usuario no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+//            }
+//
+//        }
+//    }
 
-        }
-    }
-
-    private UsuarioDto construirUsuarioDto() {
-        return new UsuarioDto(
-                txtId.getText(),
-                txtNombre.getText(),
-                txtCorreo.getText(),
-                "",
-                new ArrayList<>(),
-                0
-                );
-    }
+//    private UsuarioDto construirUsuarioDto() {
+//        return new UsuarioDto(
+//                txtId.getText(),
+//                txtNombre.getText(),
+//                txtCorreo.getText(),
+//                "",
+//                new ArrayList<>(),
+//                0
+//                );
+//    }
 
     private void limpiarCamposUsuario() {
         txtId.setText("");

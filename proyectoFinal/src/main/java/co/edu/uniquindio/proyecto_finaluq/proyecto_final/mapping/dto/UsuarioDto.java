@@ -9,9 +9,5 @@ public record UsuarioDto(
         String id,
         String nombre,
         String correo,
-        String contrasenia,
-        List<ReservaDto> reservasAsignados,
-        int cantidadReservas) {
-    public void cantidadReservas(int i) {
-    }
+        String contrasenia) {
 }

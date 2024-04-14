@@ -10,30 +10,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="563.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.UsuarioUseViewController">
+<AnchorPane prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.UsuarioSesionModificarView">
    <children>
       <SplitPane dividerPositions="0.4" layoutX="249.0" layoutY="217.0" prefHeight="563.0" prefWidth="747.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <Label fx:id="nombreText" layoutX="18.0" layoutY="108.0" text="Nombre:" />
-                  <Label fx:id="idText" layoutX="34.0" layoutY="142.0" text="ID:" />
-                  <Label fx:id="correoText" layoutX="22.0" layoutY="176.0" text="Correo:" />
-                  <Button fx:id="btnModificarDatos" layoutX="62.0" layoutY="400.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" text="Regresar" />
-                  <Button fx:id="btnSalir" layoutX="108.0" layoutY="459.0" mnemonicParsing="false" text="Salir" />
-                  <Label fx:id="correoText1" layoutX="12.0" layoutY="241.0" text="Confirmar" />
-                  <Label fx:id="correoText2" layoutX="10.0" layoutY="258.0" text="Contraseña:" />
-                  <TextField layoutX="73.0" layoutY="104.0" prefHeight="25.0" prefWidth="211.0" />
-                  <TextField layoutX="73.0" layoutY="138.0" prefHeight="25.0" prefWidth="211.0" />
-                  <TextField layoutX="73.0" layoutY="172.0" prefHeight="25.0" prefWidth="211.0" />
-                  <TextField layoutX="73.0" layoutY="245.0" prefHeight="25.0" prefWidth="211.0" />
-                  <Label fx:id="correoText21" layoutX="8.0" layoutY="213.0" text="Contraseña:" />
-                  <TextField layoutX="73.0" layoutY="209.0" prefHeight="25.0" prefWidth="211.0" />
+                  <Label fx:id="nombreText" layoutX="18.0" layoutY="69.0" text="Nombre:" />
+                  <Label fx:id="idText" layoutX="34.0" layoutY="130.0" text="ID:" />
+                  <Label fx:id="correoText" layoutX="22.0" layoutY="189.0" text="Correo:" />
+                  <Button fx:id="btnModificarDatos" layoutX="75.0" layoutY="378.0" mnemonicParsing="false" onAction="#guardarModificar" prefHeight="25.0" prefWidth="138.0" text="Guardar Modificacion" />
+                  <Button fx:id="btnSalir" layoutX="109.0" layoutY="442.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="71.0" text="Cancelar" />
+                  <Label fx:id="correoText1" layoutX="9.0" layoutY="294.0" text="Confirmar" />
+                  <Label fx:id="correoText2" layoutX="7.0" layoutY="311.0" text="Contraseña:" />
+                  <TextField fx:id="txtNombreUsuario" layoutX="73.0" layoutY="65.0" prefHeight="25.0" prefWidth="211.0" />
+                  <TextField fx:id="txtCedulaUsuario" layoutX="73.0" layoutY="126.0" prefHeight="25.0" prefWidth="211.0" />
+                  <TextField fx:id="txtCorreoUsuario" layoutX="73.0" layoutY="185.0" prefHeight="25.0" prefWidth="211.0" />
+                  <TextField fx:id="txtContraConfirmarUsuario" layoutX="74.0" layoutY="298.0" prefHeight="25.0" prefWidth="211.0" />
+                  <Label fx:id="correoText21" layoutX="7.0" layoutY="243.0" text="Contraseña:" />
+                  <TextField fx:id="txtContnraseniaUsuario" layoutX="74.0" layoutY="239.0" prefHeight="25.0" prefWidth="211.0" />
                </children>
             </AnchorPane>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView fx:id="tableUsuariosUse" layoutX="106.0" layoutY="45.0" prefHeight="333.0" prefWidth="444.0" AnchorPane.bottomAnchor="183.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
+                  <TableView fx:id="tbReservas" layoutX="106.0" layoutY="45.0" prefHeight="333.0" prefWidth="444.0" AnchorPane.bottomAnchor="183.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
                      <columns>
                         <TableColumn fx:id="tcEvento" prefWidth="111.0" text="Evento" />
                         <TableColumn fx:id="tcFecha" prefWidth="111.0" text="Fecha" />
@@ -41,18 +41,18 @@
                         <TableColumn fx:id="tcEspacios" prefWidth="111.0" text="Espacios" />
                      </columns>
                   </TableView>
-                  <Button fx:id="btnAgregarReserva" layoutX="44.0" layoutY="493.0" mnemonicParsing="false" text="Añadir Reserva" />
-                  <Button fx:id="btnCancelarReserva" layoutX="168.0" layoutY="493.0" mnemonicParsing="false" text="Cancelar Reserva" />
+                  <Button fx:id="btnAgregarReserva" layoutX="45.0" layoutY="444.0" mnemonicParsing="false" text="Añadir Reserva" />
+                  <Button fx:id="btnCancelarReserva" layoutX="170.0" layoutY="444.0" mnemonicParsing="false" text="Cancelar Reserva" />
                   <Label layoutX="200.0" layoutY="14.0" text="Reservas">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="28.0" layoutY="404.0" text="Evento:" />
-                  <TextField fx:id="txtEspacios" layoutX="79.0" layoutY="435.0" />
-                  <ComboBox fx:id="cmboxEvento" layoutX="78.0" layoutY="400.0" prefWidth="150.0" />
-                  <Label layoutX="28.0" layoutY="439.0" text="Espacios:" />
-                  <Button fx:id="btnModificarEspacios" layoutX="304.0" layoutY="493.0" mnemonicParsing="false" text="Modificar Espacios" />
+                  <Label layoutX="25.0" layoutY="349.0" text="Evento:" />
+                  <TextField fx:id="txtEspacios" layoutX="80.0" layoutY="390.0" />
+                  <ComboBox fx:id="cmboxEvento" layoutX="79.0" layoutY="345.0" prefWidth="150.0" />
+                  <Label layoutX="20.0" layoutY="394.0" text="Espacios:" />
+                  <Button fx:id="btnModificarEspacios" layoutX="300.0" layoutY="444.0" mnemonicParsing="false" text="Modificar Espacios" />
                </children>
             </AnchorPane>
          </items>

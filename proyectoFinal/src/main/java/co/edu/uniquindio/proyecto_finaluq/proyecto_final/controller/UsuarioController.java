@@ -32,5 +32,8 @@ public class UsuarioController implements IUsuarioControllerService {
         return modelFactoryController.modificarUsuario(idActual, usuarioDto);
     }
 
+    public UsuarioDto obtenerUsuarioId(String id){
+        return  modelFactoryController.obtenerUsuarioId(id);
+    }
 
 }

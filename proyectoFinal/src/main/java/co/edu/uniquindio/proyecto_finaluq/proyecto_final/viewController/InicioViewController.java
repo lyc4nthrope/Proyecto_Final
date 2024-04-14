@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class InicioViewController {
-    SGREApplication principal = new SGREApplication();
     InicioController inicioController = new InicioController();
     @FXML
     public TextField txtContrasenia;
@@ -33,7 +32,7 @@ public class InicioViewController {
 //        Scene scene = new Scene(root);
 //        stage.setScene(scene);
 //        stage.show();
-        principal.changeScene("UsuarioUseView.fxml", usuario,null);
+        SGREApplication.changeScene("UsuarioUseView.fxml", usuario,null);
     }
 
     public void switchEmpleadoUse(ActionEvent event, EmpleadoDto empleadoDto) throws IOException {
@@ -64,7 +63,7 @@ public class InicioViewController {
 
     @FXML
     void onRegistrarseButtonAction(ActionEvent event) throws IOException{
-        principal.changeScene("UsuarioRegistrarView.fxml", null,null);
+        SGREApplication.changeScene("UsuarioRegistrarView.fxml", null,null);
     }
 
     public void salir(){

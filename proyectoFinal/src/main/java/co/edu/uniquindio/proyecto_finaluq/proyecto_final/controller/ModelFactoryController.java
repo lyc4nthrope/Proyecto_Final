@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller;
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.SGREApplication;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.services.IModelFactoryController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.exceptions.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.*;
@@ -7,6 +8,7 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMap
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.*;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.Persistencia;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
+import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -153,7 +155,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try {
             eliminado=getSGRE().eliminarReserva(id);
         }catch (ReservaException e){
-            e.printStackTrace();
+            SGREApplication.mostrarMensaje("error","error","error", Alert.AlertType.ERROR);
         }
         return eliminado;
     }
@@ -244,6 +246,14 @@ SGREMapper mapper =SGREMapper.INSTANCE;
 
     public void registrarAccionesSistema(String mensaje, int nivel, String accion) {
         Persistencia.guardaRegistroLog(mensaje, nivel, accion);
+    }
+
+    public UsuarioDto obtenerUsuarioId(String id){
+        return mapper.usuarioToUsuarioDto(getSGRE().obtenerUsuarioId(id, null, 0,false));
+    }
+
+    public List<ReservaDto> getReservasUsuario(String idUsuario){
+        return mapper.getListaReservasDto(getSGRE().reservasUsuario(idUsuario,0,new ArrayList<>()));
     }
 
 }
