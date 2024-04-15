@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="intento guardar y leer archivos">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/UsuarioModificarViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/UsuarioModificarViewController.java" afterDir="false" />
-    </list>
+    <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="intento guardar y leer archivos" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -201,7 +198,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/RegistrarViewController.java</url>
           <line>42</line>
-          <properties class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.RegistrarViewController">
+          <properties class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController.RegistrarViewController" method="registrarUsuario">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
