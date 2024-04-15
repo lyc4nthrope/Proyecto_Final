@@ -122,3 +122,5 @@ abr. 14, 2024 6:20:45 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.u
 INFO: inicioSesión,Inicio de sesión,2024-04-14
 abr. 14, 2024 6:21:27 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
 INFO: inicioSesión,Inicio de sesión,2024-04-14
+abr. 15, 2024 4:16:13 P. M. co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-04-15

@@ -29,7 +29,7 @@ public class Persistencia {
         for(Usuario usuario:listaUsuarios)
         {
             contenido += usuario.getId()+","+usuario.getNombre()+","+usuario.getCorreo()+","+usuario.getContrasenia()
-                    +","+usuario.getReservasAsignados() +"\n";
+                    +"\n";
         }
         ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_USUARIOS, contenido, false);
     }
@@ -41,8 +41,7 @@ public class Persistencia {
             contenido+= empleado.getId()+
                     ","+empleado.getNombre()+
                     ","+empleado.getCorreo()+
-                    ","+empleado.getContrasenia()+
-                    ","+empleado.getEventosAsignados() +"\n";
+                    ","+empleado.getContrasenia()+"\n";
         }
         ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_EMPLEADOS, contenido, false);
     }
