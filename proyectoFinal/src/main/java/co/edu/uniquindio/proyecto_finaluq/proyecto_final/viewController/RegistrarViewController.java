@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RegistrarViewController{
-    private SGREApplication main = new SGREApplication();
 
     @FXML
     private TextField txtConfimarContraseña;
@@ -43,27 +42,26 @@ public class RegistrarViewController{
     private void registrarUsuario(ActionEvent event) throws IOException {
         if (!txtNombre.getText().trim().isEmpty() && !txtId.getText().trim().isEmpty() && !txtCorreo.getText().trim().isEmpty() && !txtContraseña.getText().trim().isEmpty() && !txtConfimarContraseña.getText().trim().isEmpty()){
             if (!txtContraseña.getText().equals(txtConfimarContraseña.getText())){
-            main.mostrarMensaje("Error","Contraseñas no coinciden", "Las contraseñas no coinciden asegurese de que ingreso correctamente", Alert.AlertType.ERROR );
+            SGREApplication.mostrarMensaje("Error","Contraseñas no coinciden", "Las contraseñas no coinciden asegurese de que ingreso correctamente", Alert.AlertType.ERROR );
             }else {
                 // registrar usuario con comprobacion
                 UsuarioController usuarioController = new UsuarioController();
                 if (usuarioController.agregarUsuario(obtenerUsuario())){
                     vaciarCampos();
-                    main.mostrarMensaje("Registro completo", "El registro se realizo correctamente", "Se registro correctamente, ahora inicia sesion!", Alert.AlertType.INFORMATION);
+                    SGREApplication.mostrarMensaje("Registro completo", "El registro se realizo correctamente", "Se registro correctamente, ahora inicia sesion!", Alert.AlertType.INFORMATION);
                     volver();
                 }else{
-                    main.mostrarMensaje("Error al registrar", "Hubo un error al registrar", "Se genero un error al registrar, posiblemente tu cedula ya este registrado o tu correo ya este en uso", Alert.AlertType.ERROR);
+                    SGREApplication.mostrarMensaje("Error al registrar", "Hubo un error al registrar", "Se genero un error al registrar, posiblemente tu cedula ya este registrado o tu correo ya este en uso", Alert.AlertType.ERROR);
                 }
             }
         }else {
-            main.mostrarMensaje("Error", "Campos vacios", "Algun campo no ha sido llenado, por favor ingrese todos los datos", Alert.AlertType.ERROR);
+            SGREApplication.mostrarMensaje("Error", "Campos vacios", "Algun campo no ha sido llenado, por favor ingrese todos los datos", Alert.AlertType.ERROR);
         }
     }
 
     @FXML
     private void volver() throws IOException {
-        SGREApplication principal=new SGREApplication();
-        principal.changeScene("Inicio.fxml",null,null);
+        SGREApplication.changeScene("Inicio.fxml",null,null);
     }
 
 
@@ -72,7 +70,7 @@ public class RegistrarViewController{
         String cedulaUsuario = txtId.getText();
         String correoUsuario = txtCorreo.getText();
         String contraseñaUsuario = txtContraseña.getText();
-        return new UsuarioDto(cedulaUsuario,nombreUsuario,correoUsuario,contraseñaUsuario,new ArrayList<>(),0);
+        return new UsuarioDto(cedulaUsuario,nombreUsuario,correoUsuario,contraseñaUsuario);
     }
 
     private void vaciarCampos(){
