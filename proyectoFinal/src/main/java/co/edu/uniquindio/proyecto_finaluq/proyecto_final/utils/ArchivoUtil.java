@@ -1,5 +1,7 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.Calendar;
 import java.util.logging.FileHandler;
@@ -116,4 +118,25 @@ public class ArchivoUtil {
         }
     }
 
+    public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
+
+        XMLDecoder decodificadorXML;
+        Object objetoXML;
+
+        decodificadorXML = new XMLDecoder(new FileInputStream(rutaArchivo));
+        objetoXML = decodificadorXML.readObject();
+        decodificadorXML.close();
+        return objetoXML;
+
+    }
+
+    public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
+
+        XMLEncoder codificadorXML;
+
+        codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
+        codificadorXML.writeObject(objeto);
+        codificadorXML.close();
+
+    }
 }

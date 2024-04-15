@@ -117,7 +117,7 @@ public class Persistencia {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return banco;
+        return sgre;
 
     }
 
