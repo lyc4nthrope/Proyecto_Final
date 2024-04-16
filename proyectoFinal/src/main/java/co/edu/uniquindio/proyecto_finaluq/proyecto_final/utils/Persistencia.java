@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Empleado;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.SGRE;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Usuario;
 
 import java.io.FileNotFoundException;
@@ -20,6 +21,23 @@ public class Persistencia {
     public static void guardaRegistroLog(String mensajeLog, int nivel, String accion)
     {
         ArchivoUtil.guardarRegistroLog(mensajeLog, nivel, accion, RUTA_ARCHIVO_LOG);
+    }
+
+    public static void cargarDatosArchivos(SGRE sgre) throws FileNotFoundException, IOException {
+        //cargar archivo de clientes
+        ArrayList<Usuario> usuariosCargados = cargarUsuario();
+        if(usuariosCargados.size() > 0)
+            sgre.getListaUsuarios().addAll(usuariosCargados);
+
+        //cargar archivos empleados
+        ArrayList<Empleado> empleadosCargados = cargarEmpleados();
+        if(empleadosCargados.size() > 0)
+            sgre.getListaEmpleados().addAll(empleadosCargados);
+
+        //cargar archivo eventos
+
+        //cargar archivo reservas
+
     }
 
 
@@ -47,42 +65,41 @@ public class Persistencia {
     }
 
 
-//    public static ArrayList<Usuario> cargarUsuario() throws FileNotFoundException, IOException
-//    {
-//        ArrayList<Usuario> usuarios =new ArrayList<Usuario>();
-//        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_USUARIOS);
-//        String linea="";
-//        for (int i = 0; i < contenido.size(); i++)
-//        {
-//            linea = contenido.get(i);
+    public static ArrayList<Usuario> cargarUsuario() throws FileNotFoundException, IOException
+    {
+        ArrayList<Usuario> usuarios =new ArrayList<Usuario>();
+        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_USUARIOS);
+        String linea="";
+        for (int i = 0; i < contenido.size(); i++)
+        {
+            linea = contenido.get(i);
 //            Usuario usuario = new Usuario();
 //            usuario.setId(linea.split(",")[0]);
 //            usuario.setNombre(linea.split(",")[1]);
 //            usuario.setCorreo(linea.split(",")[2]);
 //            usuario.setContrasenia(linea.split(",")[3]);
-//            usuario.setReservasAsignados(linea.split(",")[4]);
 //            usuarios.add(usuario);
-//        }
-//        return usuarios;
-//    }
+        }
 
-//    public static ArrayList<Empleado> cargarEmpleados() throws FileNotFoundException, IOException {
-//        ArrayList<Empleado> empleados =new ArrayList<Empleado>();
-//        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_EMPLEADOS);
-//        String linea="";
-//        for (int i = 0; i < contenido.size(); i++)
-//        {
+        return usuarios;
+    }
+
+    public static ArrayList<Empleado> cargarEmpleados() throws FileNotFoundException, IOException {
+        ArrayList<Empleado> empleados =new ArrayList<Empleado>();
+        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_EMPLEADOS);
+        String linea="";
+        for (int i = 0; i < contenido.size(); i++)
+        {
 //            linea = contenido.get(i);
 //            Empleado empleado = new Empleado();
 //            empleado.setId(linea.split(",")[0]);
 //            empleado.setNombre(linea.split(",")[1]);
 //            empleado.setCorreo(linea.split(",")[2]);
 //            empleado.setContrasenia(linea.split(",")[3]);
-//            empleado.setEventosAsignados(linea.split(",")[4]);
 //            empleados.add(empleado);
-//        }
-//        return empleados;
-//    }
+        }
+        return empleados;
+    }
 
 
 

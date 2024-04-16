@@ -30,11 +30,40 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     public ModelFactoryController() {
         System.out.println("invocación clase singleton");
 
+        //2. Cargar los datos de los archivos
+		cargarDatosDesdeArchivos();
+
+        //3. Guardar y Cargar el recurso serializable binario
+//		cargarResourceBinario();
+//		guardarResourceBinario();
+
+        //4. Guardar y Cargar el recurso serializable XML
+//		guardarResourceXML();
+
         if(sgre == null){
             cargarDatosBase();
+            salvarDatosPrueba();
             //guardarResourceXML();
         }
         registrarAccionesSistema("Inicio de sesión", 1, "inicioSesión");
+    }
+
+    private void cargarDatosDesdeArchivos() {
+        sgre = new SGRE();
+        try {
+            Persistencia.cargarDatosArchivos(sgre);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void salvarDatosPrueba() {
+        try {
+            Persistencia.guardarEmpleados(getSGRE().getListaEmpleados());
+            Persistencia.guardarUsuario(getSGRE().getListaUsuarios());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void cargarDatosBase() {
@@ -65,14 +94,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         }
     }
 
-    private void salvarDatosPrueba() {
-        try {
-            Persistencia.guardarEmpleados(getSGRE().getListaEmpleados());
-            Persistencia.guardarUsuario(getSGRE().getListaUsuarios());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
     @Override
     public boolean eliminarEmpleado(String id) {
