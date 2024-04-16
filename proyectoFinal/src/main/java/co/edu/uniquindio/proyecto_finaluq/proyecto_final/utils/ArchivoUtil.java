@@ -1,6 +1,8 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils;
 
+import java.beans.*;
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.FileHandler;
@@ -106,4 +108,76 @@ public class ArchivoUtil {
 
         fechaSistema = año+"-"+mesN+"-"+diaN;
     }
+
+    public static Object cargarRecursoSerializado(String rutaArchivo)throws Exception
+    {
+        Object aux = null;
+//		Empresa empresa = null;
+        ObjectInputStream ois = null;
+        try {
+            // Se crea un ObjectInputStream
+            ois = new ObjectInputStream(new FileInputStream(rutaArchivo));
+
+            aux = ois.readObject();
+
+        } catch (Exception e2) {
+            throw e2;
+        } finally {
+            if (ois != null)
+                ois.close();
+        }
+        return aux;
+    }
+
+
+    public static void salvarRecursoSerializado(String rutaArchivo, Object object)	throws Exception {
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream(rutaArchivo));
+            oos.writeObject(object);
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (oos != null)
+                oos.close();
+        }
+    }
+
+    public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
+
+        XMLDecoder decodificadorXML;
+        Object objetoXML;
+
+        decodificadorXML = new XMLDecoder(new FileInputStream(rutaArchivo));
+        objetoXML = decodificadorXML.readObject();
+        decodificadorXML.close();
+        return objetoXML;
+
+    }
+
+    public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
+
+        XMLEncoder codificadorXML;
+        codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
+        codificadorXML.setPersistenceDelegate(LocalDateTime.class, new PersistenceDelegate() {
+
+            @Override
+            protected boolean mutatesTo(Object oldInstance, Object newInstance){
+                return oldInstance.equals(newInstance);
+            }
+            @Override
+            protected Expression instantiate(Object oldInstance, Encoder out) {
+                return  new Expression(oldInstance,LocalDateTime.class,"parse",new Object[]{
+                        oldInstance.toString()
+                });
+            }
+        });
+
+        codificadorXML.writeObject(objeto);
+        codificadorXML.close();
+
+    }
+
+
+
 }

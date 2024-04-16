@@ -2,10 +2,12 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.model;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.exceptions.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SGRE {
+public class SGRE implements Serializable {
+    private static final long serialVersionUID=1L;
     ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     ArrayList<Reserva> listaReservas = new ArrayList<>();

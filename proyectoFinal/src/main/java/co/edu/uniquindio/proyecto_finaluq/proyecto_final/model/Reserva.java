@@ -1,8 +1,10 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Reserva {
+public class Reserva implements Serializable {
+    private static final long serialVersionUID=1L;
     private String id;
     private Usuario usuario;
     private Evento evento;

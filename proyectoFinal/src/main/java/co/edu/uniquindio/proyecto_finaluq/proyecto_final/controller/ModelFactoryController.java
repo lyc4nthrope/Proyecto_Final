@@ -31,17 +31,16 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         System.out.println("invocación clase singleton");
         if(sgre == null){
             //2. Cargar los datos de los archivos
-            cargarDatosDesdeArchivos();
+//            cargarDatosDesdeArchivos();
 //            salvarDatosPrueba();
             //3. Guardar y Cargar el recurso serializable binario
 //		cargarResourceBinario();
 //		guardarResourceBinario();
 
             //4. Guardar y Cargar el recurso serializable XML
-//		guardarResourceXML();
-//            cargarDatosBase();
-            salvarDatosPrueba();
-            //guardarResourceXML();
+            cargarResourceXML();
+//            guardarResourceXML();
+
         }
         registrarAccionesSistema("Inicio de sesión", 1, "inicioSesión");
     }
@@ -64,6 +63,22 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void cargarResourceXML() {
+        sgre = Persistencia.cargarRecursoSGREXML();
+    }
+
+    private void guardarResourceXML() {
+        Persistencia.guardarRecursoSGREXML(sgre);
+    }
+
+    private void cargarResourceBinario() {
+        sgre = Persistencia.cargarRecursoSGREBinario();
+    }
+
+    private void guardarResourceBinario() {
+        Persistencia.guardarRecursoSGREBinario(sgre);
     }
 
     private void cargarDatosBase() {
@@ -91,7 +106,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
                 Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
                 getSGRE().getListaEmpleados().add(empleado);
                 registrarAccionesSistema("Se agrego el empleado"+ empleado.getNombre(),1,"agregarEmpleado");
-                salvarDatosPrueba();
+//                salvarDatosPrueba();
+//                guardarResourceBinario();
+                guardarResourceXML();
             }
             return true;
         }catch (EmpleadoException e){
@@ -107,7 +124,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarEmpleado(id);
-            salvarDatosPrueba();
+//            salvarDatosPrueba();
+//            guardarResourceBinario();
+            guardarResourceXML();
         }catch (EmpleadoException e){
             e.printStackTrace();
         }
@@ -118,7 +137,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
             getSGRE().modificarEmpleado(idActual,empleado);
-            salvarDatosPrueba();
+//            salvarDatosPrueba();
+//            guardarResourceBinario();
+            guardarResourceXML();
             return true;
         }catch (EmpleadoException e){
             e.printStackTrace();
@@ -137,7 +158,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!(sgre.verficarExisteUsuario(usuarioDto.id())) && !(sgre.datoRegistrado(usuarioDto.correo(),usuarioDto.id()))){
                 Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
                 getSGRE().getListaUsuarios().add(usuario);
-                salvarDatosPrueba();
+//                salvarDatosPrueba();
+//                guardarResourceBinario();
+                guardarResourceXML();
                 return true;
             }
         }catch (UsuarioException e){
@@ -152,7 +175,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarUsuario(id);
-            salvarDatosPrueba();
+//            salvarDatosPrueba();
+//            guardarResourceBinario();
+            guardarResourceXML();
         }catch (UsuarioException e){
             e.printStackTrace();
         }
@@ -164,7 +189,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
             getSGRE().modificarUsuario(idActual,usuario);
-            salvarDatosPrueba();
+//            salvarDatosPrueba();
+//            guardarResourceBinario();
+            guardarResourceXML();
             return true;
         }catch (UsuarioException e){
             e.printStackTrace();
@@ -183,7 +210,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!sgre.verficarExisteReserva(reservaDto.id())){
                 Reserva reserva = mapper.reservaDtoToReserva(reservaDto);
                 getSGRE().getListaReservas().add(reserva);
-                salvarDatosPrueba();
+//                salvarDatosPrueba();
+//                guardarResourceBinario();
+                guardarResourceXML();
             }
             return true;
         }catch (ReservaException e){
@@ -197,7 +226,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarReserva(id);
-            salvarDatosPrueba();
+//            salvarDatosPrueba();
+//            guardarResourceBinario();
+            guardarResourceXML();
         }catch (ReservaException e){
             SGREApplication.mostrarMensaje("error","error","error", Alert.AlertType.ERROR);
         }
@@ -209,7 +240,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Reserva reserva = mapper.reservaDtoToReserva(reservaDto);
             getSGRE().modificarReserva(idActual,reserva);
-            salvarDatosPrueba();
+//            salvarDatosPrueba();
+//            guardarResourceBinario();
+            guardarResourceXML();
             return true;
         }catch (ReservaException e){
             e.printStackTrace();
@@ -228,7 +261,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!sgre.verficarExisteEvento(eventoDto.id())){
                 Evento evento = mapper.eventoDtoToEvento(eventoDto);
                 getSGRE().getListaEventos().add(evento);
-                salvarDatosPrueba();
+//                salvarDatosPrueba();
+//                guardarResourceBinario();
+                guardarResourceXML();
             }
             return true;
         }catch (EventoException e){
@@ -242,7 +277,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarEvento(id);
-            salvarDatosPrueba();
+//            salvarDatosPrueba();
+//            guardarResourceBinario();
+            guardarResourceXML();
         }catch (EventoException e){
             e.printStackTrace();
         }
@@ -257,7 +294,9 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Evento evento = mapper.eventoDtoToEvento(eventoDto);
             getSGRE().modificarEvento(idActual,evento);
-            salvarDatosPrueba();
+//            salvarDatosPrueba();
+//            guardarResourceBinario();
+            guardarResourceXML();
             return true;
         }catch (EventoException e){
             e.printStackTrace();

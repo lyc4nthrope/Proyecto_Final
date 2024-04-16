@@ -1,6 +1,10 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.model;
 
-public class Admin {
+import java.io.Serializable;
+
+public class Admin implements Serializable {
+
+    private static final long serialVersionUID=1L;
     private String id;
     private String nombre;
     private String correo;
