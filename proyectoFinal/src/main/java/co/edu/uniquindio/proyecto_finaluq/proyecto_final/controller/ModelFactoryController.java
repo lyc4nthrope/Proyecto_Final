@@ -29,19 +29,17 @@ SGREMapper mapper =SGREMapper.INSTANCE;
 
     public ModelFactoryController() {
         System.out.println("invocación clase singleton");
-
-        //2. Cargar los datos de los archivos
-		cargarDatosDesdeArchivos();
-
-        //3. Guardar y Cargar el recurso serializable binario
+        if(sgre == null){
+            //2. Cargar los datos de los archivos
+            cargarDatosDesdeArchivos();
+//            salvarDatosPrueba();
+            //3. Guardar y Cargar el recurso serializable binario
 //		cargarResourceBinario();
 //		guardarResourceBinario();
 
-        //4. Guardar y Cargar el recurso serializable XML
+            //4. Guardar y Cargar el recurso serializable XML
 //		guardarResourceXML();
-
-        if(sgre == null){
-            cargarDatosBase();
+//            cargarDatosBase();
             salvarDatosPrueba();
             //guardarResourceXML();
         }
@@ -60,14 +58,21 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     private void salvarDatosPrueba() {
         try {
             Persistencia.guardarEmpleados(getSGRE().getListaEmpleados());
-            Persistencia.guardarUsuario(getSGRE().getListaUsuarios());
+            Persistencia.guardarUsuarios(getSGRE().getListaUsuarios());
+            Persistencia.guardarEventos(getSGRE().getListaEventos());
+            Persistencia.guardarReservas(getSGRE().getListaReservas());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     private void cargarDatosBase() {
+
+
         sgre = SGREUtils.inicializarDatos();
+
+
+
     }
 
     public SGRE getSGRE(){return sgre;}
@@ -86,6 +91,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
                 Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
                 getSGRE().getListaEmpleados().add(empleado);
                 registrarAccionesSistema("Se agrego el empleado"+ empleado.getNombre(),1,"agregarEmpleado");
+                salvarDatosPrueba();
             }
             return true;
         }catch (EmpleadoException e){
@@ -101,6 +107,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarEmpleado(id);
+            salvarDatosPrueba();
         }catch (EmpleadoException e){
             e.printStackTrace();
         }
@@ -111,6 +118,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
             getSGRE().modificarEmpleado(idActual,empleado);
+            salvarDatosPrueba();
             return true;
         }catch (EmpleadoException e){
             e.printStackTrace();
@@ -129,6 +137,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!(sgre.verficarExisteUsuario(usuarioDto.id())) && !(sgre.datoRegistrado(usuarioDto.correo(),usuarioDto.id()))){
                 Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
                 getSGRE().getListaUsuarios().add(usuario);
+                salvarDatosPrueba();
                 return true;
             }
         }catch (UsuarioException e){
@@ -143,6 +152,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarUsuario(id);
+            salvarDatosPrueba();
         }catch (UsuarioException e){
             e.printStackTrace();
         }
@@ -154,6 +164,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
             getSGRE().modificarUsuario(idActual,usuario);
+            salvarDatosPrueba();
             return true;
         }catch (UsuarioException e){
             e.printStackTrace();
@@ -172,6 +183,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!sgre.verficarExisteReserva(reservaDto.id())){
                 Reserva reserva = mapper.reservaDtoToReserva(reservaDto);
                 getSGRE().getListaReservas().add(reserva);
+                salvarDatosPrueba();
             }
             return true;
         }catch (ReservaException e){
@@ -185,6 +197,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarReserva(id);
+            salvarDatosPrueba();
         }catch (ReservaException e){
             SGREApplication.mostrarMensaje("error","error","error", Alert.AlertType.ERROR);
         }
@@ -196,6 +209,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Reserva reserva = mapper.reservaDtoToReserva(reservaDto);
             getSGRE().modificarReserva(idActual,reserva);
+            salvarDatosPrueba();
             return true;
         }catch (ReservaException e){
             e.printStackTrace();
@@ -214,6 +228,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!sgre.verficarExisteEvento(eventoDto.id())){
                 Evento evento = mapper.eventoDtoToEvento(eventoDto);
                 getSGRE().getListaEventos().add(evento);
+                salvarDatosPrueba();
             }
             return true;
         }catch (EventoException e){
@@ -227,6 +242,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarEvento(id);
+            salvarDatosPrueba();
         }catch (EventoException e){
             e.printStackTrace();
         }
@@ -241,6 +257,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Evento evento = mapper.eventoDtoToEvento(eventoDto);
             getSGRE().modificarEvento(idActual,evento);
+            salvarDatosPrueba();
             return true;
         }catch (EventoException e){
             e.printStackTrace();

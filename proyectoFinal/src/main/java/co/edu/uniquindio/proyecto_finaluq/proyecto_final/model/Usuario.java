@@ -9,4 +9,7 @@ public class Usuario extends Admin {
         super(id, nombre, correo, contrasenia);
     }
 
+    public Usuario() {
+        super();
+    }
 }

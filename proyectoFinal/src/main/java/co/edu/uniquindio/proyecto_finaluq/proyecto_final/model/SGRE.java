@@ -195,7 +195,7 @@ public class SGRE {
     }
 
     public Evento obtenerEventoId(String id,Evento evento, int i, boolean encontrado){
-        if (encontrado){
+        if (encontrado || i >=listaEventos.size()){
             return evento;
         }else{
             if (listaEventos.get(i).getId().equals(id)){
@@ -227,7 +227,6 @@ public class SGRE {
             eventoActual.setFecha(eventoActual.getFecha());
             eventoActual.setCapacidadMax(eventoActual.getCapacidadMax());
             eventoActual.setEmpleadoEncargado(evento.getEmpleadoEncargado());
-            eventoActual.setReservas(evento.getReservas());
             return true;
         }
     }

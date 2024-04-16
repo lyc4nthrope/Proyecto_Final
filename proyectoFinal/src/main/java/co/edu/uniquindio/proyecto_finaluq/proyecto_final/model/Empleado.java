@@ -6,4 +6,8 @@ public class Empleado extends Admin{
     public Empleado(String id, String nombre, String correo, String contrasenia, ArrayList<Evento> eventosAsignados) {
         super(id, nombre, correo, contrasenia);
     }
+
+    public Empleado() {
+
+    }
 }

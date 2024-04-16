@@ -13,6 +13,10 @@ public class Admin {
         this.contrasenia = contrasenia;
     }
 
+    public Admin() {
+
+    }
+
     public String getId() {
         return id;
     }

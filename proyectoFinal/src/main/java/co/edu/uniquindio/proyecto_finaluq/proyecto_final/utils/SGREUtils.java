@@ -19,7 +19,7 @@ public class SGREUtils {
         empleado1.setCorreo("pepe12@gmail.com");
         empleado1.setContrasenia("pepePro");
 
-        Evento evento1=new Evento(null,null,null,null,0,null,new ArrayList<>());
+        Evento evento1=new Evento(null,null,null,null,0,null);
         evento1.setId(((int) (Math.random() * 999999))+"");
         evento1.setNombreEvento("rumba");
         evento1.setDescripcion("pa gozar");
@@ -43,8 +43,6 @@ public class SGREUtils {
         reserva1.setEstado("PENDIENTE");
         reserva1.setEspaciosSolicitados(10);
 
-        evento1.getReservas().add(reserva1);
-
         sgre.getListaEventos().add(evento1);
         sgre.getListaReservas().add(reserva1);
         sgre.getListaUsuarios().add(usuario1);
@@ -55,7 +53,7 @@ public class SGREUtils {
         empleado2.setCorreo("mataFuerte@gmail.com");
         empleado2.setContrasenia("marialasanta");
 
-        Evento evento2= new Evento(null,null,null,null,0,null,new ArrayList<>());
+        Evento evento2= new Evento(null,null,null,null,0,null);
         evento2.setId(((int) (Math.random() * 999999))+"");
         evento2.setNombreEvento("concierto");
         evento2.setDescripcion("ir a disfrutar");
@@ -64,7 +62,7 @@ public class SGREUtils {
         evento2.setEmpleadoEncargado(empleado1);
 
 
-        Evento evento3=new Evento(null,null,null,null,0,null,new ArrayList<>());
+        Evento evento3=new Evento(null,null,null,null,0,null);
         evento3.setId(((int) (Math.random() * 999999))+"");
         evento3.setNombreEvento("bingo");
         evento3.setDescripcion("quien gana mas");

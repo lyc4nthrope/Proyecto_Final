@@ -19,6 +19,10 @@ public class Reserva {
         this.espaciosSolicitados = espaciosSolicitados;
     }
 
+    public Reserva() {
+
+    }
+
     public int getEspaciosSolicitados() {
         return espaciosSolicitados;
     }
