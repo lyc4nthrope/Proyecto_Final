@@ -27,8 +27,11 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     public ModelFactoryController() {
         System.out.println("invocación clase singleton");
 
+//        cargarDatosBase();
+//        salvarDatosPrueba();
 
-
+        //2. Cargar los datos de los archivos
+//		cargarDatosDesdeArchivos();
 
         cargarResourceBinario();
         guardarResourceBinario();
