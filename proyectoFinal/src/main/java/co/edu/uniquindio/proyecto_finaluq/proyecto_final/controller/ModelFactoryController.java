@@ -27,12 +27,35 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     public ModelFactoryController() {
         System.out.println("invocación clase singleton");
 
+
+
+
+        cargarResourceBinario();
+        guardarResourceBinario();
+
+        guardarResourceXML();
+        cargarResourceXML();
+
         if(sgre == null){
             cargarDatosBase();
             //guardarResourceXML();
         }
         registrarAccionesSistema("Inicio de sesión", 1, "inicioSesión");
     }
+
+    private void guardarResourceXML() {Persistencia.guardarRecursoSGREXML(sgre);
+    }
+
+    private void cargarResourceBinario() {
+        sgre = Persistencia.cargarRecursoSGREBinario()
+    }
+
+    private void cargarResourceXML() {
+        sgre = Persistencia.cargarRecursoSGREXML();
+    }
+
+    private void guardarResourceBinario() {
+        Persistencia.guardarRecursoSGREBinario(sgre);
 
     private void cargarDatosBase() {
         sgre = SGREUtils.inicializarDatos();
