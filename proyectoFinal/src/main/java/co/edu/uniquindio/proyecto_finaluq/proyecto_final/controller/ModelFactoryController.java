@@ -94,6 +94,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarEmpleado(id);
+            registrarAccionesSistema("Se elimino el empleado"+ empleado.getNombre(),1,"eliminarEmpleado");
         }catch (EmpleadoException e){
             e.printStackTrace();
         }
@@ -104,6 +105,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Empleado empleado = mapper.empleadoDtoToEmpleado(empleadoDto);
             getSGRE().modificarEmpleado(idActual,empleado);
+            registrarAccionesSistema("Se modifico el empleado"+ empleado.getNombre(),1,"modificarEmpleado");
             return true;
         }catch (EmpleadoException e){
             e.printStackTrace();
@@ -122,6 +124,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!(sgre.verficarExisteUsuario(usuarioDto.id())) && !(sgre.datoRegistrado(usuarioDto.correo(),usuarioDto.id()))){
                 Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
                 getSGRE().getListaUsuarios().add(usuario);
+                registrarAccionesSistema("Se agrego el usuario"+ usuario.getNombre(),1,"agregarUsuario");
                 return true;
             }
         }catch (UsuarioException e){
@@ -136,6 +139,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarUsuario(id);
+            registrarAccionesSistema("Se elimino el usuario"+ usuario.getNombre(),1,"eliminarUsuario");
         }catch (UsuarioException e){
             e.printStackTrace();
         }
@@ -147,6 +151,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Usuario usuario = mapper.usuarioDtoToUsuario(usuarioDto);
             getSGRE().modificarUsuario(idActual,usuario);
+            registrarAccionesSistema("Se modifico el usuario"+ usuario.getNombre(),1,"modificarUsuario");
             return true;
         }catch (UsuarioException e){
             e.printStackTrace();
@@ -165,6 +170,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!sgre.verficarExisteReserva(reservaDto.id())){
                 Reserva reserva = mapper.reservaDtoToReserva(reservaDto);
                 getSGRE().getListaReservas().add(reserva);
+                registrarAccionesSistema("Se agrego la reserva"+ reserva.id(),1,"agregarReserva");
             }
             return true;
         }catch (ReservaException e){
@@ -178,6 +184,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarReserva(id);
+            registrarAccionesSistema("Se elimino la reserva"+ reserva.id(),1,"eliminarReserva");
         }catch (ReservaException e){
             e.printStackTrace();
         }
@@ -189,6 +196,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Reserva reserva = mapper.reservaDtoToReserva(reservaDto);
             getSGRE().modificarReserva(idActual,reserva);
+            registrarAccionesSistema("Se modifico la reserva"+ reserva.id(),1,"modificarReserva");
             return true;
         }catch (ReservaException e){
             e.printStackTrace();
@@ -207,6 +215,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
             if (!sgre.verficarExisteEvento(eventoDto.id())){
                 Evento evento = mapper.eventoDtoToEvento(eventoDto);
                 getSGRE().getListaEventos().add(evento);
+                registrarAccionesSistema("Se agrego el evento"+ evento.id(),1,"agregarEvento");
             }
             return true;
         }catch (EventoException e){
@@ -220,6 +229,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         boolean eliminado =false;
         try {
             eliminado=getSGRE().eliminarEvento(id);
+            registrarAccionesSistema("Se elimino el evento"+ evento.id(),1,"eliminarEvento");
         }catch (EventoException e){
             e.printStackTrace();
         }
@@ -234,6 +244,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
         try{
             Evento evento = mapper.eventoDtoToEvento(eventoDto);
             getSGRE().modificarEvento(idActual,evento);
+            registrarAccionesSistema("Se modifico el evento"+ evento.id(),1,"modificarEvento");
             return true;
         }catch (EventoException e){
             e.printStackTrace();
@@ -244,6 +255,7 @@ SGREMapper mapper =SGREMapper.INSTANCE;
     public boolean inicioSesion(String correo, String contrasenia){
         try{
             getSGRE().registroCorrecto(correo,contrasenia);
+            registrarAccionesSistema("Se inicio la sesion "+ usuario.nombre(),1,"inicioSesion");
             return true;
         }catch (InicioException e){
             e.printStackTrace();
