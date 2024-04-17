@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="pausa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/controller/ModelFactoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/controller/ModelFactoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/utils/Persistencia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/utils/Persistencia.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,14 +48,12 @@
     &quot;assignee&quot;: &quot;nosee8&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="0a34bee3-f91e-4688-ba2d-1fc3995d2ed6" />
-        <option name="url" value="https://github.com/lyc4nthrope/Proyecto_Final.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/lyc4nthrope/Proyecto_Final.git",
+    "accountId": "3efe0d94-62f5-4f16-bdcd-433631c85e5b"
+  }
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -137,6 +133,7 @@
       <workItem from="1713130925753" duration="5559000" />
       <workItem from="1713215898900" duration="633000" />
       <workItem from="1713231999722" duration="2346000" />
+      <workItem from="1713310314258" duration="305000" />
     </task>
     <task id="LOCAL-00001" summary="agregar errorcitos">
       <option name="closed" value="true" />
