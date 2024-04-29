@@ -28,4 +28,5 @@ boolean agregarEvento(EventoDto eventoDto);
 boolean eliminarEvento(String id);
 boolean modificarEvento(String idActual, EventoDto eventoDto);
 
+    void run();
 }

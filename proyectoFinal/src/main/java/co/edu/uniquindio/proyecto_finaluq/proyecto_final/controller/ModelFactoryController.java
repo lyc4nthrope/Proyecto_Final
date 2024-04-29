@@ -16,8 +16,15 @@ import java.util.List;
 
 public class ModelFactoryController implements IModelFactoryController {
     SGRE sgre;
-SGREMapper mapper =SGREMapper.INSTANCE;
+    SGREMapper mapper =SGREMapper.INSTANCE;
 
+    Thread hilo1GuardarXml;
+    Thread hilo2SalvarLog;
+
+    String mensaje = "";
+    int nivel = 0;
+    String accion = "";
+    BoundedSemaphore semaphore = new BoundedSemaphore(1);
 
     private static class SingletonHolder {
         private final static ModelFactoryController eINSTANCE = new ModelFactoryController();
@@ -29,18 +36,20 @@ SGREMapper mapper =SGREMapper.INSTANCE;
 
     public ModelFactoryController() {
         System.out.println("invocación clase singleton");
+        cargarDatosBase();
+        salvarDatosPrueba();
+        //2. Cargar los datos de los archivos
+        /*cargarDatosDesdeArchivos();
+        salvarDatosPrueba();
+        //3. Guardar y Cargar el recurso serializable binario
+		cargarResourceBinario();
+		guardarResourceBinario();
+		//4. Guardar y Cargar el recurso serializable XML
+		cargarResourceXML();
+        guardarResourceXML();*/
         if(sgre == null){
-            //2. Cargar los datos de los archivos
-//            cargarDatosDesdeArchivos();
-//            salvarDatosPrueba();
-            //3. Guardar y Cargar el recurso serializable binario
-//		cargarResourceBinario();
-//		guardarResourceBinario();
-
-            //4. Guardar y Cargar el recurso serializable XML
-            cargarResourceXML();
-//            guardarResourceXML();
-
+            cargarDatosBase();
+            guardarResourceXML();
         }
         registrarAccionesSistema("Inicio de sesión", 1, "inicioSesión");
     }
@@ -341,6 +350,36 @@ SGREMapper mapper =SGREMapper.INSTANCE;
 
     public List<ReservaDto> getReservasUsuario(String idUsuario){
         return mapper.getListaReservasDto(getSGRE().reservasUsuario(idUsuario,0,new ArrayList<>()));
+    }
+
+    @Override
+    public void run() {
+        Thread hiloActual = Thread.currentThread();
+        ocupar();
+        if(hiloActual == hilo1GuardarXml){
+            Persistencia.guardarRecursoSGREXML(sgre);
+            liberar();
+        }
+        if(hiloActual == hilo2SalvarLog){
+            Persistencia.guardaRegistroLog(mensaje, nivel, accion);
+            liberar();
+        }
+    }
+
+    private void liberar() {
+        try {
+            semaphore.liberar();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void ocupar() {
+        try {
+            semaphore.ocupar();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
