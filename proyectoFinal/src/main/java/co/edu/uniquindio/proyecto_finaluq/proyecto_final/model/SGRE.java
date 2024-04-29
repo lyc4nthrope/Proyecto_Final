@@ -2,9 +2,12 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.model;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.exceptions.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
-public class SGRE {
+public class SGRE implements Serializable {
+    private static final long serialVersionUID=1L;
     ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     ArrayList<Reserva> listaReservas = new ArrayList<>();
@@ -52,7 +55,6 @@ public class SGRE {
             empleadoActual.setNombre(empleado.getNombre());
             empleadoActual.setCorreo(empleado.getCorreo());
             empleadoActual.setContrasenia(empleado.getContrasenia());
-            empleadoActual.setEventosAsignados(empleado.getEventosAsignados());
             return true;
         }
     }
@@ -171,7 +173,6 @@ public class SGRE {
             usuarioActual.setNombre(usuario.getNombre());
             usuarioActual.setCorreo(usuario.getCorreo());
             usuarioActual.setContrasenia(usuario.getContrasenia());
-            usuarioActual.setReservasAsignados(usuario.getReservasAsignados());
             return true;
         }
     }
@@ -196,7 +197,7 @@ public class SGRE {
     }
 
     public Evento obtenerEventoId(String id,Evento evento, int i, boolean encontrado){
-        if (encontrado){
+        if (encontrado || i >=listaEventos.size()){
             return evento;
         }else{
             if (listaEventos.get(i).getId().equals(id)){
@@ -228,7 +229,6 @@ public class SGRE {
             eventoActual.setFecha(eventoActual.getFecha());
             eventoActual.setCapacidadMax(eventoActual.getCapacidadMax());
             eventoActual.setEmpleadoEncargado(evento.getEmpleadoEncargado());
-            eventoActual.setReservas(evento.getReservas());
             return true;
         }
     }
@@ -242,7 +242,7 @@ public class SGRE {
                 existe=true;
             }
         }
-        return existeUsuario(id,existe,i+1);
+        return existeReserva(id,existe,i+1);
     }
     public boolean verficarExisteReserva(String id) throws ReservaException{
         if (existeReserva(id,false,0)){
@@ -277,13 +277,14 @@ public class SGRE {
     public boolean modificarReserva(String idActual, Reserva reserva) throws ReservaException{
         Reserva reservaActual=obtenerReservaId(idActual,null,0,false);
         if (reservaActual==null){
-            throw new ReservaException("Empleado a modificar no existe");
+            throw new ReservaException("Reserva a modificar no existe");
         }else {
             reservaActual.setId(reserva.getId());
-            reservaActual.setUsuario(reservaActual.getUsuario());
-            reservaActual.setEvento(reservaActual.getEvento());
-            reservaActual.setFechaSolicitud(reservaActual.getFechaSolicitud());
-            reservaActual.setEstado(reservaActual.getEstado());
+            reservaActual.setUsuario(reserva.getUsuario());
+            reservaActual.setEvento(reserva.getEvento());
+            reservaActual.setFechaSolicitud(reserva.getFechaSolicitud());
+            reservaActual.setEstado(reserva.getEstado());
+            reservaActual.setEspaciosSolicitados(reserva.getEspaciosSolicitados());
             return true;
         }
     }
@@ -346,18 +347,14 @@ public class SGRE {
         return cantCupos>evento.getCapacidadMax();
     }
 
-    public ArrayList<Reserva> buscarReserva(String id, int i,ArrayList<Reserva> reservasUsuario){
+    public ArrayList<Reserva> reservasUsuario(String idUsuario, int i, ArrayList<Reserva> reservasUsu){
         if (i<getListaReservas().size()){
-            if (getListaReservas().get(i).getUsuario().getId().equals(id)){
-                reservasUsuario.add(getListaReservas().get(i));
-                i++;
+            if (getListaReservas().get(i).getUsuario().getId().equals(idUsuario)){
+                reservasUsu.add(getListaReservas().get(i));
             }
-            buscarReserva(id, i, reservasUsuario);
+            reservasUsuario(idUsuario,i+1, reservasUsu);
         }
-        return reservasUsuario;
+        return reservasUsu;
     }
-
-
-
 
 }

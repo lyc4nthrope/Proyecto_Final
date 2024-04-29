@@ -1,9 +1,11 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Evento {
+public class Evento implements Serializable {
+    private static final long serialVersionUID=1L;
 
     private String id;
     private String nombreEvento;
@@ -11,17 +13,19 @@ public class Evento {
     private LocalDateTime fecha;
     private int capacidadMax;
     private Empleado empleadoEncargado;
-    private ArrayList<Reserva> reservas;
 
 
-    public Evento(String id, String nombreEvento, String descripcion, LocalDateTime fecha, int capacidadMax, Empleado empleadoEncargado, ArrayList<Reserva> reservas) {
+    public Evento(String id, String nombreEvento, String descripcion, LocalDateTime fecha, int capacidadMax, Empleado empleadoEncargado) {
         this.id = id;
         this.nombreEvento = nombreEvento;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.capacidadMax = capacidadMax;
         this.empleadoEncargado = empleadoEncargado;
-        this.reservas = reservas;
+    }
+
+    public Evento() {
+
     }
 
     public String getId() {
@@ -72,11 +76,4 @@ public class Evento {
         this.empleadoEncargado = empleadoEncargado;
     }
 
-    public ArrayList<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(ArrayList<Reserva> reservas) {
-        this.reservas = reservas;
-    }
 }

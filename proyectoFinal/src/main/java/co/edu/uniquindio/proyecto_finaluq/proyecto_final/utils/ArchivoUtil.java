@@ -1,8 +1,8 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
+import java.beans.*;
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.FileHandler;
@@ -158,10 +158,26 @@ public class ArchivoUtil {
     public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
 
         XMLEncoder codificadorXML;
-
         codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
+        codificadorXML.setPersistenceDelegate(LocalDateTime.class, new PersistenceDelegate() {
+
+            @Override
+            protected boolean mutatesTo(Object oldInstance, Object newInstance){
+                return oldInstance.equals(newInstance);
+            }
+            @Override
+            protected Expression instantiate(Object oldInstance, Encoder out) {
+                return  new Expression(oldInstance,LocalDateTime.class,"parse",new Object[]{
+                        oldInstance.toString()
+                });
+            }
+        });
+
         codificadorXML.writeObject(objeto);
         codificadorXML.close();
 
     }
+
+
+
 }

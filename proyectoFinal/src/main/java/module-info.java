@@ -5,6 +5,7 @@ module co.edu.uniquindio.proyecto_final.proyecto_finaluq.proyecto_final {
     requires com.dlsc.formsfx;
     requires org.mapstruct;
     requires java.logging;
+    requires java.desktop;
 
     opens co.edu.uniquindio.proyecto_finaluq.proyecto_final to javafx.fxml;
     opens co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController to javafx.fxml;

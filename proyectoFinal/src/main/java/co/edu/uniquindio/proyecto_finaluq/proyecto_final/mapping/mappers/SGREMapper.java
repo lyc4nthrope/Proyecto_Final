@@ -21,13 +21,7 @@ public interface SGREMapper {
 
     @Named("usuarioToUsuarioDto")
         // Mapeo principal de Usuario a UsuarioDto
-    @Mapping(target = "reservasAsignados", ignore = true)
-        UsuarioDto usuarioToUsuarioDto(Usuario usuario);
-        // Método para establecer la longitud del ArrayList de reservas
-        @AfterMapping
-        default void establecerLongitudReservas(Usuario usuario, @MappingTarget UsuarioDto usuarioDto) {
-            usuarioDto.cantidadReservas(usuario.cantidadReservas());
-        }
+    UsuarioDto usuarioToUsuarioDto(Usuario usuario);
 
 
 

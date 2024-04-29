@@ -1,5 +1,6 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.SGREApplication;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EventoController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ModelFactoryController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ReservaController;
@@ -10,53 +11,34 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMapper;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class UseUsuarioController implements Initializable {
-    @FXML
-    AnchorPane panelUsuarioUse;
     ReservaController reservaController;
     UsuarioDto sesionUsuario;
      ReservaDto reservaSeleccionada;
+    List<ReservaDto> reservasAsignadas;
 
-    ObservableList<ReservaDto> reservasDto;
+    ObservableList <ReservaDto>reservasDto;
     public  void setSesionUsuario(UsuarioDto usuarioDto){this.sesionUsuario=usuarioDto;}
-
-    @FXML
-    private Button btnAniadirReserva;
-
-    @FXML
-    private Button btnCancelarReserva;
-
-    @FXML
-    private Button btnModificarDatos;
-
-    @FXML
-    private Button btnModificarEspacios;
-
-    @FXML
-    private Button btnSalir;
 
     @FXML
     private ComboBox<?> cmboxEvento;
@@ -74,7 +56,7 @@ public class UseUsuarioController implements Initializable {
     private TableView<ReservaDto> tbReservas;
 
     @FXML
-    private TableColumn<ReservaDto, Number> tcEspacios;
+    private TableColumn<ReservaDto, String> tcEspacios;
 
     @FXML
     private TableColumn<ReservaDto, String> tcEstado;
@@ -83,7 +65,7 @@ public class UseUsuarioController implements Initializable {
     private TableColumn<ReservaDto, String> tcEvento;
 
     @FXML
-    private TableColumn<ReservaDto, LocalDateTime> tcFecha;
+    private TableColumn<ReservaDto, String> tcFecha;
 
     @FXML
     private TextField txtEspacios;
@@ -91,17 +73,16 @@ public class UseUsuarioController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        reservaController = new ReservaController();
         setDatosUsuario();
+        reservaController = new ReservaController();
+        reservasAsignadas = reservaController.getReservasUsuario(sesionUsuario.id());
         setComboBox();
         tbReservas.getItems().clear();
         setTablaReserva();
-        listenerSelection();
     }
 
     private void setDatosUsuario(){
-        SGREMapper mapper =SGREMapper.INSTANCE;
-        this.sesionUsuario=mapper.usuarioToUsuarioDto(SGREUtils.getUsuarioEnSesion());
+        this.sesionUsuario=SGREUtils.getUsuarioEnSesion();
         nombreUsuario.setText(sesionUsuario.nombre());
         idUsuario.setText(sesionUsuario.id());
         correoUsuario.setText(sesionUsuario.correo());
@@ -124,22 +105,33 @@ public class UseUsuarioController implements Initializable {
         return nombresEventos(eventosDto,nombreEventos,i+1);
     }
     private void setTablaReserva(){
-        reservasDto = FXCollections.observableArrayList(getList(reservaController.reservasUsuario(sesionUsuario)));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        reservasDto = FXCollections.observableArrayList(reservasAsignadas);
         tcEvento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().evento().nombreEvento()));
-        tcFecha.setCellValueFactory(new PropertyValueFactory<ReservaDto, LocalDateTime>("fechaSolicitud"));
+        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fechaSolicitud().format(formatter)));
         tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
-        tcEspacios.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().espaciosSolicitados().asObject());
+        tcEspacios.setCellValueFactory(cellData -> new SimpleStringProperty(Integer.toString(cellData.getValue().espaciosSolicitados())));
         tbReservas.setItems(reservasDto);
     }
 
     private List getList(List lista){
         return (lista==null || lista.size() == 0) ? new ArrayList<>() : new ArrayList<>(lista);
     }
-    private void listenerSelection() {
-        tbReservas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            reservaSeleccionada = newSelection;
-            mostrarInformacionReserva(reservaSeleccionada);
-        });
+//    private void listenerSelection() {
+//
+//        tbReservas.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+//            reservaSeleccionada = newSelection;
+//            mostrarInformacionReserva(reservaSeleccionada);
+//        });
+//    }
+
+
+    @FXML
+    public void seleccionar(javafx.scene.input.MouseEvent mouseEvent) {
+        reservaSeleccionada= this.tbReservas.getSelectionModel().getSelectedItem();
+        if(reservaController!=null){
+            this.txtEspacios.setText(Integer.toString(reservaSeleccionada.espaciosSolicitados()));
+        }
     }
 
     private void mostrarInformacionReserva(ReservaDto reservaDto){
@@ -149,17 +141,46 @@ public class UseUsuarioController implements Initializable {
 
     }
 
+    @FXML
     private void aniadirReserva(){
-        int espaciosSoli = Integer.parseInt(txtEspacios.getText());
-        EventoDto eventoSoli = obtenerEvento();
-        if (!reservaRegistrada(eventoSoli,false,0)){
-            String id = String.valueOf(crearId());
-            ReservaDto reservaDto = new ReservaDto(id,sesionUsuario,eventoSoli,LocalDateTime.now(),"PENDIENTE",espaciosSoli);
-            if (reservaController.agregarReserva(reservaDto)) {
-                sesionUsuario.reservasAsignados().add(reservaDto);
-                reservasDto.add(reservaDto);
-                limpiarCampos();
+        try {
+            int espaciosSoli = Integer.parseInt(txtEspacios.getText());
+            EventoDto eventoSoli = obtenerEvento();
+            if (!reservaRegistrada(eventoSoli,false,0)){
+                String id = String.valueOf(crearId());
+                ReservaDto reservaDto = new ReservaDto(id,sesionUsuario,eventoSoli,LocalDateTime.now(),"PENDIENTE",espaciosSoli);
+                if (reservaController.agregarReserva(reservaDto)) {
+                    reservasAsignadas.add(reservaDto);
+                    reservasDto.add(reservaDto);
+                    limpiarCampos();
+                }
+            }else {
+                SGREApplication.mostrarMensaje("error","no se solicito reserva","la reserva a este evento ya existe", Alert.AlertType.ERROR);
             }
+        }catch (Exception e){
+            SGREApplication.mostrarMensaje("error","error", "datos de reserva", Alert.AlertType.ERROR);
+        }
+
+    }
+
+    @FXML
+    public void borrarReserva(){
+        boolean reservaEliminada = false;
+        if(reservaSeleccionada != null){
+            if(SGREApplication.mostrarMensajeConfirmacion("¿Estas seguro de Cancelar la Reserva?")){
+                reservaEliminada = reservaController.eliminarReserva(reservaSeleccionada.id());
+                if(reservaEliminada == true){
+                    reservasDto.remove(reservaSeleccionada);
+                    reservaSeleccionada = null;
+                    tbReservas.getSelectionModel().clearSelection();
+                    limpiarCampos();
+                    SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva eliminado", "El Reserva se ha eliminado con éxito", Alert.AlertType.INFORMATION);
+                }else{
+                    SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva no eliminado", "El Reserva no se puede eliminar", Alert.AlertType.ERROR);
+                }
+            }
+        }else{
+            SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva no seleccionado", "Seleccionado un Reserva de la lista", Alert.AlertType.WARNING);
         }
     }
 
@@ -178,10 +199,10 @@ public class UseUsuarioController implements Initializable {
         return eventosDto.get(indiceEvento);
     }
     private boolean reservaRegistrada(EventoDto eventoDto, boolean registrada, int i){
-        if (registrada || i>=sesionUsuario.reservasAsignados().size()){
+        if (registrada || i>=reservasAsignadas.size()){
             return registrada;
         }else {
-            if (sesionUsuario.reservasAsignados().get(i).evento().equals(eventoDto)){
+            if (reservasAsignadas.get(i).evento().equals(eventoDto)){
                 registrada=true;
             }
         }
@@ -193,13 +214,46 @@ public class UseUsuarioController implements Initializable {
         txtEspacios.setText("");
     }
 
+    @FXML
     private void modificarReserva(){
         if (reservaSeleccionada!=null){
-            int espaciosAux = Integer.parseInt(txtEspacios.getText());
+            try {
+                int espaciosAux = Integer.parseInt(txtEspacios.getText());
+                ReservaDto reservaAux= new ReservaDto(reservaSeleccionada.id(), reservaSeleccionada.usuario(), reservaSeleccionada.evento(),LocalDateTime.now(),"PENDIENTE", espaciosAux);
+                if (reservaController.actualizarReserva(reservaSeleccionada.id(),reservaAux)){
+                    reservasDto.remove(reservaSeleccionada);
+                    reservasDto.add(reservaAux);
+                    tbReservas.refresh();
+                    reservaSeleccionada=null;
+                    SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva actualizada", "El Reserva se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+                    limpiarCampos();
+                }else {
+                    SGREApplication.mostrarMensaje("Notificación Reserva", "Reserva no actualizada", "El Reserva no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+                }
+            }catch (Exception e){
+                SGREApplication.mostrarMensaje("error","error con datos", "datos mal ingresado", Alert.AlertType.WARNING);
+            }
+        }else {
+            SGREApplication.mostrarMensaje("error","reserva no seleccionada","seleccione una reserva nuevamnente", Alert.AlertType.ERROR);
         }
     }
 
+    @FXML
+    private void cierreSesion() throws IOException {
+        SGREUtils.setUsuarioEnSesion(null);
+        SGREApplication.changeScene("Inicio.fxml",null,null);
+    }
 
+    @FXML
+    private void modificarDatos() throws IOException {
+        String contraseniaConfir = JOptionPane.showInputDialog("Confirme que es usted ingresando su contrasenia por favor");
+       if(contraseniaConfir.equals(sesionUsuario.contrasenia())){
+           SGREApplication.changeScene("UsuarioModificarView.fxml",null,null);
+       }else {
+           SGREApplication.mostrarMensaje("Error de confirmacion", "La contrasenia es incorrecta","Por favor verifique que esta ingresando correctamente la contrasenia", Alert.AlertType.ERROR);
+       }
+
+    }
 
 
 }

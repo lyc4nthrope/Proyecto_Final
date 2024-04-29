@@ -1,20 +1,15 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Empleado extends Admin{
-    private ArrayList<Evento> eventosAsignados;
-
+public class Empleado extends Admin implements Serializable {
+    private static final long serialVersionUID=1L;
     public Empleado(String id, String nombre, String correo, String contrasenia, ArrayList<Evento> eventosAsignados) {
         super(id, nombre, correo, contrasenia);
-        this.eventosAsignados = eventosAsignados;
     }
 
-    public ArrayList<Evento> getEventosAsignados() {
-        return eventosAsignados;
-    }
+    public Empleado() {
 
-    public void setEventosAsignados(ArrayList<Evento> eventosAsignados) {
-        this.eventosAsignados = eventosAsignados;
     }
 }

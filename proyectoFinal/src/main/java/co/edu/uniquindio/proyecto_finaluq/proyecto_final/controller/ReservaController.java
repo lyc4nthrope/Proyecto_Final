@@ -32,6 +32,10 @@ public class ReservaController implements IReservaControllerService {
         return modelFactoryController.modificarReserva(idActual, reservaDto);
     }
 
+    public List<ReservaDto> getReservasUsuario(String idUsuario){
+        return modelFactoryController.getReservasUsuario(idUsuario);
+    }
+
     public boolean existeReserva(String id){return modelFactoryController.existeReserva(id);}
 
     public List<ReservaDto> reservasUsuario(UsuarioDto usuario){
