@@ -24,14 +24,14 @@ public class InicioViewController {
     public TextField txtCorreo;
 
     public void switchUsuarioUse(ActionEvent event, UsuarioDto usuario) throws IOException {
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("UsuarioUseView.fxml"));
-//        Parent root = loader.load();
-//        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        UseUsuarioController controller = loader.getController();
-//        controller.sesionUsuario=usuario;
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
-//        stage.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("UsuarioUseView.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        UseUsuarioController controller = loader.getController();
+        controller.sesionUsuario=usuario;
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
         SGREApplication.changeScene("UsuarioUseView.fxml", usuario,null);
     }
 

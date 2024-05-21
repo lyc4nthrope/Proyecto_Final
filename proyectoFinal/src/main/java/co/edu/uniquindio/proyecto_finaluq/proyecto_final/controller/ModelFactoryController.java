@@ -10,6 +10,7 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.Persistencia;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 import javafx.scene.control.Alert;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,13 @@ public class ModelFactoryController implements IModelFactoryController {
 
     Thread hilo1GuardarXml;
     Thread hilo2SalvarLog;
+    Thread hilo3CargarDatosBase;
+    Thread hilo4SalvarDatosPrueba;
+    Thread hilo5CargarDatosDesdeArchivos;
+    Thread hilo6CargarResourceBinario;
+    Thread hilo7GuardarResourceBinario;
+    Thread hilo8cargarResourceXML;
+
 
     String mensaje = "";
     int nivel = 0;
@@ -303,7 +311,7 @@ public class ModelFactoryController implements IModelFactoryController {
         try{
             Evento evento = mapper.eventoDtoToEvento(eventoDto);
             getSGRE().modificarEvento(idActual,evento);
-//            salvarDatosPrueba();
+            salvarDatosPrueba();
 //            guardarResourceBinario();
             guardarResourceXML();
             return true;
@@ -362,6 +370,30 @@ public class ModelFactoryController implements IModelFactoryController {
         }
         if(hiloActual == hilo2SalvarLog){
             Persistencia.guardaRegistroLog(mensaje, nivel, accion);
+            liberar();
+        }
+        if(hiloActual == hilo3CargarDatosBase){
+            Persistencia.cargarDatosArchivos(sgre);
+            liberar();
+        }
+        if(hiloActual == hilo4SalvarDatosPrueba){
+            salvarDatosPrueba();
+            liberar();
+        }
+        if(hiloActual == hilo5CargarDatosDesdeArchivos){
+            Persistencia.cargarDatosArchivos(sgre);
+            liberar();
+        }
+        if(hiloActual == hilo6CargarResourceBinario){
+            Persistencia.cargarRecursoSGREBinario();
+            liberar();
+        }
+        if(hiloActual == hilo7GuardarResourceBinario){
+            Persistencia.guardarRecursoSGREBinario(sgre);
+            liberar();
+        }
+        if(hiloActual == hilo8cargarResourceXML){
+            Persistencia.cargarRecursoSGREXML();
             liberar();
         }
     }

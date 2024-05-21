@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EmpleadoController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,9 @@ public class EmpleadoViewController {
     EmpleadoController empleadoControllerService;
     ObservableList<EmpleadoDto> listaEmpleadosDto = FXCollections.observableArrayList();
     EmpleadoDto empleadoSeleccionado;
+
+    public  void setSesionEmpleado(EmpleadoDto empleadoDto){this.empleadoSeleccionado=empleadoDto;}
+
 
     @FXML
     private ResourceBundle resources;
