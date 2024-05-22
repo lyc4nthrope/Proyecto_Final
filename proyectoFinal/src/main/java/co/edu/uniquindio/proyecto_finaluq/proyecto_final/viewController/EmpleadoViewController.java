@@ -1,8 +1,11 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
-
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EventoController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EmpleadoController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,15 +14,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class EmpleadoViewController {
-
     EmpleadoController empleadoControllerService;
-    ObservableList<EmpleadoDto> listaEmpleadosDto = FXCollections.observableArrayList();
+    EmpleadoDto sesionEmpleado;
     EmpleadoDto empleadoSeleccionado;
+    ObservableList<EmpleadoDto> listaEmpleadosDto = FXCollections.observableArrayList();
+    List<EventoDto> eventosAsignados;
+    ObservableList<EventoDto> eventosDto;
+
+    public  void setSesionEmpleado(EmpleadoDto empleadoDto){this.sesionEmpleado=empleadoDto;}
 
     @FXML
     private ResourceBundle resources;
@@ -66,46 +72,53 @@ public class EmpleadoViewController {
     @FXML
     private TableColumn<EmpleadoDto, String> tcEventosAsignados;
 
-//    @FXML
-//    void initialize() {
-//        empleadoControllerService = new EmpleadoController();
-//        intiView();
-//    }
 
-//    private void intiView() {
-//        initDataBinding();
-//        obtenerEmpleados();
-//        tableEmpleados.getItems().clear();
-//        tableEmpleados.setItems(listaEmpleadosDto);
-//        listenerSelection();
-//    }
+
+    private void initialize(URL url, ResourceBundle resourceBundle) {
+        setDatosEmpleado();
+        initDataBinding();
+        EventoController eventoController = new EventoController();
+        eventosAsignados = eventoController.obtenerEventos();
+        obtenerEmpleados();
+        tableEmpleados.getItems().clear();
+        tableEmpleados.setItems(listaEmpleadosDto);
+        listenerSelection();
+    }
+
+    private void setDatosEmpleado() {
+        this.sesionEmpleado=SGREUtils.getEmpleadoEnSesion();
+        txtId.setText(sesionEmpleado.id());
+        txtNombre.setText(sesionEmpleado.nombre());
+        txtCorreo.setText(sesionEmpleado.correo());
+    }
+
 
     private void initDataBinding() {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().correo()));
-        tcEventosAsignados.setCellValueFactory(cellData -> new SimpleStringProperty());
+        //tcEventosAsignados.setCellValueFactory(cellData -> new SimpleStringProperty());
     }
 
     private void obtenerEmpleados() {
         listaEmpleadosDto.addAll(empleadoControllerService.obtenerEmpleados());
     }
 
-//    private void listenerSelection() {
-//        tableEmpleados.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-//            empleadoSeleccionado = newSelection;
-//            mostrarInformacionEmpleado(empleadoSeleccionado);
-//        });
-//    }
+    private void listenerSelection() {
+        tableEmpleados.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            empleadoSeleccionado = newSelection;
+            mostrarInformacionEmpleado(empleadoSeleccionado);
+        });
+    }
 
-//    private void mostrarInformacionEmpleado(EmpleadoDto empleadoSeleccionado) {
-//        if(empleadoSeleccionado != null){
-//            txtId.setText(empleadoSeleccionado.id());
-//            txtNombre.setText(empleadoSeleccionado.nombre());
-//            txtCorreo.setText(empleadoSeleccionado.correo());
-//            txtEventosAsignados.setText(String.valueOf(empleadoSeleccionado.eventosAsignados()));
-//        }
-//    }
+    private void mostrarInformacionEmpleado(EmpleadoDto empleadoSeleccionado) {
+        if(empleadoSeleccionado != null){
+            txtId.setText(empleadoSeleccionado.id());
+            txtNombre.setText(empleadoSeleccionado.nombre());
+            txtCorreo.setText(empleadoSeleccionado.correo());
+            //txtEventosAsignados.setText(String.valueOf(empleadoSeleccionado.eventosAsignados()));
+        }
+    }
 
     @FXML
     void nuevoEmpleadoAction(ActionEvent event) {
@@ -115,96 +128,94 @@ public class EmpleadoViewController {
         txtEventosAsignados.setText("Ingrese los eventos asignados");
     }
 
-//    @FXML
-//    void agregarEmpleadoAction(ActionEvent event) {
-//        crearEmpleado();
-//    }
-//
-//    @FXML
-//    void eliminarEmpleadoAction(ActionEvent event) {
-//        eliminarEmpleado();
-//    }
-//
-//
-//    @FXML
-//    void actualizarEmpleadoAction(ActionEvent event) {
-//        actualizarEmpleado();
-//    }
-//
-//    private void crearEmpleado() {
-//        //1. Capturar los datos
-//        EmpleadoDto empleadoDto = construirEmpleadoDto();
-//        //2. Validar la información
-//        if(datosValidos(empleadoDto)){
-//            if(empleadoControllerService.agregarEmpleado(empleadoDto)){
-//                listaEmpleadosDto.add(empleadoDto);
-//                mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
-//                limpiarCamposEmpleado();
-//            }else{
-//                mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
-//            }
-//        }else{
-//            mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
-//        }
-//
-//    }
+    @FXML
+    void agregarEmpleadoAction(ActionEvent event) {
+        crearEmpleado();
+    }
 
-//    private void eliminarEmpleado() {
-//        boolean empleadoEliminado = false;
-//        if(empleadoSeleccionado != null){
-//            if(mostrarMensajeConfirmacion("¿Estas seguro de elmininar al empleado?")){
-//                empleadoEliminado = empleadoControllerService.eliminarEmpleado(empleadoSeleccionado.id());
-//                if(empleadoEliminado == true){
-//                    listaEmpleadosDto.remove(empleadoSeleccionado);
-//                    empleadoSeleccionado = null;
-//                    tableEmpleados.getSelectionModel().clearSelection();
-//                    limpiarCamposEmpleado();
-//                    mostrarMensaje("Notificación empleado", "Empleado eliminado", "El empleado se ha eliminado con éxito", Alert.AlertType.INFORMATION);
-//                }else{
-//                    mostrarMensaje("Notificación empleado", "Empleado no eliminado", "El empleado no se puede eliminar", Alert.AlertType.ERROR);
-//                }
-//            }
-//        }else{
-//            mostrarMensaje("Notificación empleado", "Empleado no seleccionado", "Seleccionado un empleado de la lista", Alert.AlertType.WARNING);
-//        }
-//    }
+    @FXML
+    void eliminarEmpleadoAction(ActionEvent event) {
+        eliminarEmpleado();
+    }
 
-//    private void actualizarEmpleado() {
-//        boolean clienteActualizado = false;
-//        //1. Capturar los datos
-//        String idActual = empleadoSeleccionado.id();
-//        EmpleadoDto empleadoDto = construirEmpleadoDto();
-//        //2. verificar el empleado seleccionado
-//        if(empleadoSeleccionado != null){
-//            //3. Validar la información
-//            if(datosValidos(empleadoSeleccionado)){
-//                clienteActualizado = empleadoControllerService.actualizarEmpleado(idActual,empleadoDto);
-//                if(clienteActualizado){
-//                    listaEmpleadosDto.remove(empleadoSeleccionado);
-//                    listaEmpleadosDto.add(empleadoDto);
-//                    tableEmpleados.refresh();
-//                    mostrarMensaje("Notificación empleado", "Empleado actualizado", "El empleado se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-//                    limpiarCamposEmpleado();
-//                }else{
-//                    mostrarMensaje("Notificación empleado", "Empleado no actualizado", "El empleado no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
-//                }
-//            }else{
-//                mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
-//            }
-//
-//        }
-//    }
-//
-//    private EmpleadoDto construirEmpleadoDto() {
-//        return new EmpleadoDto(
-//                txtId.getText(),
-//                txtNombre.getText(),
-//                txtCorreo.getText(),
-//                "",
-//                new ArrayList<>(),
-//                0
-//        );
-//    }
+
+    @FXML
+    void actualizarEmpleadoAction(ActionEvent event) {
+        actualizarEmpleado();
+    }
+
+    private void crearEmpleado() {
+        //1. Capturar los datos
+        EmpleadoDto empleadoDto = construirEmpleadoDto();
+        //2. Validar la información
+        if(datosValidos(empleadoDto)){
+            if(empleadoControllerService.agregarEmpleado(empleadoDto)){
+                listaEmpleadosDto.add(empleadoDto);
+                mostrarMensaje("Notificación empleado", "Empleado creado", "El empleado se ha creado con éxito", Alert.AlertType.INFORMATION);
+                limpiarCamposEmpleado();
+            }else{
+                mostrarMensaje("Notificación empleado", "Empleado no creado", "El empleado no se ha creado con éxito", Alert.AlertType.ERROR);
+            }
+        }else{
+            mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+        }
+
+    }
+
+    private void eliminarEmpleado() {
+        boolean empleadoEliminado = false;
+        if(empleadoSeleccionado != null){
+            if(mostrarMensajeConfirmacion("¿Estas seguro de elmininar al empleado?")){
+                empleadoEliminado = empleadoControllerService.eliminarEmpleado(empleadoSeleccionado.id());
+                if(empleadoEliminado == true){
+                    listaEmpleadosDto.remove(empleadoSeleccionado);
+                    empleadoSeleccionado = null;
+                    tableEmpleados.getSelectionModel().clearSelection();
+                    limpiarCamposEmpleado();
+                    mostrarMensaje("Notificación empleado", "Empleado eliminado", "El empleado se ha eliminado con éxito", Alert.AlertType.INFORMATION);
+                }else{
+                    mostrarMensaje("Notificación empleado", "Empleado no eliminado", "El empleado no se puede eliminar", Alert.AlertType.ERROR);
+                }
+            }
+        }else{
+            mostrarMensaje("Notificación empleado", "Empleado no seleccionado", "Seleccionado un empleado de la lista", Alert.AlertType.WARNING);
+        }
+    }
+
+    private void actualizarEmpleado() {
+        boolean clienteActualizado = false;
+        //1. Capturar los datos
+        String idActual = empleadoSeleccionado.id();
+        EmpleadoDto empleadoDto = construirEmpleadoDto();
+        //2. verificar el empleado seleccionado
+        if(empleadoSeleccionado != null){
+            //3. Validar la información
+            if(datosValidos(empleadoSeleccionado)){
+                clienteActualizado = empleadoControllerService.actualizarEmpleado(idActual,empleadoDto);
+                if(clienteActualizado){
+                    listaEmpleadosDto.remove(empleadoSeleccionado);
+                    listaEmpleadosDto.add(empleadoDto);
+                    tableEmpleados.refresh();
+                    mostrarMensaje("Notificación empleado", "Empleado actualizado", "El empleado se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+                    limpiarCamposEmpleado();
+                }else{
+                    mostrarMensaje("Notificación empleado", "Empleado no actualizado", "El empleado no se ha actualizado con éxito", Alert.AlertType.INFORMATION);
+                }
+            }else{
+                mostrarMensaje("Notificación empleado", "Empleado no creado", "Los datos ingresados son invalidos", Alert.AlertType.ERROR);
+            }
+
+        }
+    }
+
+    private EmpleadoDto construirEmpleadoDto() {
+        return new EmpleadoDto(
+                txtId.getText(),
+                txtNombre.getText(),
+                txtCorreo.getText(),
+                ""
+        );
+    }
 
     private void limpiarCamposEmpleado() {
         txtId.setText("");

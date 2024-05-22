@@ -28,7 +28,7 @@
                      <font>
                         <Font size="20.0" />
                      </font></Label>
-                  <Button fx:id="btnModificarDatos" layoutX="96.0" layoutY="385.0" mnemonicParsing="false" onAction="#modificarDatos" style="-fx-background-color: transpare; -fx-cursor: hand;" text="Modificar Datos" textAlignment="CENTER" textFill="#4c5fef" underline="true" />
+                  <Button fx:id="btnModificarDatos" layoutX="96.0" layoutY="385.0" mnemonicParsing="false" onAction="#modificarDatos" style="-fx-cursor: hand;" text="Modificar Datos" />
                   <Button fx:id="btnSalir" layoutX="118.0" layoutY="434.0" mnemonicParsing="false" onAction="#cierreSesion" prefHeight="26.0" prefWidth="48.0" style="-fx-background-color: FC9595; -fx-cursor: hand;" text="Salir" />
                   <Label layoutX="95.0" layoutY="38.0" text="USUARIO" textFill="#0b7b17">
                      <font>

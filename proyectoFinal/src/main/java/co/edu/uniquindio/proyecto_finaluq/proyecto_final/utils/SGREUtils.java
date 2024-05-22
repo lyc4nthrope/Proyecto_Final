@@ -1,5 +1,7 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils;
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.AdminDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.*;
 
@@ -9,6 +11,8 @@ import java.util.Map;
 
 public class SGREUtils {
     private static UsuarioDto usuarioEnSesion;
+    private static EmpleadoDto empleadoEnSesion;
+    private static AdminDto adminEnSesion;
 
     public static SGRE inicializarDatos(){
         SGRE sgre = new SGRE();
@@ -84,5 +88,21 @@ public class SGREUtils {
 
     public static void setUsuarioEnSesion(UsuarioDto usuario) {
         SGREUtils.usuarioEnSesion = usuario;
+    }
+
+    public static EmpleadoDto getEmpleadoEnSesion() {
+        return SGREUtils.empleadoEnSesion;
+    }
+
+    public static void setEmpleadoEnSesion(EmpleadoDto empleado) {
+        SGREUtils.empleadoEnSesion = empleado;
+    }
+
+    public static AdminDto getAdminEnSesion() {
+        return SGREUtils.adminEnSesion;
+    }
+
+    public static void setAdminEnSesion(AdminDto admin) {
+        SGREUtils.adminEnSesion = admin;
     }
 }

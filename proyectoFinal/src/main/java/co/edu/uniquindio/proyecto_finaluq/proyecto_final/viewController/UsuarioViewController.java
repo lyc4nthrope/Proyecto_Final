@@ -2,7 +2,6 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.SGREApplication;
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 

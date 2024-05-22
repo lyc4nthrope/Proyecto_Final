@@ -2,13 +2,11 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.SGREApplication;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EventoController;
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ModelFactoryController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.ReservaController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.UsuarioController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.UsuarioDto;
-import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.mappers.SGREMapper;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -16,11 +14,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.interfaces.RSAKey;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

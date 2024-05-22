@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="17.0.7" class="java.beans.XMLDecoder">
+<java version="17.0.10" class="java.beans.XMLDecoder">
  <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.SGRE" id="SGRE0">
   <void property="listaEmpleados">
    <void method="add">
@@ -61,7 +61,7 @@
     </object>
    </void>
    <void method="add">
-    <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Evento" id="Evento0">
+    <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Evento">
      <void property="capacidadMax">
       <int>100</int>
      </void>
@@ -96,7 +96,7 @@
       <object idref="Empleado1"/>
      </void>
      <void property="fecha">
-      <object class="java.time.LocalDateTime" id="LocalDateTime1" method="parse">
+      <object class="java.time.LocalDateTime" method="parse">
        <string>2024-04-15T23:26:12.572625200</string>
       </object>
      </void>
@@ -113,113 +113,7 @@
    <void method="add">
     <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Reserva">
      <void property="espaciosSolicitados">
-      <int>12</int>
-     </void>
-     <void property="estado">
-      <string>PENDIENTE</string>
-     </void>
-     <void property="evento">
-      <object idref="Evento0"/>
-     </void>
-     <void property="fechaSolicitud">
-      <object class="java.time.LocalDateTime" method="parse">
-       <string>2024-04-15T23:33:03.482527900</string>
-      </object>
-     </void>
-     <void property="id">
-      <string>146412</string>
-     </void>
-     <void property="usuario">
-      <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Usuario" id="Usuario0">
-       <void property="contrasenia">
-        <string>123wweaa</string>
-       </void>
-       <void property="correo">
-        <string>juan@gmail.com</string>
-       </void>
-       <void property="id">
-        <string>12341</string>
-       </void>
-       <void property="nombre">
-        <string>juan prueba cambio xml</string>
-       </void>
-      </object>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Reserva">
-     <void property="espaciosSolicitados">
       <int>1</int>
-     </void>
-     <void property="estado">
-      <string>PENDIENTE</string>
-     </void>
-     <void property="evento">
-      <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Evento">
-       <void property="capacidadMax">
-        <int>15</int>
-       </void>
-       <void property="descripcion">
-        <string>quien gana mas</string>
-       </void>
-       <void property="empleadoEncargado">
-        <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Empleado">
-         <void property="contrasenia">
-          <string>marialasanta</string>
-         </void>
-         <void property="correo">
-          <string>mataFuerte@gmail.com</string>
-         </void>
-         <void property="id">
-          <string>123123123</string>
-         </void>
-         <void property="nombre">
-          <string>maria</string>
-         </void>
-        </object>
-       </void>
-       <void property="fecha">
-        <object idref="LocalDateTime1"/>
-       </void>
-       <void property="id">
-        <string>718039</string>
-       </void>
-       <void property="nombreEvento">
-        <string>bingo</string>
-       </void>
-      </object>
-     </void>
-     <void property="fechaSolicitud">
-      <object class="java.time.LocalDateTime" method="parse">
-       <string>2024-04-15T23:53:36.523814200</string>
-      </object>
-     </void>
-     <void property="id">
-      <string>381213</string>
-     </void>
-     <void property="usuario">
-      <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Usuario">
-       <void property="contrasenia">
-        <string>123wweaa</string>
-       </void>
-       <void property="correo">
-        <string>juan@gmail.com</string>
-       </void>
-       <void property="id">
-        <string>12341</string>
-       </void>
-       <void property="nombre">
-        <string>juan cambiado a binario</string>
-       </void>
-      </object>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Reserva">
-     <void property="espaciosSolicitados">
-      <int>2</int>
      </void>
      <void property="estado">
       <string>PENDIENTE</string>
@@ -261,11 +155,11 @@
      </void>
      <void property="fechaSolicitud">
       <object class="java.time.LocalDateTime" method="parse">
-       <string>2024-04-16T00:19:24.454673600</string>
+       <string>2024-05-20T13:07:09.073657700</string>
       </object>
      </void>
      <void property="id">
-      <string>479535</string>
+      <string>343276</string>
      </void>
      <void property="usuario">
       <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Usuario">
@@ -288,7 +182,20 @@
   </void>
   <void property="listaUsuarios">
    <void method="add">
-    <object idref="Usuario0"/>
+    <object class="co.edu.uniquindio.proyecto_finaluq.proyecto_final.model.Usuario">
+     <void property="contrasenia">
+      <string>123wweaa</string>
+     </void>
+     <void property="correo">
+      <string>juan@gmail.com</string>
+     </void>
+     <void property="id">
+      <string>12341</string>
+     </void>
+     <void property="nombre">
+      <string>juan prueba cambio xml</string>
+     </void>
+    </object>
    </void>
   </void>
  </object>
