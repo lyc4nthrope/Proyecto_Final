@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -86,10 +87,11 @@ public class ReservaViewController {
     }
 
     private void initDataBinding() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcUsuario.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
 //        tcReserva.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().usuario()));
-//        tcFechaSolicitud.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fechaSolicitud()));
+        tcFechaSolicitud.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fechaSolicitud().format(formatter)));
         tcEstado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().estado()));
     }
 
@@ -207,10 +209,10 @@ public class ReservaViewController {
 //        return new ReservaDto(
 //                txtId.getText(),
 //                txtUsuario.getText(),
-//                "",
+//                txtEvento.getText(),
 //                "",
 //                txtEstado.getText(),
-//                ""
+//
 //        );
 //    }
 
