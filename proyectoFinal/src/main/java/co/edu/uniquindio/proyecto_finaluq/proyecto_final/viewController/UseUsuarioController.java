@@ -34,7 +34,7 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
 public class UseUsuarioController implements Initializable {
     ReservaController reservaController;
     UsuarioDto sesionUsuario;
-     ReservaDto reservaSeleccionada;
+    ReservaDto reservaSeleccionada;
     List<ReservaDto> reservasAsignadas;
 
     ObservableList <ReservaDto>reservasDto;

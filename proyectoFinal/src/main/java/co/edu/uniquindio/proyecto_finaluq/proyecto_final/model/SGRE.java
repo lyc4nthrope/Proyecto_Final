@@ -4,7 +4,6 @@ import co.edu.uniquindio.proyecto_finaluq.proyecto_final.exceptions.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SGRE implements Serializable {
     private static final long serialVersionUID=1L;
@@ -355,6 +354,15 @@ public class SGRE implements Serializable {
             reservasUsuario(idUsuario,i+1, reservasUsu);
         }
         return reservasUsu;
+    }
+    public ArrayList<Empleado> empleadosEventos(String idEmpleado, int i, ArrayList<Empleado> empleadoEventos){
+        if (i<getListaEventos().size()){
+            if (getListaEventos().get(i).getEmpleadoEncargado().getId().equals(idEmpleado)){
+                empleadoEventos.add(getListaEmpleados().get(i));
+            }
+            empleadosEventos(idEmpleado,i+1, empleadoEventos);
+        }
+        return empleadoEventos;
     }
 
 }

@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller;
 
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.services.IEventoControllerService;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 
 import java.util.ArrayList;
 import java.util.List;

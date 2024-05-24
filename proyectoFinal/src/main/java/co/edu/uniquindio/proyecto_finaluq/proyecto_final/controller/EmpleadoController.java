@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.services.IEmpleadoControllerService;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.ReservaDto;
 
 import java.util.List;
 
@@ -29,5 +30,8 @@ public class EmpleadoController implements IEmpleadoControllerService {
     @Override
     public boolean actualizarEmpleado(String idActual, EmpleadoDto empleadoDto) {
         return modelFactoryController.modificarEmpleado(idActual, empleadoDto);
+    }
+    public List<EmpleadoDto> getEmpleadosEventos(String idEmpleado){
+        return modelFactoryController.getEmpleadosEventos(idEmpleado);
     }
 }

@@ -359,6 +359,9 @@ public class ModelFactoryController implements IModelFactoryController {
     public List<ReservaDto> getReservasUsuario(String idUsuario){
         return mapper.getListaReservasDto(getSGRE().reservasUsuario(idUsuario,0,new ArrayList<>()));
     }
+    public List<EmpleadoDto> getEmpleadosEventos(String idEmpleado){
+        return mapper.getEmpleadosDto(getSGRE().empleadosEventos(idEmpleado,0,new ArrayList<>()));
+    }
 
     @Override
     public void run() {

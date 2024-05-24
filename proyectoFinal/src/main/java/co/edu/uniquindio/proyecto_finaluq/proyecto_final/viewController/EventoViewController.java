@@ -1,7 +1,10 @@
 package co.edu.uniquindio.proyecto_finaluq.proyecto_final.viewController;
 
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EmpleadoController;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.controller.EventoController;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EmpleadoDto;
 import co.edu.uniquindio.proyecto_finaluq.proyecto_final.mapping.dto.EventoDto;
+import co.edu.uniquindio.proyecto_finaluq.proyecto_final.utils.SGREUtils;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,11 +13,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EventoViewController {
 
+    EmpleadoDto sesionEmpleado;
+    EmpleadoController empleadoController;
+    List<EmpleadoDto> empleadoAsignado;
     EventoController eventoControllerService;
     ObservableList<EventoDto> listaEventosDto = FXCollections.observableArrayList();
     EventoDto eventoSeleccionado;
@@ -59,7 +66,7 @@ public class EventoViewController {
     private Button btnEliminar;
 
     @FXML
-    private TableView<EventoDto> tableEvento;
+    private TableView<EventoDto> tbEventos;
 
     @FXML
     private TableColumn<EventoDto, String> tcId;
@@ -82,17 +89,24 @@ public class EventoViewController {
     @FXML
     private TableColumn<EventoDto, String> tcReservas;
 
-    @FXML
-    void initialize() {
-        eventoControllerService = new EventoController();
-        intiView();
+    @Override
+    public void initialize() {
+        setDatosEvento();
+        empleadoController = new EmpleadoController();
+        empleadoAsignado = empleadoController.getEmpleadosEventos(sesionEmpleado.id());
+        tbEventos.getItems().clear();
+        setTablaEventos();
+    }
+
+    private void setDatosEvento(){
+        this.sesionEmpleado= SGREUtils.getEmpleadoEnSesion();
     }
 
     private void intiView() {
         initDataBinding();
         obtenerEventos();
-        tableEvento.getItems().clear();
-        tableEvento.setItems(listaEventosDto);
+        tbEventos.getItems().clear();
+        tbEventos.setItems(listaEventosDto);
         listenerSelection();
     }
 
@@ -111,7 +125,7 @@ public class EventoViewController {
     }
 
     private void listenerSelection() {
-        tableEvento.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        tbEventos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             eventoSeleccionado = newSelection;
             mostrarInformacionEvento(eventoSeleccionado);
         });
@@ -182,7 +196,7 @@ public class EventoViewController {
                 if(eventoEliminado == true){
                     listaEventosDto.remove(eventoSeleccionado);
 //                    empleadoSeleccionado = null;
-                    tableEvento.getSelectionModel().clearSelection();
+                    tbEventos.getSelectionModel().clearSelection();
                     limpiarCamposEvento();
                     mostrarMensaje("Notificación evento", "Evento eliminado", "El evento se ha eliminado con éxito", Alert.AlertType.INFORMATION);
                 }else{
