@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -91,16 +92,23 @@ public class EventoViewController {
 
     @Override
     public void initialize() {
-        setDatosEvento();
         empleadoController = new EmpleadoController();
         empleadoAsignado = empleadoController.getEmpleadosEventos(sesionEmpleado.id());
         tbEventos.getItems().clear();
         setTablaEventos();
     }
 
-    private void setDatosEvento(){
-        this.sesionEmpleado= SGREUtils.getEmpleadoEnSesion();
+    private void setTablaEventos(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
+        tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreEvento()));
+        tcDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
+        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha()));
+        tcCapacidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().capacidadMax()));
+        tcEmpleado.setItems(empleadoAsignado);
+        tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservas()));
     }
+
 
     private void intiView() {
         initDataBinding();

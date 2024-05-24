@@ -88,11 +88,11 @@ public class SGREUtils {
         SGREUtils.usuarioEnSesion = usuario;
     }
 
-    public static EmpleadoDto getEmpleadoEnSesion() {
-        return SGREUtils.empleadoEnSesion;
-    }
-    public static void setEmpleadoEnSesion(EmpleadoDto empleado) {
-        SGREUtils.empleadoEnSesion = empleado;
-    }
+//    public static EmpleadoDto getEmpleadoEnSesion() {
+//        return SGREUtils.empleadoEnSesion;
+//    }
+//    public static void setEmpleadoEnSesion(EmpleadoDto empleado) {
+//        SGREUtils.empleadoEnSesion = empleado;
+//    }
 
 }
