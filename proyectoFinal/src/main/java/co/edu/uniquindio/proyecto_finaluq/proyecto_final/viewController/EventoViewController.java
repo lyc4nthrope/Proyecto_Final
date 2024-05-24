@@ -103,12 +103,26 @@ public class EventoViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombreEvento()));
         tcDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
-        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha()));
-        tcCapacidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().capacidadMax()));
-        tcEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().empleadoEncargado()));
+        tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha().format(formatter)));
+        tcCapacidad.setCellValueFactory(cellData -> new SimpleStringProperty(Integer.toString(cellData.getValue().capacidadMax())));
+        tcEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().empleadoEncargado().nombre()));
         tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservas()));
     }
 
+    @FXML
+    public void seleccionar(javafx.scene.input.MouseEvent mouseEvent) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        eventoSeleccionado = this.tbEventos.getSelectionModel().getSelectedItem();
+        if(eventoControllerService!=null){
+            this.txtId.setText(eventoSeleccionado.id());
+            this.txtNombre.setText(eventoSeleccionado.nombreEvento());
+            this.txtDescripcion.setText(eventoSeleccionado.descripcion());
+            this.txtFecha.setText(eventoSeleccionado.fecha().format(formatter));
+            this.txtCapacidad.setText(Integer.toString(eventoSeleccionado.capacidadMax()));
+            this.txtEmpleado.setText(eventoSeleccionado.empleadoEncargado().nombre());
+            this.txtReservas.setText(eventoSeleccionado.reservas());
+        }
+    }
 
     private void intiView() {
         initDataBinding();
