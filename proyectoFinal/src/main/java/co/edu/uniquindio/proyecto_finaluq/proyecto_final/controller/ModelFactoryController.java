@@ -47,14 +47,14 @@ public class ModelFactoryController implements IModelFactoryController {
         cargarDatosBase();
         salvarDatosPrueba();
         //2. Cargar los datos de los archivos
-        /*cargarDatosDesdeArchivos();
+        cargarDatosDesdeArchivos();
         salvarDatosPrueba();
         //3. Guardar y Cargar el recurso serializable binario
 		cargarResourceBinario();
 		guardarResourceBinario();
 		//4. Guardar y Cargar el recurso serializable XML
 		cargarResourceXML();
-        guardarResourceXML();*/
+        guardarResourceXML();
         if(sgre == null){
             cargarDatosBase();
             guardarResourceXML();
@@ -372,17 +372,31 @@ public class ModelFactoryController implements IModelFactoryController {
             Persistencia.guardaRegistroLog(mensaje, nivel, accion);
             liberar();
         }
-        if(hiloActual == hilo3CargarDatosBase){
-            Persistencia.cargarDatosArchivos(sgre);
-            liberar();
+        try {
+            if (hiloActual == hilo3CargarDatosBase) {
+                Persistencia.cargarDatosArchivos(sgre);
+                liberar();
+            }
+        }catch (FileNotFoundException e){
+
+        }
+        catch (IOException e){
+
         }
         if(hiloActual == hilo4SalvarDatosPrueba){
             salvarDatosPrueba();
             liberar();
         }
-        if(hiloActual == hilo5CargarDatosDesdeArchivos){
-            Persistencia.cargarDatosArchivos(sgre);
-            liberar();
+        try {
+            if (hiloActual == hilo5CargarDatosDesdeArchivos) {
+                Persistencia.cargarDatosArchivos(sgre);
+                liberar();
+            }
+        }catch (FileNotFoundException e){
+
+        }
+        catch (IOException e){
+
         }
         if(hiloActual == hilo6CargarResourceBinario){
             Persistencia.cargarRecursoSGREBinario();
