@@ -105,7 +105,7 @@ public class EventoViewController {
         tcDescripcion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().descripcion()));
         tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha()));
         tcCapacidad.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().capacidadMax()));
-        tcEmpleado.setItems(empleadoAsignado);
+        tcEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().empleadoEncargado()));
         tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservas()));
     }
 
