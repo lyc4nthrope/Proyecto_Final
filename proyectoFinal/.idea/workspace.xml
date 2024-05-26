@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="pausa" />
+    <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="pausa">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,6 +143,12 @@
       <workItem from="1716414112317" duration="3000" />
       <workItem from="1716416893350" duration="1280000" />
       <workItem from="1716513477350" duration="5959000" />
+      <workItem from="1716576689112" duration="67000" />
+      <workItem from="1716649167954" duration="616000" />
+      <workItem from="1716660509330" duration="253000" />
+      <workItem from="1716664573504" duration="643000" />
+      <workItem from="1716665642236" duration="954000" />
+      <workItem from="1716747551283" duration="82000" />
     </task>
     <task id="LOCAL-00001" summary="agregar errorcitos">
       <option name="closed" value="true" />
