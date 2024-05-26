@@ -97,7 +97,7 @@ public class EmpleadoViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().correo()));
-        //tcEventos.setCellValueFactory(cellData -> new SimpleStringProperty());
+        tcEventos.setCellValueFactory(cellData -> new SimpleStringProperty()); //falta lo de adentro
     }
 
     private void obtenerEmpleados() {
@@ -116,7 +116,7 @@ public class EmpleadoViewController {
             txtId.setText(empleadoSeleccionado.id());
             txtNombre.setText(empleadoSeleccionado.nombre());
             txtCorreo.setText(empleadoSeleccionado.correo());
-            //txtEventosAsignados.setText(String.valueOf(empleadoSeleccionado.eventosAsignados()));
+            txtEventosAsignados.setText(txtEventosAsignados.getText()); //creo q no es asi
         }
     }
 
