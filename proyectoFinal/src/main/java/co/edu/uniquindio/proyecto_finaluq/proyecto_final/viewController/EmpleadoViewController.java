@@ -70,19 +70,19 @@ public class EmpleadoViewController {
     private TableColumn<EmpleadoDto, String> tcCorreo;
 
     @FXML
-    private TableColumn<EmpleadoDto, String> tcEventosAsignados;
+    private TableColumn<EmpleadoDto, String> tcEventos;
 
 
 
     private void initialize(URL url, ResourceBundle resourceBundle) {
         setDatosEmpleado();
-        initDataBinding();
         EventoController eventoController = new EventoController();
         eventosAsignados = eventoController.obtenerEventos();
         obtenerEmpleados();
         tableEmpleados.getItems().clear();
         tableEmpleados.setItems(listaEmpleadosDto);
         listenerSelection();
+        initDataBinding();
     }
 
     private void setDatosEmpleado() {
@@ -97,7 +97,7 @@ public class EmpleadoViewController {
         tcId.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().id()));
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().nombre()));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().correo()));
-        //tcEventosAsignados.setCellValueFactory(cellData -> new SimpleStringProperty());
+        //tcEventos.setCellValueFactory(cellData -> new SimpleStringProperty());
     }
 
     private void obtenerEmpleados() {
