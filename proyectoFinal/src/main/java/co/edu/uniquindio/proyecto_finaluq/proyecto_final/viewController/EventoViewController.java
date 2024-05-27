@@ -106,7 +106,7 @@ public class EventoViewController {
         tcFecha.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().fecha().format(formatter)));
         tcCapacidad.setCellValueFactory(cellData -> new SimpleStringProperty(Integer.toString(cellData.getValue().capacidadMax())));
         tcEmpleado.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().empleadoEncargado().nombre()));
-        tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservas()));
+        tcReservas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().reservas().toString()));
     }
 
     @FXML
@@ -120,7 +120,7 @@ public class EventoViewController {
             this.txtFecha.setText(eventoSeleccionado.fecha().format(formatter));
             this.txtCapacidad.setText(Integer.toString(eventoSeleccionado.capacidadMax()));
             this.txtEmpleado.setText(eventoSeleccionado.empleadoEncargado().nombre());
-            this.txtReservas.setText(eventoSeleccionado.reservas());
+            this.txtReservas.setText(eventoSeleccionado.reservas().toString());
         }
     }
 

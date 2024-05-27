@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a6bf3617-ea7f-4ab5-a16e-ac4e4198a62d" name="Changes" comment="pausa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/EventoViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyecto_finaluq/proyecto_final/viewController/EventoViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +150,7 @@
       <workItem from="1716664573504" duration="643000" />
       <workItem from="1716665642236" duration="954000" />
       <workItem from="1716747551283" duration="82000" />
+      <workItem from="1716832072506" duration="757000" />
     </task>
     <task id="LOCAL-00001" summary="agregar errorcitos">
       <option name="closed" value="true" />

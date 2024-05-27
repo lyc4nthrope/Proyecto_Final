@@ -12,7 +12,7 @@
       <AnchorPane prefHeight="500.0" prefWidth="303.0" style="-fx-background-color: teal;" />
       <AnchorPane prefHeight="500.0" prefWidth="444.0">
          <children>
-            <Label layoutX="179.0" layoutY="31.0" text="REGISTRATE">
+            <Label layoutX="179.0" layoutY="31.0" text="Registro">
                <font>
                   <Font size="20.0" />
                </font>
